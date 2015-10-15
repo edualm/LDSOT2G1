@@ -1,4 +1,4 @@
-name := """ldso-az"""
+name := "ldso-az"
 
 version := "1.0-SNAPSHOT"
 
