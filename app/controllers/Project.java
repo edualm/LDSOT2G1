@@ -36,9 +36,10 @@ public class Project extends Controller {
 
     }
 
-    public Result getProjectoByUser(String userId){
+    public Result getProjectoByUser(){
 
-        List<Projecto> query = projectos.select("id").where().eq("user_id", userId).findList();
+        DynamicForm form = new DynamicForm().bindFromRequest();
+        List<Projecto> query = projectos.select("id").where().eq("user_id", form.get("userid")).findList();
 
         return ok(Json.toJson(query));
     }
