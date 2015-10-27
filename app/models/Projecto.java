@@ -32,6 +32,6 @@ public class Projecto extends Model {
     public Projecto(String nome, String descricao , String user_id){
         this.nome = nome;
         this.descricao = descricao;
-        this.user_id = Integer.parseInt(user_id);
+        this.user_id = (Integer) 1;
     }
 }
