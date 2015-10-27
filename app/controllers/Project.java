@@ -12,7 +12,7 @@ import play.mvc.Result;
 public class Project extends Controller {
 
     public Result CriarProjecto(){
-        DynamicForm form = Form.form().bindFromRequest();
+        DynamicForm form = new DynamicForm().bindFromRequest();
 
         String nome = form.get("nome");
         String descricao = form.get("descricao");
