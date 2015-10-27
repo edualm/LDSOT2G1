@@ -14,7 +14,7 @@
           <value>
             <ProjectSettingsEntry>
               <option name="sourceDir" value="C:\IdeaProjects\LDSOT2G1\app" />
-              <option name="confDir" value="$PROJECT_DIR$/app" />
+              <option name="confDir" value="C:\IdeaProjects\LDSOT2G1\app" />
               <option name="templateImports">
                 <list>
                   <option value="models._" />
@@ -39,7 +39,7 @@
                   <option value="play.libs.F" />
                 </list>
               </option>
-              <option name="uri" value="$PROJECT_DIR$" />
+              <option name="uri" value="C:\IdeaProjects\LDSOT2G1" />
             </ProjectSettingsEntry>
           </value>
         </entry>
