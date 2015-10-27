@@ -35,12 +35,14 @@ public class Project extends Controller {
         return ok(Json.toJson(call));
 
     }
+    public Result getProjectoById(Long id){
 
-    public Result getProjectoByUser(){
-
-        DynamicForm form = new DynamicForm().bindFromRequest();
-        List<Projecto> query = projectos.select("id").where().eq("user_id", form.get("userid")).findList();
+        Projecto query = projectos.byId(id);
 
         return ok(Json.toJson(query));
+    }
+
+    public  Result getAllProjectos(){
+        return ok(Json.toJson(projectos.all()));
     }
 }
