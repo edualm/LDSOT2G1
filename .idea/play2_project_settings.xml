@@ -13,6 +13,7 @@
         <entry key="root">
           <value>
             <ProjectSettingsEntry>
+              <option name="sourceDir" value="C:\IdeaProjects\LDSOT2G1\app" />
               <option name="confDir" value="C:\IdeaProjects\LDSOT2G1\app" />
               <option name="templateImports">
                 <list>
