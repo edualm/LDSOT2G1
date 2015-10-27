@@ -1,6 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
+import controllers.Project;
 import play.data.validation.Constraints;
 
 import javax.persistence.*;
@@ -33,5 +34,12 @@ public class Projecto extends Model {
         this.nome = nome;
         this.descricao = descricao;
         this.user_id = (Integer) 1;
+    }
+
+    public static Finder<Long,Projecto> find = new Finder(Long.class, Projecto.class);
+
+    public static Projecto getLastProjectCreatedByUser(Integer user_id, String nome){
+
+        return find.select("id").where().eq("nome", nome).eq("user_id", user_id.toString()).findUnique();
     }
 }
