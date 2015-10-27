@@ -1,0 +1,1 @@
+web: target/universal/stage/bin/ldso-az -Dhttp.port=${PORT} -Dplay.evolutions.enabled=true -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=${DATABASE_URL}
