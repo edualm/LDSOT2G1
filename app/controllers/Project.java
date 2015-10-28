@@ -37,6 +37,9 @@ public class Project extends Controller {
     }
     public Result getProjectoById(Long id){
 
+        if(id == 0)
+            return badRequest("Wrong Project ID");
+
         Projecto query = projectos.byId(id);
 
         return ok(Json.toJson(query));
