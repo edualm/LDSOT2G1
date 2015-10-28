@@ -1,12 +1,15 @@
 package controllers;
 
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.Projecto;
 import play.libs.Json;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import com.fasterxml.jackson.databind.JsonNode;
+
 
 import java.util.List;
 
@@ -37,12 +40,21 @@ public class Project extends Controller {
     }
     public Result getProjectoById(Long id){
 
+        ObjectNode response = Json.newObject();
+
+
         if(id == 0)
             return badRequest("Wrong Project ID");
 
-        Projecto query = projectos.byId(id);
-
-        return ok(Json.toJson(query));
+        try {
+            Projecto query = projectos.byId(id);
+            return  ok(Json.toJson(query));
+        }
+        catch (Exception e)
+        {
+            response.put("result",e.getMessage());
+            return badRequest(response);
+        }
     }
 
     public  Result getAllProjectos(){
