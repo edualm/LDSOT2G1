@@ -10,7 +10,7 @@ POST    /projecto                   controllers.Project.CriarProjecto()
 GET     /projectos                  controllers.Project.getAllProjectos()
 GET     /projecto/:id               controllers.Project.getProjectoById(id: Long)
 
-POST    /comentario                 controllers.Project.addComentario()
+POST    /comentario                 controllers.Comment.addComentario()
 
 
 
