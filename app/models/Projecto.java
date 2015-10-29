@@ -26,7 +26,7 @@ public class Projecto extends Model {
     public String descricao;
 
     @OneToMany(mappedBy = "projecto_id")
-    List<Comentario> comentarios;
+    public List<Comentario> comentarios;
 
     @Column
     public Integer user_id;
