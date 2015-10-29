@@ -16,8 +16,6 @@ import java.util.List;
 public class Projecto extends Model {
 
     @Id
-    //@SequenceGenerator(name = "Projecto_id_seq", sequenceName = "Projecto_id_seq", allocationSize = 1)
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Projecto_id_seq")
     @Column(unique = true)
     public Integer id;
 
@@ -26,6 +24,9 @@ public class Projecto extends Model {
 
     @Column
     public String descricao;
+
+    @OneToMany(mappedBy = "project_id")
+    List<Comentario> comentarios;
 
     @Column
     public Integer user_id;
