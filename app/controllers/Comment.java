@@ -12,7 +12,7 @@ import play.mvc.Result;
 import java.util.Date;
 
 /**
- * Created by João on 29/10/2015.
+ * Created by Joao on 29/10/2015.
  */
 public class Comment extends Controller{
 
