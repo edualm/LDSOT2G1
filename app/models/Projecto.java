@@ -25,7 +25,7 @@ public class Projecto extends Model {
     @Column
     public String descricao;
 
-    @OneToMany(mappedBy = "project_id")
+    @OneToMany(mappedBy = "projecto_id")
     List<Comentario> comentarios;
 
     @Column

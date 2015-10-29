@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\IdeaProjects\LDSOT2G1\app\controllers\Comment.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Comentario.java" afterPath="$PROJECT_DIR$/app/models/Comentario.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Projecto.java" afterPath="$PROJECT_DIR$/app/models/Projecto.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ldso-az.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,7 +90,7 @@
         <entry file="file://$PROJECT_DIR$/app/models/Projecto.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+              <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -137,8 +136,8 @@
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/conf/routes" />
         <option value="$PROJECT_DIR$/app/controllers/Project.java" />
-        <option value="$PROJECT_DIR$/app/models/Projecto.java" />
         <option value="$PROJECT_DIR$/app/models/Comentario.java" />
+        <option value="$PROJECT_DIR$/app/models/Projecto.java" />
       </list>
     </option>
   </component>
@@ -718,12 +717,12 @@
       <workItem from="1445972648884" duration="539000" />
       <workItem from="1445974868063" duration="9942000" />
       <workItem from="1446027082207" duration="1304000" />
-      <workItem from="1446116155265" duration="1062000" />
+      <workItem from="1446116155265" duration="1312000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30947000" />
+    <option name="totallyTimeSpent" value="31197000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1137,16 +1136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Projecto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1161,6 +1150,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Projecto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
