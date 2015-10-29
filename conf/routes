@@ -10,6 +10,8 @@ POST    /projecto                   controllers.Project.CriarProjecto()
 GET     /projectos                  controllers.Project.getAllProjectos()
 GET     /projecto/:id               controllers.Project.getProjectoById(id: Long)
 
+POST    /comentario                 controllers.Project.addComentario()
+
 
 
 # Map static resources from the /public folder to the /assets URL path

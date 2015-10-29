@@ -30,6 +30,13 @@ public class Comentario extends Model {
     @JoinColumn(name="projecto_id", referencedColumnName = "id")
     public Projecto projecto_id;
 
+    public Comentario(Date data, String mensagem, Integer user_id, Projecto projecto_id){
+        this.data = data;
+        this.mensagem = mensagem;
+        this.user_id = user_id;
+        this.projecto_id = projecto_id;
+    }
+
 
 }
 
