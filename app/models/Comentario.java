@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by João on 28/10/2015.
+ * Created by Joao on 28/10/2015.
  */
 
 
@@ -21,7 +21,7 @@ public class Comentario extends Model {
     public Date data;
 
     @Column
-    public String menssagem;
+    public String mensagem;
 
     @Column
     public Integer user_id;
