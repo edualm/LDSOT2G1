@@ -8,7 +8,7 @@ GET     /                           controllers.Application.index()
 #API
 POST    /projecto                   controllers.Project.CriarProjecto()
 GET     /projectos                  controllers.Project.getAllProjectos()
-GET     /testVers                   controllers.Project.TestVersionamentoProjecto()
+POST    /testVers                   controllers.Project.TestVersionamentoProjecto()
 GET     /projecto/:id               controllers.Project.getProjectoById(id: Long)
 
 POST    /comentario                 controllers.Comment.addComentario()
