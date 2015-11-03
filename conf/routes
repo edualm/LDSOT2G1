@@ -11,7 +11,9 @@ GET     /projectos                  controllers.Project.getAllProjectos()
 POST    /testVers                   controllers.Project.TestVersionamentoProjecto()
 GET     /projecto/:id               controllers.Project.getProjectoById(id: Long)
 
+
 POST    /comentario                 controllers.Comment.addComentario()
+POST    /comentario/edit            controllers.Comment.editComment()
 
 
 
