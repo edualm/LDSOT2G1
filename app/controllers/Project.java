@@ -59,6 +59,7 @@ public class Project extends Controller {
 
             Projecto p = projectos.byId(Long.valueOf(projecto));
             VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
+            vs.save();
 
             return ok(Json.toJson(vs));
         }

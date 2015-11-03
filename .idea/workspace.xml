@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/routes" afterPath="$PROJECT_DIR$/conf/routes" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Project.java" afterPath="$PROJECT_DIR$/app/controllers/Project.java" />
     </list>
     <ignored path="ldso-az.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,11 +55,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Project.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="43" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.6106195">
+              <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -75,10 +75,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes" pinned="false" current-in-tab="true">
+      <file leaf-file-name="routes" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/routes">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38938054">
+            <state vertical-scroll-proportion="0.0">
               <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
               <folding />
             </state>
@@ -127,9 +127,9 @@
         <option value="$PROJECT_DIR$/app/models/Projecto.java" />
         <option value="$PROJECT_DIR$/app/models/Versaoprojecto.java" />
         <option value="$PROJECT_DIR$/app/models/VersaoProjecto.java" />
-        <option value="$PROJECT_DIR$/app/controllers/Project.java" />
         <option value="$PROJECT_DIR$/app/controllers/Comment.java" />
         <option value="$PROJECT_DIR$/conf/routes" />
+        <option value="$PROJECT_DIR$/app/controllers/Project.java" />
       </list>
     </option>
   </component>
@@ -812,7 +812,7 @@
       <workItem from="1446116155265" duration="4529000" />
       <workItem from="1446579630160" duration="47000" />
       <workItem from="1446579968297" duration="90000" />
-      <workItem from="1446580093687" duration="5674000" />
+      <workItem from="1446580093687" duration="5820000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Projecto Model">
       <created>1446117518519</created>
@@ -892,11 +892,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446591492339</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Changed from GET to POST (add Project Vers)">
+      <created>1446591703108</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1446591703108</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40225000" />
+    <option name="totallyTimeSpent" value="40371000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -960,7 +966,8 @@
     <MESSAGE value="Fixing VersaoProjecto..." />
     <MESSAGE value="Lets see if it works better !" />
     <MESSAGE value="Comments and Project Versions should be working. Lets test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comments and Project Versions should be working. Lets test" />
+    <MESSAGE value="Changed from GET to POST (add Project Vers)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed from GET to POST (add Project Vers)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1352,18 +1359,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
+    <entry file="file://$PROJECT_DIR$/conf/routes">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="43" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="43" />
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf/routes">
+    <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38938054">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.6106195">
+          <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
           <folding />
         </state>
       </provider>
