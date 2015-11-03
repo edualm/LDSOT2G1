@@ -32,6 +32,7 @@ public class Comment extends Controller{
             Date data = new Date();
             Integer user_id = 1;
             Comentario c = new Comentario(data, msg, user_id, p);
+            c.save();
 
             return ok(Json.toJson(c));
 

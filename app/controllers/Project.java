@@ -35,6 +35,7 @@ public class Project extends Controller {
         Projecto p = new Projecto(nome,descricao,user);
         VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
         p.save();
+        vs.save();
 
 
         return ok(Json.toJson(p));
