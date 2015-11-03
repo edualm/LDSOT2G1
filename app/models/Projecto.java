@@ -30,6 +30,10 @@ public class Projecto extends Model {
     @JsonManagedReference
     public List<Comentario> comentarios;
 
+    @OneToMany(mappedBy = "projecto_id")
+    @JsonManagedReference
+    public List<VersaoProjecto> versoesProjecto;
+
     @Column
     public Integer user_id;
 
