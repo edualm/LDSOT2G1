@@ -57,6 +57,7 @@ public class Comment extends Controller{
             Comentario c = comentarios.byId(Long.valueOf(id));
             c.mensagem = msg;
             c.data = todayDate;
+            c.update();
 
             return ok(Json.toJson(c));
 
