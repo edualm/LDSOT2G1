@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Project.java" afterPath="$PROJECT_DIR$/app/controllers/Project.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Comment.java" afterPath="$PROJECT_DIR$/app/controllers/Comment.java" />
     </list>
     <ignored path="ldso-az.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,21 +55,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Project.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6106195">
-              <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Comment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Comment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Comment.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.27256638">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding>
+                <element signature="method#addComentario#0;class#Comment#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Comentario.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/Comentario.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -127,9 +139,9 @@
         <option value="$PROJECT_DIR$/app/models/Projecto.java" />
         <option value="$PROJECT_DIR$/app/models/Versaoprojecto.java" />
         <option value="$PROJECT_DIR$/app/models/VersaoProjecto.java" />
-        <option value="$PROJECT_DIR$/app/controllers/Comment.java" />
         <option value="$PROJECT_DIR$/conf/routes" />
         <option value="$PROJECT_DIR$/app/controllers/Project.java" />
+        <option value="$PROJECT_DIR$/app/controllers/Comment.java" />
       </list>
     </option>
   </component>
@@ -812,7 +824,7 @@
       <workItem from="1446116155265" duration="4529000" />
       <workItem from="1446579630160" duration="47000" />
       <workItem from="1446579968297" duration="90000" />
-      <workItem from="1446580093687" duration="5820000" />
+      <workItem from="1446580093687" duration="6379000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Projecto Model">
       <created>1446117518519</created>
@@ -898,11 +910,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446591703108</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Changed from GET to POST (add Project Vers)&#10;missed save">
+      <created>1446591842866</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1446591842866</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40371000" />
+    <option name="totallyTimeSpent" value="40930000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -967,7 +985,8 @@
     <MESSAGE value="Lets see if it works better !" />
     <MESSAGE value="Comments and Project Versions should be working. Lets test" />
     <MESSAGE value="Changed from GET to POST (add Project Vers)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed from GET to POST (add Project Vers)" />
+    <MESSAGE value="Changed from GET to POST (add Project Vers)&#10;missed save" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed from GET to POST (add Project Vers)&#10;missed save" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1333,14 +1352,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Comentario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.84424776">
-          <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/VersaoProjecto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1348,14 +1359,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1369,9 +1372,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6106195">
-          <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Comentario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27256638">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="method#addComentario#0;class#Comment#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

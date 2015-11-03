@@ -18,7 +18,7 @@ public class Comment extends Controller{
 
     //Finder
     public static Model.Finder<Long, Projecto> projectos = new Model.Finder(Long.class, Projecto.class);
-    public static Model.Finder<Long, Projecto> comentarios = new Model.Finder(Long.class, Comentario.class);
+    public static Model.Finder<Long, Comentario> comentarios = new Model.Finder(Long.class, Comentario.class);
 
     public Result addComentario() {
         DynamicForm form = new DynamicForm().bindFromRequest();
@@ -33,6 +33,30 @@ public class Comment extends Controller{
             Integer user_id = 1;
             Comentario c = new Comentario(data, msg, user_id, p);
             c.save();
+
+            return ok(Json.toJson(c));
+
+
+        } catch (Exception e) {
+            ObjectNode json = Json.newObject();
+            json.put("result", "Comment not added.");
+            json.put("excecao", e.getMessage());
+            return badRequest(json);
+        }
+    }
+
+    public Result editComment(){
+        DynamicForm form = new DynamicForm().bindFromRequest();
+
+        try {
+            String msg = form.get("msg");
+            String id = form.get("id");
+
+            Date todayDate = new Date();
+
+            Comentario c = comentarios.byId(Long.valueOf(id));
+            c.mensagem = msg;
+            c.data = todayDate;
 
             return ok(Json.toJson(c));
 
