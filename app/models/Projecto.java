@@ -1,6 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import controllers.Project;
 import play.data.validation.Constraints;
 
@@ -26,6 +27,7 @@ public class Projecto extends Model {
     public String descricao;
 
     @OneToMany(mappedBy = "projecto_id")
+    @JsonManagedReference
     public List<Comentario> comentarios;
 
     @Column

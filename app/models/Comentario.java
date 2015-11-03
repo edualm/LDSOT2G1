@@ -1,6 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import play.data.validation.Constraints;
 
 import javax.persistence.*;
@@ -28,6 +29,7 @@ public class Comentario extends Model {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="projecto_id", referencedColumnName = "id")
+    @JsonBackReference
     public Projecto projecto_id;
 
     public Comentario(Date data, String mensagem, Integer user_id, Projecto projecto_id){
