@@ -3,16 +3,11 @@ package controllers;
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.Projecto;
-import models.VersaoProjecto;
+import models.Versaoprojecto;
 import play.libs.Json;
 import play.data.DynamicForm;
-import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import com.fasterxml.jackson.databind.JsonNode;
-
-
-import java.util.List;
 
 /**
  * Created by Joao on 27/10/2015.
@@ -33,7 +28,7 @@ public class Project extends Controller {
 
         Projecto p = new Projecto(nome,descricao,user);
         p.save();
-        VersaoProjecto vs = new VersaoProjecto("versao_", p, "1");
+        Versaoprojecto vs = new Versaoprojecto("versao_", p, "1");
         vs.save();
 
         Projecto call = projectos.select("id").where().eq("user_id", p.user_id).findUnique();

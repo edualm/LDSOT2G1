@@ -2,11 +2,8 @@ package models;
 
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import controllers.Project;
-import play.data.validation.Constraints;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,7 +29,7 @@ public class Projecto extends Model {
 
     @OneToMany(mappedBy = "projecto_id")
     @JsonManagedReference
-    public List<VersaoProjecto> versoesProjecto;
+    public List<Versaoprojecto> versoesProjecto;
 
     @Column
     public Integer user_id;
