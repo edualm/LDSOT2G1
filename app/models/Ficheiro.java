@@ -23,8 +23,6 @@ public class Ficheiro extends Model {
     @Lob
     public byte[] ficheiro;
 
-    @ManyToMany(mappedBy = "ficheiros", cascade = CascadeType.ALL)
-    List<Tag> tags;
 
     Ficheiro(String nome, byte[] ficheiro){
         this.nome = nome;

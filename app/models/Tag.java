@@ -17,9 +17,6 @@ public class Tag extends Model{
     @Column
     public String nome;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    List<Ficheiro> ficheiros;
-
     Tag(String nome){
         this.nome = nome;
     }
