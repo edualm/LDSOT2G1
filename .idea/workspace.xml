@@ -61,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+              <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -107,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/app/models/Projecto.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+              <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,11 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Versaoprojecto.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/Versaoprojecto.java">
+      <file leaf-file-name="VersaoProjecto.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/VersaoProjecto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37699115">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.22123894">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -166,10 +166,10 @@
         <option value="$PROJECT_DIR$/conf/routes" />
         <option value="$PROJECT_DIR$/app/controllers/Comment.java" />
         <option value="$PROJECT_DIR$/app/models/Comentario.java" />
-        <option value="$PROJECT_DIR$/app/models/VersaoProjecto.java" />
         <option value="$PROJECT_DIR$/app/models/Projecto.java" />
         <option value="$PROJECT_DIR$/app/controllers/Project.java" />
         <option value="$PROJECT_DIR$/app/models/Versaoprojecto.java" />
+        <option value="$PROJECT_DIR$/app/models/VersaoProjecto.java" />
       </list>
     </option>
   </component>
@@ -852,7 +852,7 @@
       <workItem from="1446116155265" duration="4529000" />
       <workItem from="1446579630160" duration="47000" />
       <workItem from="1446579968297" duration="90000" />
-      <workItem from="1446580093687" duration="3211000" />
+      <workItem from="1446580093687" duration="3410000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Projecto Model">
       <created>1446117518519</created>
@@ -902,11 +902,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446588630071</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added VersaoProjecto. Not expecting to work at first try.&#10;Fixing table name">
+      <created>1446589239920</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1446589239920</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37762000" />
+    <option name="totallyTimeSpent" value="37961000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -965,7 +971,8 @@
     <MESSAGE value="Commentario API. Fix #2" />
     <MESSAGE value="Fixing Json recursion." />
     <MESSAGE value="Added VersaoProjecto. Not expecting to work at first try." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added VersaoProjecto. Not expecting to work at first try." />
+    <MESSAGE value="Added VersaoProjecto. Not expecting to work at first try.&#10;Fixing table name" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added VersaoProjecto. Not expecting to work at first try.&#10;Fixing table name" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1350,7 +1357,7 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+          <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1358,17 +1365,17 @@
     <entry file="file://$PROJECT_DIR$/app/models/Projecto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Versaoprojecto.java">
+    <entry file="file://$PROJECT_DIR$/app/models/VersaoProjecto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37699115">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.22123894">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

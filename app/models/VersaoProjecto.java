@@ -15,7 +15,8 @@ import java.util.List;
  */
 
 @Entity
-public class Versaoprojecto extends Model {
+@Table(name = "versaoprojecto")
+public class VersaoProjecto extends Model {
 
     @Id
     @Column(unique = true)
@@ -32,7 +33,7 @@ public class Versaoprojecto extends Model {
     @Column
     public Integer user_id;
 
-    public Versaoprojecto(String descricao , Projecto projecto_id, String user_id){
+    public VersaoProjecto(String descricao , Projecto projecto_id, String user_id){
         this.descricao = descricao;
         this.projecto_id = projecto_id;
         this.user_id = (Integer) 1;
