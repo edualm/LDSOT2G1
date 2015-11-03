@@ -24,6 +24,7 @@ public class Project extends Controller {
     public static Model.Finder<Long, Projecto> projectos = new Model.Finder(Long.class, Projecto.class);
 
     public Result CriarProjecto(){
+        try {
         DynamicForm form = new DynamicForm().bindFromRequest();
 
         String nome = form.get("nome");
@@ -32,34 +33,39 @@ public class Project extends Controller {
 
 
         Projecto p = new Projecto(nome,descricao,user);
+        VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
         p.save();
-        /*VersaoProjecto vs = new VersaoProjecto("versao_", p, "1");
-        vs.save();
-        */
 
-        Projecto call = projectos.select("id").where().eq("user_id", p.user_id).findUnique();
 
-        return ok(Json.toJson(call));
+        return ok(Json.toJson(p));
+        }
+        catch (Exception e){
+            ObjectNode json = Json.newObject();
+            json.put("result", "Could not create a project");
+            json.put("excecao", e.getMessage());
+            return badRequest(json);
+        }
 
     }
-
 
     public Result TestVersionamentoProjecto(){
         try {
 
 
             DynamicForm form = new DynamicForm().bindFromRequest();
+            String projecto = form.get("projecto");
+            String descricao = form.get("desc");
 
-            Long n = new Long(4);
+            Projecto p = projectos.byId(Long.valueOf(projecto));
+            VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
 
-            Projecto p = projectos.byId(n);
-
-            VersaoProjecto vs = new VersaoProjecto("Teste", p, "1");
-            vs.save();
             return ok(Json.toJson(vs));
         }
         catch (Exception e){
-            return badRequest(e.getMessage());
+            ObjectNode json = Json.newObject();
+            json.put("result", "Version not added");
+            json.put("excecao", e.getMessage());
+            return badRequest(json);
         }
 
 
