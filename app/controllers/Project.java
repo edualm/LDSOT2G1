@@ -33,12 +33,38 @@ public class Project extends Controller {
 
         Projecto p = new Projecto(nome,descricao,user);
         p.save();
-        VersaoProjecto vs = new VersaoProjecto("versao_", p, "1");
+        /*VersaoProjecto vs = new VersaoProjecto("versao_", p, "1");
         vs.save();
+        */
 
         Projecto call = projectos.select("id").where().eq("user_id", p.user_id).findUnique();
 
         return ok(Json.toJson(call));
+
+    }
+
+
+    public Result TestVersionamentoProjecto(){
+        try {
+
+
+            DynamicForm form = new DynamicForm().bindFromRequest();
+
+            Long n = new Long(4);
+
+            Projecto p = projectos.byId(n);
+
+            VersaoProjecto vs = new VersaoProjecto("Teste", p, "1");
+            vs.save();
+            return ok(Json.toJson(vs));
+        }
+        catch (Exception e){
+            return badRequest(e.getMessage());
+        }
+
+
+
+
 
     }
     public Result getProjectoById(Long id){
