@@ -39,7 +39,7 @@ public class Comment extends Controller{
 
         } catch (Exception e) {
             ObjectNode json = Json.newObject();
-            json.put("result", "Comment not added.");
+            json.put("result", "error");
             json.put("excecao", e.getMessage());
             return badRequest(json);
         }
@@ -64,7 +64,7 @@ public class Comment extends Controller{
 
         } catch (Exception e) {
             ObjectNode json = Json.newObject();
-            json.put("result", "Comment could not be edited.");
+            json.put("result", "error");
             json.put("excecao", e.getMessage());
             return badRequest(json);
         }

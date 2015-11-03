@@ -42,7 +42,7 @@ public class Project extends Controller {
         }
         catch (Exception e){
             ObjectNode json = Json.newObject();
-            json.put("result", "Could not create a project");
+            json.put("result", "error");
             json.put("excecao", e.getMessage());
             return badRequest(json);
         }
@@ -65,7 +65,7 @@ public class Project extends Controller {
         }
         catch (Exception e){
             ObjectNode json = Json.newObject();
-            json.put("result", "Version not added");
+            json.put("result", "error");
             json.put("excecao", e.getMessage());
             return badRequest(json);
         }
