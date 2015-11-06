@@ -23,10 +23,8 @@ public class Ficheiro extends Model {
     @Lob
     public byte[] ficheiro;
 
-
-    Ficheiro(String nome, byte[] ficheiro){
+    public Ficheiro(String nome, byte[] ficheiro){
         this.nome = nome;
         this.ficheiro = ficheiro;
     }
-
 }
