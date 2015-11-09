@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/Tipo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Project.java" afterPath="$PROJECT_DIR$/app/controllers/Project.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Componente.java" afterPath="$PROJECT_DIR$/app/models/Componente.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Tipo.java" afterPath="$PROJECT_DIR$/app/models/Tipo.java" />
     </list>
     <ignored path="ldso-az.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,10 +55,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Project.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48114902">
+            <state vertical-scroll-proportion="0.0">
               <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -81,15 +79,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tipo.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Tipo.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/Tipo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.6714542">
+              <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#518#519#0" expanded="true" />
-                <element signature="e#550#551#0" expanded="true" />
+                <element signature="e#512#513#0" expanded="true" />
+                <element signature="e#544#545#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -109,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/app/models/VersaoProjecto.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="30" selection-end-column="32" />
+              <caret line="30" column="31" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -162,9 +160,9 @@
         <option value="$PROJECT_DIR$/app/controllers/File.java" />
         <option value="$PROJECT_DIR$/app/models/Ficheiro.java" />
         <option value="$PROJECT_DIR$/app/models/VersaoProjecto.java" />
-        <option value="$PROJECT_DIR$/app/models/Tipo.java" />
         <option value="$PROJECT_DIR$/app/models/Componente.java" />
         <option value="$PROJECT_DIR$/app/controllers/Project.java" />
+        <option value="$PROJECT_DIR$/app/models/Tipo.java" />
       </list>
     </option>
   </component>
@@ -865,7 +863,7 @@
       <workItem from="1446580093687" duration="8379000" />
       <workItem from="1446825203025" duration="2456000" />
       <workItem from="1446142784694" duration="2776000" />
-      <workItem from="1447082836674" duration="2207000" />
+      <workItem from="1447082836674" duration="2418000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Projecto Model">
       <created>1446117518519</created>
@@ -993,11 +991,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447084268306</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Relationship between Tipo and Componente">
+      <created>1447085066986</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1447085066986</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50369000" />
+    <option name="totallyTimeSpent" value="50580000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1100,7 +1104,8 @@
     <MESSAGE value="- Comment adding and comment editing working&#10;&#10;- Project adding and Version Projecto working &#10;&#10;(missing user auth)" />
     <MESSAGE value="@ManyToMany between VersaoProjecto-Componente&#10;&#10;Lets see if it builds correctly!" />
     <MESSAGE value="Forgot to add @Entity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Forgot to add @Entity" />
+    <MESSAGE value="Relationship between Tipo and Componente" />
+    <option name="LAST_COMMIT_MESSAGE" value="Relationship between Tipo and Componente" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1456,6 +1461,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Ficheiro.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1477,20 +1492,8 @@
     <entry file="file://$PROJECT_DIR$/app/models/VersaoProjecto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="30" selection-end-column="32" />
+          <caret line="30" column="31" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Tipo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#518#519#0" expanded="true" />
-            <element signature="e#550#551#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1504,12 +1507,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
+    <entry file="file://$PROJECT_DIR$/app/models/Tipo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48114902">
-          <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.6714542">
+          <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
           </folding>
         </state>
       </provider>

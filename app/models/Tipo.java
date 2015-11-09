@@ -20,7 +20,7 @@ public class Tipo {
     @Column
     public String nome;
 
-    @OneToMany(mappedBy = "componente_id")
+    @OneToMany(mappedBy = "tipo_id")
     @JsonManagedReference
     public List<Componente> componentes;
 
