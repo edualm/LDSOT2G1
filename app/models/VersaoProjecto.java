@@ -33,6 +33,10 @@ public class VersaoProjecto extends Model {
     @Column
     public Integer user_id;
 
+    @ManyToMany(mappedBy = "versaoprojectos")
+    public List<Componente> componentes;
+
+
     public VersaoProjecto(String descricao , Projecto projecto_id, String user_id){
         this.descricao = descricao;
         this.projecto_id = projecto_id;
