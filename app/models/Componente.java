@@ -1,6 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,8 +19,10 @@ public class Componente extends Model {
     @Column
     public String conteudo;
 
-    @Column
-    public Integer tipo_id;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name="tipo_id", referencedColumnName = "id")
+    @JsonBackReference
+    public Tipo tipo_id;
 
 
     @ManyToMany
@@ -27,4 +30,9 @@ public class Componente extends Model {
             joinColumns = @JoinColumn(name = "versaoprojecto_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "componente_id", referencedColumnName = "id"))
     public List<VersaoProjecto> versaoprojectos;
+
+    Componente(String conteudo, Tipo tipo_id){
+        this.conteudo = conteudo;
+        this.tipo_id = tipo_id;
+    }
 }
