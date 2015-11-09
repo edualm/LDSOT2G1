@@ -4,7 +4,9 @@ import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.Componente;
 import models.Projecto;
+import models.Tipo;
 import models.VersaoProjecto;
+import play.api.i18n.Messages;
 import play.libs.Json;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -23,6 +25,7 @@ public class Project extends Controller {
 
     //Finder
     public static Model.Finder<Long, Projecto> projectos = new Model.Finder(Long.class, Projecto.class);
+    public static Model.Finder<Long, Tipo> tipos = new Model.Finder(Long.class, Tipo.class);
 
     public Result CriarProjecto(){
         try {
@@ -61,6 +64,31 @@ public class Project extends Controller {
             Projecto p = projectos.byId(Long.valueOf(projecto));
             VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
             vs.save();
+
+
+            //Componente de Fisica
+            Tipo fisica = tipos.where().eq("nome","Fisica").findUnique();
+            Componente c1 = new Componente("Conteudo da componente em MARKDOWN",fisica);
+
+            c1.save();
+
+            //Componente de Programacao
+            Tipo prog = tipos.where().eq("nome","Programacao").findUnique();
+            Componente c2 = new Componente("Conteudo da componente em MARKDOWN",prog);
+
+            c2.save();
+
+            //Componente de Electrotecnia
+            Tipo eletro = tipos.where().eq("nome","Electrotecnica").findUnique();
+            Componente c3 = new Componente("Conteudo da componente em MARKDOWW",eletro);
+
+            c3.save();
+
+            vs.componentes.add(c1);
+            vs.componentes.add(c2);
+            vs.componentes.add(c3);
+
+
 
             return ok(Json.toJson(vs));
         }

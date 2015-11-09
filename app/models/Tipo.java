@@ -24,7 +24,7 @@ public class Tipo {
     @JsonManagedReference
     public List<Componente> componentes;
 
-    Tipo(String nome){
+    public Tipo(String nome){
         this.nome = nome;
     }
 }

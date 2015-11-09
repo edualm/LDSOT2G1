@@ -31,7 +31,7 @@ public class Componente extends Model {
             inverseJoinColumns = @JoinColumn(name = "componente_id", referencedColumnName = "id"))
     public List<VersaoProjecto> versaoprojectos;
 
-    Componente(String conteudo, Tipo tipo_id){
+    public Componente(String conteudo, Tipo tipo_id){
         this.conteudo = conteudo;
         this.tipo_id = tipo_id;
     }
