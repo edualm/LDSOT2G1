@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * Created by João on 09/11/2015.
  */
+@Entity
 public class Componente extends Model {
     @Id
     @Column
