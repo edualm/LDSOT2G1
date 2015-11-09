@@ -79,7 +79,7 @@ public class Project extends Controller {
             c2.save();
 
             //Componente de Electrotecnia
-            Tipo eletro = tipos.where().eq("nome","Electrotecnica").findUnique();
+            Tipo eletro = tipos.where().eq("nome","Eletrotecnica").findUnique();
             Componente c3 = new Componente("Conteudo da componente em MARKDOWW",eletro);
 
             c3.save();
