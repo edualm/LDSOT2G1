@@ -4,6 +4,7 @@ import com.avaje.ebean.Model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -21,9 +22,9 @@ public class Ficheiro extends Model {
 
     @Column
     @Lob
-    public byte[] ficheiro;
+    public File ficheiro;
 
-    public Ficheiro(String nome, byte[] ficheiro){
+    public Ficheiro(String nome, File ficheiro){
         this.nome = nome;
         this.ficheiro = ficheiro;
     }

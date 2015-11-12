@@ -9,13 +9,15 @@ import play.data.DynamicForm;
 import play.libs.Json;
 import play.data.DynamicForm;
 import play.data.Form;
+import play.mvc.BodyParser;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 
 import java.nio.charset.Charset;
 
 /**
- * Created by daniele on 06/11/2015.
+ *
  */
 public class File extends Controller {
 
@@ -23,19 +25,18 @@ public class File extends Controller {
     public static Model.Finder<Long, Ficheiro> ficheiros = new Model.Finder(Long.class, Ficheiro.class);
 
     public Result addFile() {
-        DynamicForm form = new DynamicForm().bindFromRequest();
+        DynamicForm dynamicForm = new DynamicForm().bindFromRequest();
+        Http.MultipartFormData form = request().body().asMultipartFormData();
 
         try {
-            String nome = form.get("nome");
-            String ficheiro = form.get("ficheiro");
+            String nome = dynamicForm.get("nome");
+            Http.MultipartFormData.FilePart picture = form.getFile("picture");
 
             //parse string into byte array
-            byte[] ficheiro_byte = ficheiro.getBytes(Charset.forName("UTF-8"));
-
-            Ficheiro f = new Ficheiro(nome, ficheiro_byte);
-            f.save();
-
-            return ok(Json.toJson(f));
+                String contentType = picture.getContentType();
+                Ficheiro file =  new Ficheiro(nome, picture.getFile());
+                file.save();
+                return ok(Json.toJson(file));
 
         } catch (Exception e) {
             ObjectNode json = Json.newObject();
@@ -45,7 +46,7 @@ public class File extends Controller {
         }
     }
 
-    public  Result getAllFiles(){
+    public Result getAllFiles(){
         return ok(Json.toJson(ficheiros.all()));
     }
 }

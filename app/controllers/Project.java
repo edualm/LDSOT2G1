@@ -123,6 +123,11 @@ public class Project extends Controller {
         }
     }
 
+    //Adicionar repositorio
+    //Remover projeto
+
+
+
     public  Result getAllProjectos(){
         return ok(Json.toJson(projectos.all()));
     }
