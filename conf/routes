@@ -15,8 +15,8 @@ GET     /projecto/:id               controllers.Project.getProjectoById(id: Long
 POST    /comentario                 controllers.Comment.addComentario()
 POST    /comentario/edit            controllers.Comment.editComment()
 
-POST    /ficheiro                   controllers.File.addFile()
-GET     /ficheiros                  controllers.File.getAllFiles()
+POST    /ficheiro                   controllers.FileProject.addFile()
+GET     /ficheiros                  controllers.FileProject.getAllFiles()
 
 
 

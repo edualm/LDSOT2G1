@@ -22,10 +22,11 @@ public class Ficheiro extends Model {
 
     @Column
     @Lob
-    public File ficheiro;
+    public byte[] ficheiro;
 
-    public Ficheiro(String nome, File ficheiro){
+    public Ficheiro(String nome, byte[] ficheiro){
         this.nome = nome;
         this.ficheiro = ficheiro;
+       // FileUtils.writeByteArrayToFile(new File(imgPathToSave),bytes); ?
     }
 }

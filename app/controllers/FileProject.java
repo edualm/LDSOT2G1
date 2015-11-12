@@ -4,25 +4,22 @@ import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import models.Ficheiro;
-import models.Projecto;
 import play.data.DynamicForm;
 import play.libs.Json;
-import play.data.DynamicForm;
-import play.data.Form;
-import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 
-import java.nio.charset.Charset;
+import java.io.File;
+import java.io.FileInputStream;
 
 /**
  *
  */
-public class File extends Controller {
+public class FileProject extends Controller {
 
     //Finder
-    public static Model.Finder<Long, Ficheiro> ficheiros = new Model.Finder(Long.class, Ficheiro.class);
+    public static Model.Finder<Long, models.Ficheiro> ficheiros = new Model.Finder(Long.class, models.Ficheiro.class);
 
     public Result addFile() {
         DynamicForm dynamicForm = new DynamicForm().bindFromRequest();
@@ -30,13 +27,17 @@ public class File extends Controller {
 
         try {
             String nome = dynamicForm.get("nome");
+            String imgPathToSave = "images/" + nome;
             Http.MultipartFormData.FilePart picture = form.getFile("picture");
 
             //parse string into byte array
-                String contentType = picture.getContentType();
-                Ficheiro file =  new Ficheiro(nome, picture.getFile());
-                file.save();
-                return ok(Json.toJson(file));
+               // String contentType = picture.getContentType();
+                File imgFile = picture.getFile();
+                byte[] bytes = IOUtils.toByteArray(new FileInputStream(imgFile));
+                Ficheiro ficheiro =  new FileProject(nome, bytes);
+                ficheiro.save();
+
+                return ok(Json.toJson(ficheiro));
 
         } catch (Exception e) {
             ObjectNode json = Json.newObject();
