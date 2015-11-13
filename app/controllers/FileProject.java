@@ -47,6 +47,25 @@ public class FileProject extends Controller {
         }
     }
 
+    public Result getFileById(Long id){
+
+        ObjectNode response = Json.newObject();
+
+
+        if(id == 0)
+            return badRequest("Wrong File ID");
+
+        try {
+            Ficheiro query = ficheiros.byId(id);
+            return  ok(Json.toJson(query));
+        }
+        catch (Exception e)
+        {
+            response.put("result",e.getMessage());
+            return badRequest(response);
+        }
+    }
+
     public Result getAllFiles(){
         return ok(Json.toJson(ficheiros.all()));
     }
