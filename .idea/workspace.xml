@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/play2_settings.xml" afterPath="$PROJECT_DIR$/.idea/play2_settings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Project.java" afterPath="$PROJECT_DIR$/app/controllers/Project.java" />
     </list>
@@ -59,8 +58,8 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36624774">
-              <caret line="90" column="24" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.9413793">
+              <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getProjectoById#0;class#Project#0" expanded="false" />
@@ -74,7 +73,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,6 +97,8 @@
               <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="false" />
+                <element signature="e#152#153#0" expanded="false" />
+                <element signature="e#225#226#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -105,9 +108,9 @@
         <entry file="file://$PROJECT_DIR$/app/models/Componente.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+              <caret line="31" column="30" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="30" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -119,6 +122,7 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="e#519#520#0" expanded="false" />
                 <element signature="e#551#552#0" expanded="false" />
               </folding>
@@ -131,7 +135,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="49" column="105" selection-start-line="49" selection-start-column="105" selection-end-line="49" selection-end-column="105" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -223,6 +229,10 @@
       <pane id="Scope">
         <subPane subId="Project Files" />
       </pane>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -306,10 +316,6 @@
             </PATH_ELEMENT>
           </PATH>
         </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane">
-        <subPane />
       </pane>
     </panes>
   </component>
@@ -829,7 +835,7 @@
     </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1447418378523" />
+    <option name="lastUpdateTimestamp" value="1447420421118" />
     <option name="availableProjects">
       <map>
         <entry>
@@ -893,7 +899,9 @@
       <workItem from="1446142784694" duration="2776000" />
       <workItem from="1447082836674" duration="4999000" />
       <workItem from="1447417437173" duration="477000" />
-      <workItem from="1447418134627" duration="434000" />
+      <workItem from="1447418134627" duration="948000" />
+      <workItem from="1447419126113" duration="305000" />
+      <workItem from="1447420300568" duration="114000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Projecto Model">
       <created>1446117518519</created>
@@ -1051,11 +1059,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447417772524</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Testing if components now properly are connected to projects&#10;#changed save() to update()">
+      <created>1447418598479</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1447418598479</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54072000" />
+    <option name="totallyTimeSpent" value="55005000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1072,7 +1086,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17473525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17423134" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994652" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994652" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1138,7 +1152,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Fix Projecto Model" />
     <MESSAGE value="Fix Projecto Model #2" />
     <MESSAGE value="Commentario API being done" />
     <MESSAGE value="Commentario API. Fix #1" />
@@ -1163,7 +1176,8 @@
     <MESSAGE value="Testing Componentes + Tipo + VersaoProjecto" />
     <MESSAGE value="Misspeled a field.&#10;&#10;Fix #1" />
     <MESSAGE value="Testing if components now properly are connected to projects" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing if components now properly are connected to projects" />
+    <MESSAGE value="Testing if components now properly are connected to projects&#10;#changed save() to update()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testing if components now properly are connected to projects&#10;#changed save() to update()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1196,6 +1210,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="false" />
+            <element signature="e#152#153#0" expanded="false" />
+            <element signature="e#225#226#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1249,6 +1265,8 @@
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="false" />
+            <element signature="e#152#153#0" expanded="false" />
+            <element signature="e#225#226#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1464,9 +1482,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1495,7 +1510,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0987433">
           <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1504,6 +1518,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="e#519#520#0" expanded="false" />
             <element signature="e#551#552#0" expanded="false" />
           </folding>
@@ -1516,6 +1531,8 @@
           <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="false" />
+            <element signature="e#152#153#0" expanded="false" />
+            <element signature="e#225#226#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1524,7 +1541,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="105" selection-start-line="49" selection-start-column="105" selection-end-line="49" selection-end-column="105" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1536,28 +1555,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Componente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="30" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/VersaoProjecto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Componente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36624774">
-          <caret line="90" column="24" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.9413793">
+          <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getProjectoById#0;class#Project#0" expanded="false" />
