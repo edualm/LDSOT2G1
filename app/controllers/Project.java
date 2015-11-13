@@ -88,6 +88,8 @@ public class Project extends Controller {
             vs.componentes.add(c2);
             vs.componentes.add(c3);
 
+            vs.save();
+
 
 
             return ok(Json.toJson(vs));
