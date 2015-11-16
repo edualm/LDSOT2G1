@@ -4,7 +4,6 @@
     <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Componente.java" afterPath="$PROJECT_DIR$/app/models/Componente.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/VersaoProjecto.java" afterPath="$PROJECT_DIR$/app/models/VersaoProjecto.java" />
     </list>
     <ignored path="ldso-az.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -124,7 +123,7 @@
         <entry file="file://$PROJECT_DIR$/app/models/Componente.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.55263156">
-              <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+              <caret line="22" column="60" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -902,7 +901,7 @@
       <workItem from="1447419126113" duration="305000" />
       <workItem from="1447420300568" duration="858000" />
       <workItem from="1447672525250" duration="739000" />
-      <workItem from="1447674044783" duration="4350000" />
+      <workItem from="1447674044783" duration="4596000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Projecto Model">
       <created>1446117518519</created>
@@ -1120,11 +1119,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447679546539</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Adding JsonBackReference to avoid stackoverflow on JSON&#10;&#10;ManyToMany Relationship is now properly working!">
+      <created>1447680030717</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1447680030717</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60838000" />
+    <option name="totallyTimeSpent" value="61084000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1207,7 +1212,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Lets see if it works better !" />
     <MESSAGE value="Comments and Project Versions should be working. Lets test" />
     <MESSAGE value="Changed from GET to POST (add Project Vers)" />
     <MESSAGE value="Changed from GET to POST (add Project Vers)&#10;missed save" />
@@ -1232,7 +1236,8 @@
     <MESSAGE value="Checking if VS is being created .. #3&#10;(missed save())" />
     <MESSAGE value="Not working yet ... &#10;&#10;Removed @JoinTable cause we just have Fkeys on our bridge table." />
     <MESSAGE value="Messing around with @ManyToMAny" />
-    <option name="LAST_COMMIT_MESSAGE" value="Messing around with @ManyToMAny" />
+    <MESSAGE value="Adding JsonBackReference to avoid stackoverflow on JSON&#10;&#10;ManyToMany Relationship is now properly working!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding JsonBackReference to avoid stackoverflow on JSON&#10;&#10;ManyToMany Relationship is now properly working!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1621,7 +1626,7 @@
     <entry file="file://$PROJECT_DIR$/app/models/Componente.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.55263156">
-          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+          <caret line="22" column="60" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
           <folding />
         </state>
       </provider>
