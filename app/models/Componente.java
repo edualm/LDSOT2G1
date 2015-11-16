@@ -25,7 +25,7 @@ public class Componente extends Model {
     public Tipo tipo_id;
 
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "componentes")
     public List<VersaoProjecto> versaoprojectos;
 
     public Componente(String conteudo, Tipo tipo_id){

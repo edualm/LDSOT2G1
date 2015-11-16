@@ -33,7 +33,7 @@ public class VersaoProjecto extends Model {
     @Column
     public Integer user_id;
 
-    @ManyToMany(mappedBy = "versaoprojectos")
+    @ManyToMany
     public List<Componente> componentes;
 
 
