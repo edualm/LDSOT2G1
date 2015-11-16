@@ -34,6 +34,7 @@ public class VersaoProjecto extends Model {
     public Integer user_id;
 
     @ManyToMany
+    @JsonManagedReference
     public List<Componente> componentes;
 
 

@@ -26,6 +26,7 @@ public class Componente extends Model {
 
 
     @ManyToMany(mappedBy = "componentes")
+    @JsonBackReference
     public List<VersaoProjecto> versaoprojectos;
 
     public Componente(String conteudo, Tipo tipo_id){
