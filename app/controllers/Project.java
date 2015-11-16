@@ -7,14 +7,15 @@ import models.Projecto;
 import models.Tipo;
 import models.VersaoProjecto;
 import play.api.i18n.Messages;
+import play.api.libs.json.JsPath;
 import play.libs.Json;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import com.fasterxml.jackson.databind.JsonNode;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -91,6 +92,91 @@ public class Project extends Controller {
         }
     }
 
+    public Result editarConteudoProjecto(){
+        try {
+            DynamicForm form = new DynamicForm().bindFromRequest();
+
+            String id = form.get("id");
+            String nome = form.get("nome");
+            String conteudo = form.get("conteudo");
+            String user = form .get("userid");
+
+            Projecto p = projectos.byId(Long.valueOf(id));
+            ObjectNode json = Json.newObject();
+
+            if (p.user_id == Integer.parseInt(user)){
+                VersaoProjecto oldVS = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
+                List<Componente> componentes = oldVS.componentes;
+                if(conteudo == "fis"){
+                    for(Componente c :componentes){
+                        if(c.tipo_id.nome == "Fisica"){
+                            VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao,oldVS.projecto_id, oldVS.user_id.toString());
+                            newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
+                            for (Componente newC : newVS.componentes){
+                                if(newC.tipo_id.nome == "Fisica"){
+                                    newC.conteudo = conteudo;
+                                }
+                            }
+                        }
+                    }
+                    json.put("result", "success");
+                    return ok(json);
+                }
+                else if (conteudo == "prog"){
+                    for(Componente c :componentes){
+                        if(c.tipo_id.nome == "Programacao"){
+                            VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao,oldVS.projecto_id, oldVS.user_id.toString());
+                            newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
+                            for (Componente newC : newVS.componentes){
+                                if(newC.tipo_id.nome == "Programacao"){
+                                    newC.conteudo = conteudo;
+                                }
+                            }
+                        }
+                    }
+                    json.put("result", "success");
+                    return ok(json);
+
+                }
+                else if(conteudo == "elec"){
+
+                    for(Componente c :componentes){
+                        if(c.tipo_id.nome == "Eletrotecnica"){
+                            VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao,oldVS.projecto_id, oldVS.user_id.toString());
+                            newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
+                            for (Componente newC : newVS.componentes){
+                                if(newC.tipo_id.nome == "Eletrotecnica"){
+                                    newC.conteudo = conteudo;
+                                }
+                            }
+                        }
+                    }
+                    json.put("result", "success");
+                    return ok(json);
+                }
+
+                else {
+                    json.put("result", "error");
+                    json.put("excecao", "Conteudo nao existente");
+                    return badRequest(json);
+                }
+            }
+
+            json.put("result", "error");
+            json.put("excecao", "Not authorized");
+
+            return badRequest(json);
+
+
+        }
+        catch (Exception e){
+            ObjectNode json = Json.newObject();
+            json.put("result", "error");
+            json.put("excecao", e.getMessage());
+
+            return badRequest(json);
+        }
+    }
 
     public VersaoProjecto criarVersaoProjecto(String descricao, Projecto p, String user){
         VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");

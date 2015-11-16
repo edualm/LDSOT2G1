@@ -1,6 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
+import com.avaje.ebeaninternal.server.cache.CachedManyIds;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
@@ -28,6 +29,7 @@ public class Componente extends Model {
     @ManyToMany(mappedBy = "componentes")
     @JsonBackReference
     public List<VersaoProjecto> versaoprojectos;
+
 
     public Componente(String conteudo, Tipo tipo_id){
         this.conteudo = conteudo;

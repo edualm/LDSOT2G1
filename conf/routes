@@ -8,7 +8,7 @@ GET     /                           controllers.Application.index()
 #API
 POST    /projecto                   controllers.Project.CriarProjecto()
 POST    /projecto/nome              controllers.Project.editarNomeProjecto()
-#POST    /projecto                   controllers.Project.editarConteudoProjecto()
+POST    /projecto                   controllers.Project.editarConteudoProjecto()
 #POST    /projecto/conteudo          controllers.Project.adicionarConteudoProjecto()
 
 
