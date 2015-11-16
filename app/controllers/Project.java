@@ -71,33 +71,31 @@ public class Project extends Controller {
             String descricao = form.get("desc");
 
             Projecto p = projectos.byId(Long.valueOf(projecto));
-            criarVersaoProjecto(descricao,p,"1");
+            VersaoProjecto vs = criarVersaoProjecto(descricao,p,"1");
 
 
             //Componente de Fisica
             Tipo fisica = tipos.where().eq("nome","Fisica").findUnique();
             Componente c1 = new Componente("Conteudo da componente em MARKDOWN Fisica",fisica);
 
-            c1.save();
 
             //Componente de Programacao
             Tipo prog = tipos.where().eq("nome","Programacao").findUnique();
             Componente c2 = new Componente("Conteudo da componente em MARKDOWN Programacao",prog);
 
-            c2.save();
-
             //Componente de Electrotecnia
             Tipo eletro = tipos.where().eq("nome","Eletrotecnica").findUnique();
             Componente c3 = new Componente("Conteudo da componente em MARKDOWW Electrotecnia",eletro);
 
-            c3.save();
-
-            /*c1.versaoprojectos.add(vs);
-            c2.versaoprojectos.add(vs);
-            c3.versaoprojectos.add(vs);
+            c1.versaoprojectos.add(vs);
             c1.save();
+            c2.versaoprojectos.add(vs);
             c2.save();
-            c3.save();*/
+            c3.versaoprojectos.add(vs);
+
+            vs.componentes.add(c1);
+            vs.componentes.add(c2);
+            vs.componentes.add(c3);
 
             ObjectNode json = Json.newObject();
             json.put("result", "success");
