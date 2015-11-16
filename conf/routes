@@ -7,6 +7,11 @@ GET     /                           controllers.Application.index()
 
 #API
 POST    /projecto                   controllers.Project.CriarProjecto()
+POST    /projecto/nome              controllers.Project.editarNomeProjecto()
+POST    /projecto/editar            controllers.Project.editarConteudoProjecto()
+POST    /projecto/componente         controllers.Project.adicionarComponenteProjecto()
+
+
 GET     /projectos                  controllers.Project.getAllProjectos()
 POST    /testVers                   controllers.Project.TestVersionamentoProjecto()
 GET     /projecto/:id               controllers.Project.getProjectoById(id: Long)
