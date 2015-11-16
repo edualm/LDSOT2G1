@@ -86,19 +86,13 @@ public class Project extends Controller {
 
             c3.save();
 
-            vs.componentes.add(c1);
-            vs.componentes.add(c2);
-            vs.componentes.add(c3);
-
-            vs.save();
-
             c1.versaoprojectos.add(vs);
             c2.versaoprojectos.add(vs);
             c3.versaoprojectos.add(vs);
-
             c1.save();
             c2.save();
             c3.save();
+
 
 
 
