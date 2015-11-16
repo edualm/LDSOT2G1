@@ -70,6 +70,7 @@ public class Project extends Controller {
             if (p.user_id == Integer.parseInt(user)){
                 p.nome = nome;
                 p.descricao = descricao;
+                p.save();
                 json.put("result", "success");
 
                 return ok(json);
