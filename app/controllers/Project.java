@@ -107,7 +107,7 @@ public class Project extends Controller {
             if (p.user_id == Integer.parseInt(user)){
                 VersaoProjecto oldVS = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
                 List<Componente> componentes = oldVS.componentes;
-                if(conteudo == "fis"){
+                if(nome == "fis"){
                     for(Componente c :componentes){
                         if(c.tipo_id.nome == "Fisica"){
                             VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao,oldVS.projecto_id, oldVS.user_id.toString());
@@ -122,7 +122,7 @@ public class Project extends Controller {
                     json.put("result", "success");
                     return ok(json);
                 }
-                else if (conteudo == "prog"){
+                else if (nome == "prog"){
                     for(Componente c :componentes){
                         if(c.tipo_id.nome == "Programacao"){
                             VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao,oldVS.projecto_id, oldVS.user_id.toString());
@@ -138,7 +138,7 @@ public class Project extends Controller {
                     return ok(json);
 
                 }
-                else if(conteudo == "elec"){
+                else if(nome == "elec"){
 
                     for(Componente c :componentes){
                         if(c.tipo_id.nome == "Eletrotecnica"){
@@ -157,7 +157,7 @@ public class Project extends Controller {
 
                 else {
                     json.put("result", "error");
-                    json.put("excecao", "Conteudo nao existente");
+                    json.put("excecao", "Componente nao existente");
                     return badRequest(json);
                 }
             }
