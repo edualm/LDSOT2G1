@@ -55,6 +55,42 @@ public class Project extends Controller {
 
     }
 
+    public Result editarNomeProjecto(){
+        try {
+            DynamicForm form = new DynamicForm().bindFromRequest();
+
+            String id = form.get("id");
+            String nome = form.get("nome");
+            String descricao = form.get("descricao");
+            String user = form .get("userid");
+
+            Projecto p = projectos.byId(Long.valueOf(id));
+            ObjectNode json = Json.newObject();
+
+            if (p.user_id == Integer.parseInt(user)){
+                p.nome = nome;
+                p.descricao = descricao;
+                json.put("result", "success");
+
+                return ok(json);
+            }
+
+            json.put("result", "error");
+            json.put("excecao", "Not authorized");
+
+            return badRequest(json);
+
+        }
+        catch (Exception e){
+            ObjectNode json = Json.newObject();
+            json.put("result", "error");
+            json.put("excecao", e.getMessage());
+
+            return badRequest(json);
+        }
+    }
+
+
     public VersaoProjecto criarVersaoProjecto(String descricao, Projecto p, String user){
         VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
         vs.save();
