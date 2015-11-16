@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
+    <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="Checking if VS is being created .. #2">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Project.java" afterPath="$PROJECT_DIR$/app/controllers/Project.java" />
     </list>
@@ -58,12 +58,12 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3026316">
-              <caret line="67" column="22" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.77894735">
+              <caret line="106" column="26" selection-start-line="106" selection-start-column="26" selection-end-line="106" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3508#3509#0" expanded="true" />
-                <element signature="e#3563#3564#0" expanded="true" />
+                <element signature="e#3780#3781#0" expanded="true" />
+                <element signature="e#3835#3836#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -134,7 +134,11 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#519#520#0" expanded="false" />
+                <element signature="e#551#552#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -144,7 +148,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="49" column="105" selection-start-line="49" selection-start-column="105" selection-end-line="49" selection-end-column="105" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -897,7 +903,7 @@
       <workItem from="1447419126113" duration="305000" />
       <workItem from="1447420300568" duration="858000" />
       <workItem from="1447672525250" duration="739000" />
-      <workItem from="1447674044783" duration="1757000" />
+      <workItem from="1447674044783" duration="2471000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Projecto Model">
       <created>1446117518519</created>
@@ -1079,11 +1085,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447676747521</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Checking if VS is being created .. #1">
+      <created>1447677413025</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1447677413025</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58245000" />
+    <option name="totallyTimeSpent" value="58959000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1166,8 +1178,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Commentario API. Fix #2" />
-    <MESSAGE value="Fixing Json recursion." />
     <MESSAGE value="Added VersaoProjecto. Not expecting to work at first try." />
     <MESSAGE value="Added VersaoProjecto. Not expecting to work at first try.&#10;Fixing table name" />
     <MESSAGE value="Added VersaoProjecto. Not expecting to work at first try.&#10;Fixing table name #2" />
@@ -1191,7 +1201,9 @@
     <MESSAGE value="Testing if components now properly are connected to projects&#10;#changed save() to update()&#10;#add on list in both sides" />
     <MESSAGE value="Trying to fix Componente-VersaoProject relation.." />
     <MESSAGE value="Trying to fix foreign key error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying to fix foreign key error" />
+    <MESSAGE value="Checking if VS is being created .. #1" />
+    <MESSAGE value="Checking if VS is being created .. #2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Checking if VS is being created .. #2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1509,7 +1521,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#519#520#0" expanded="false" />
+            <element signature="e#551#552#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1525,7 +1541,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="105" selection-start-line="49" selection-start-column="105" selection-end-line="49" selection-end-column="105" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1571,12 +1589,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3026316">
-          <caret line="67" column="22" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.77894735">
+          <caret line="106" column="26" selection-start-line="106" selection-start-column="26" selection-end-line="106" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3508#3509#0" expanded="true" />
-            <element signature="e#3563#3564#0" expanded="true" />
+            <element signature="e#3780#3781#0" expanded="true" />
+            <element signature="e#3835#3836#0" expanded="true" />
           </folding>
         </state>
       </provider>

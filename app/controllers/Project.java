@@ -55,6 +55,13 @@ public class Project extends Controller {
 
     }
 
+    public VersaoProjecto criarVersaoProjecto(String descricao, Projecto p, String user){
+        VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
+        vs.save();
+
+        return vs;
+    }
+
     public Result TestVersionamentoProjecto(){
         try {
 
@@ -64,25 +71,24 @@ public class Project extends Controller {
             String descricao = form.get("desc");
 
             Projecto p = projectos.byId(Long.valueOf(projecto));
-            VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
-            vs.save();
+            criarVersaoProjecto(descricao,p,"1");
 
 
             //Componente de Fisica
             Tipo fisica = tipos.where().eq("nome","Fisica").findUnique();
-            Componente c1 = new Componente("Conteudo da componente em MARKDOWN",fisica);
+            Componente c1 = new Componente("Conteudo da componente em MARKDOWN Fisica",fisica);
 
             c1.save();
 
             //Componente de Programacao
             Tipo prog = tipos.where().eq("nome","Programacao").findUnique();
-            Componente c2 = new Componente("Conteudo da componente em MARKDOWN",prog);
+            Componente c2 = new Componente("Conteudo da componente em MARKDOWN Programacao",prog);
 
             c2.save();
 
             //Componente de Electrotecnia
             Tipo eletro = tipos.where().eq("nome","Eletrotecnica").findUnique();
-            Componente c3 = new Componente("Conteudo da componente em MARKDOWW",eletro);
+            Componente c3 = new Componente("Conteudo da componente em MARKDOWW Electrotecnia",eletro);
 
             c3.save();
 
@@ -93,10 +99,12 @@ public class Project extends Controller {
             c2.save();
             c3.save();*/
 
+            ObjectNode json = Json.newObject();
+            json.put("result", "success");
 
 
 
-            return ok(Json.toJson(vs));
+            return ok(json);
         }
         catch (Exception e){
             ObjectNode json = Json.newObject();
