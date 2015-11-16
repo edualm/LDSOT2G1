@@ -58,12 +58,12 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.50789475">
-              <caret line="97" column="35" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.5973684">
+              <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3811#3812#0" expanded="true" />
-                <element signature="e#3866#3867#0" expanded="true" />
+                <element signature="e#3857#3858#0" expanded="true" />
+                <element signature="e#3912#3913#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -903,7 +903,7 @@
       <workItem from="1447419126113" duration="305000" />
       <workItem from="1447420300568" duration="858000" />
       <workItem from="1447672525250" duration="739000" />
-      <workItem from="1447674044783" duration="2878000" />
+      <workItem from="1447674044783" duration="2914000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Projecto Model">
       <created>1446117518519</created>
@@ -1097,11 +1097,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447678117523</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Checking if VS is being created .. #3">
+      <created>1447678525762</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1447678525762</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59366000" />
+    <option name="totallyTimeSpent" value="59402000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1184,7 +1190,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Added VersaoProjecto. Not expecting to work at first try." />
     <MESSAGE value="Added VersaoProjecto. Not expecting to work at first try.&#10;Fixing table name" />
     <MESSAGE value="Added VersaoProjecto. Not expecting to work at first try.&#10;Fixing table name #2" />
     <MESSAGE value="Fixing VersaoProjecto..." />
@@ -1209,7 +1214,8 @@
     <MESSAGE value="Trying to fix foreign key error" />
     <MESSAGE value="Checking if VS is being created .. #1" />
     <MESSAGE value="Checking if VS is being created .. #2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Checking if VS is being created .. #2" />
+    <MESSAGE value="Checking if VS is being created .. #3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Checking if VS is being created .. #3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1595,12 +1601,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50789475">
-          <caret line="97" column="35" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.5973684">
+          <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3811#3812#0" expanded="true" />
-            <element signature="e#3866#3867#0" expanded="true" />
+            <element signature="e#3857#3858#0" expanded="true" />
+            <element signature="e#3912#3913#0" expanded="true" />
           </folding>
         </state>
       </provider>
