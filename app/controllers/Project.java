@@ -230,10 +230,6 @@ public class Project extends Controller {
             c2.save();
             c3.versaoprojectos.add(vs);
             c3.save();
-
-            vs.componentes.add(c1);
-            vs.componentes.add(c2);
-            vs.componentes.add(c3);
             vs.save();
 
             ObjectNode json = Json.newObject();
