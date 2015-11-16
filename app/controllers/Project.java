@@ -192,6 +192,54 @@ public class Project extends Controller {
         }
     }
 
+    public Result adicionarComponenteProjecto(){
+
+        try {
+            DynamicForm form = new DynamicForm().bindFromRequest();
+
+            String id = form.get("id");
+            String componente = form.get("componente");
+            String user = form.get("userid");
+
+
+            Projecto p = projectos.byId(Long.valueOf(id));
+            ObjectNode json = Json.newObject();
+
+            if (p.user_id == Integer.parseInt(user)) {
+                //Os tipos sao estaticos (unicos)
+                VersaoProjecto lastVS = p.versoesProjecto.get(p.versoesProjecto.size() -1 );
+
+
+                Tipo t = tipos.where().eq("nome", componente).findUnique();
+                Componente c = new Componente("",t);
+                c.versaoprojectos.add(lastVS);
+                c.save();
+
+                json.put("result", "success");
+
+                return ok(json);
+
+            }
+
+
+            json.put("result", "error");
+            json.put("excecao", "Not authorized");
+
+            return badRequest(json);
+
+
+        }
+        catch (Exception e){
+            ObjectNode json = Json.newObject();
+
+            json.put("result", "error");
+            json.put("excecao", e.getMessage());
+
+            return badRequest(json);
+        }
+
+    }
+
     public VersaoProjecto criarVersaoProjecto(String descricao, Projecto p, String user){
         VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
         vs.save();

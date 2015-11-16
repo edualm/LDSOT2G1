@@ -4,6 +4,7 @@
     <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Project.java" afterPath="$PROJECT_DIR$/app/controllers/Project.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/routes" afterPath="$PROJECT_DIR$/conf/routes" />
     </list>
     <ignored path="ldso-az.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,16 +59,25 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6394737">
-              <caret line="231" column="22" selection-start-line="231" selection-start-column="22" selection-end-line="231" selection-end-column="22" />
+            <state vertical-scroll-proportion="2.2973685">
+              <caret line="237" column="36" selection-start-line="237" selection-start-column="36" selection-end-line="237" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#CriarProjecto#0;class#Project#0" expanded="false" />
                 <element signature="method#editarNomeProjecto#0;class#Project#0" expanded="false" />
                 <element signature="method#editarConteudoProjecto#0;class#Project#0" expanded="false" />
-                <element signature="method#criarVersaoProjecto#0;class#Project#0" expanded="false" />
                 <element signature="method#getProjectoById#0;class#Project#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/routes">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="76" selection-start-line="11" selection-start-column="76" selection-end-line="11" selection-end-column="76" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -839,13 +849,7 @@
       <workItem from="1447420300568" duration="858000" />
       <workItem from="1447672525250" duration="739000" />
       <workItem from="1447674044783" duration="5011000" />
-      <workItem from="1447686676591" duration="4939000" />
-    </task>
-    <task id="LOCAL-00001" summary="Fix Projecto Model">
-      <created>1446117518519</created>
-      <option name="number" value="00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1446117518519</updated>
+      <workItem from="1447686676591" duration="6489000" />
     </task>
     <task id="LOCAL-00002" summary="Fix Projecto Model #2">
       <created>1446117827467</created>
@@ -1135,11 +1139,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447691310389</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Fixed double add in Componente-VersaoProjecto">
+      <created>1447691657842</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1447691657844</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66438000" />
+    <option name="totallyTimeSpent" value="67988000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1222,7 +1232,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Relationship between Tipo and Componente&#10;&#10;Fix #1" />
     <MESSAGE value="Testing Componentes + Tipo + VersaoProjecto" />
     <MESSAGE value="Misspeled a field.&#10;&#10;Fix #1" />
     <MESSAGE value="Testing if components now properly are connected to projects" />
@@ -1247,11 +1256,12 @@
     <MESSAGE value="Forgot to add the proper route!" />
     <MESSAGE value="Should be fixed" />
     <MESSAGE value="Not yet ..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Not yet ..." />
+    <MESSAGE value="Fixed double add in Componente-VersaoProjecto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed double add in Componente-VersaoProjecto" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1619,22 +1629,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/routes">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33157894">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="76" selection-start-line="11" selection-start-column="76" selection-end-line="11" selection-end-column="76" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6394737">
-          <caret line="231" column="22" selection-start-line="231" selection-start-column="22" selection-end-line="231" selection-end-column="22" />
+        <state vertical-scroll-proportion="2.2973685">
+          <caret line="237" column="36" selection-start-line="237" selection-start-column="36" selection-end-line="237" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#CriarProjecto#0;class#Project#0" expanded="false" />
             <element signature="method#editarNomeProjecto#0;class#Project#0" expanded="false" />
             <element signature="method#editarConteudoProjecto#0;class#Project#0" expanded="false" />
-            <element signature="method#criarVersaoProjecto#0;class#Project#0" expanded="false" />
             <element signature="method#getProjectoById#0;class#Project#0" expanded="false" />
           </folding>
         </state>

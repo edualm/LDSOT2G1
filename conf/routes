@@ -9,7 +9,7 @@ GET     /                           controllers.Application.index()
 POST    /projecto                   controllers.Project.CriarProjecto()
 POST    /projecto/nome              controllers.Project.editarNomeProjecto()
 POST    /projecto/editar            controllers.Project.editarConteudoProjecto()
-#POST    /projecto/conteudo         controllers.Project.adicionarConteudoProjecto()
+POST    /projecto/componente         controllers.Project.adicionarComponenteProjecto()
 
 
 GET     /projectos                  controllers.Project.getAllProjectos()
