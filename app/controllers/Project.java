@@ -40,9 +40,11 @@ public class Project extends Controller {
         VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
         p.save();
         vs.save();
+        ObjectNode json = Json.newObject();
+        json.put("result", "success");
 
 
-        return ok(Json.toJson(p));
+        return ok(json);
         }
         catch (Exception e){
             ObjectNode json = Json.newObject();
@@ -88,13 +90,12 @@ public class Project extends Controller {
             vs.componentes.add(c2);
             vs.componentes.add(c3);
 
+            vs.save();
+
             c1.versaoprojectos.add(vs);
             c2.versaoprojectos.add(vs);
             c3.versaoprojectos.add(vs);
 
-
-
-            vs.save();
             c1.save();
             c2.save();
             c3.save();
