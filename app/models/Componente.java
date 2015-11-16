@@ -21,6 +21,7 @@ public class Componente extends Model {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="tipo_id", referencedColumnName = "id")
+    @JsonBackReference
     public Tipo tipo_id;
 
 
