@@ -58,8 +58,8 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32894737">
-              <caret line="159" column="51" selection-start-line="159" selection-start-column="51" selection-end-line="159" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.6263158">
+              <caret line="162" column="52" selection-start-line="162" selection-start-column="52" selection-end-line="162" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#CriarProjecto#0;class#Project#0" expanded="false" />
@@ -901,7 +901,7 @@
       <workItem from="1447420300568" duration="858000" />
       <workItem from="1447672525250" duration="739000" />
       <workItem from="1447674044783" duration="5011000" />
-      <workItem from="1447686676591" duration="4276000" />
+      <workItem from="1447686676591" duration="4600000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Projecto Model">
       <created>1446117518519</created>
@@ -1185,11 +1185,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447690697977</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Should be fixed">
+      <created>1447690990508</created>
+      <option name="number" value="00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1447690990508</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65775000" />
+    <option name="totallyTimeSpent" value="66099000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1272,7 +1278,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Forgot to add @Entity" />
     <MESSAGE value="Relationship between Tipo and Componente" />
     <MESSAGE value="Relationship between Tipo and Componente&#10;&#10;Fix #1" />
     <MESSAGE value="Testing Componentes + Tipo + VersaoProjecto" />
@@ -1297,7 +1302,8 @@
     <MESSAGE value="editarNomeProjecto working&#10;&#10;Improved getAllProjects to return by id order." />
     <MESSAGE value="Testing editarConteudoProjecto() ...&#10;" />
     <MESSAGE value="Forgot to add the proper route!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Forgot to add the proper route!" />
+    <MESSAGE value="Should be fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Should be fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1677,8 +1683,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32894737">
-          <caret line="159" column="51" selection-start-line="159" selection-start-column="51" selection-end-line="159" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.6263158">
+          <caret line="162" column="52" selection-start-line="162" selection-start-column="52" selection-end-line="162" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#CriarProjecto#0;class#Project#0" expanded="false" />

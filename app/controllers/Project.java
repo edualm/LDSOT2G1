@@ -115,12 +115,16 @@ public class Project extends Controller {
                             for (Componente newC : newVS.componentes){
                                 if(newC.tipo_id.nome == "Fisica"){
                                     newC.conteudo = conteudo;
+                                    newVS.save();
+                                    newC.update();
+
+                                    json.put("result", "success");
+                                    return ok(json);
+
                                 }
                             }
                         }
                     }
-                    json.put("result", "success");
-                    return ok(json);
                 }
                 else if (nome == "prog"){
                     for(Componente c :componentes){
@@ -130,6 +134,11 @@ public class Project extends Controller {
                             for (Componente newC : newVS.componentes){
                                 if(newC.tipo_id.nome == "Programacao"){
                                     newC.conteudo = conteudo;
+                                    newVS.save();
+                                    newC.update();
+
+                                    json.put("result", "success");
+                                    return ok(json);
                                 }
                             }
                         }
@@ -147,6 +156,11 @@ public class Project extends Controller {
                             for (Componente newC : newVS.componentes){
                                 if(newC.tipo_id.nome == "Eletrotecnica"){
                                     newC.conteudo = conteudo;
+                                    newVS.save();
+                                    newC.update();
+
+                                    json.put("result", "success");
+                                    return ok(json);
                                 }
                             }
                         }
