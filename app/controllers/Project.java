@@ -175,6 +175,6 @@ public class Project extends Controller {
     }
 
     public  Result getAllProjectos(){
-        return ok(Json.toJson(projectos.all()));
+        return ok(Json.toJson(projectos.orderBy("id").findList()));
     }
 }

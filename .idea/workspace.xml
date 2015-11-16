@@ -58,13 +58,17 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55263156">
-              <caret line="72" column="28" selection-start-line="72" selection-start-column="28" selection-end-line="72" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.6868421">
+              <caret line="177" column="66" selection-start-line="177" selection-start-column="66" selection-end-line="177" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#CriarProjecto#0;class#Project#0" expanded="false" />
+                <element signature="method#editarNomeProjecto#0;class#Project#0" expanded="false" />
                 <element signature="method#criarVersaoProjecto#0;class#Project#0" expanded="false" />
+                <element signature="method#TestVersionamentoProjecto#0;class#Project#0" expanded="false" />
                 <element signature="method#getProjectoById#0;class#Project#0" expanded="false" />
+                <element signature="e#4888#4889#0" expanded="true" />
+                <element signature="e#4962#4963#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -899,7 +903,7 @@
       <workItem from="1447420300568" duration="858000" />
       <workItem from="1447672525250" duration="739000" />
       <workItem from="1447674044783" duration="5011000" />
-      <workItem from="1447686676591" duration="1552000" />
+      <workItem from="1447686676591" duration="1856000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Projecto Model">
       <created>1446117518519</created>
@@ -1159,11 +1163,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447687901389</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Trying update() instead of saving !">
+      <created>1447688265221</created>
+      <option name="number" value="00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1447688265221</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63051000" />
+    <option name="totallyTimeSpent" value="63355000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1246,7 +1256,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Forgot to add the route" />
     <MESSAGE value="Trying editing comment with .update()" />
     <MESSAGE value="- Comment adding and comment editing working&#10;&#10;- Project adding and Version Projecto working &#10;&#10;(missing user auth)" />
     <MESSAGE value="@ManyToMany between VersaoProjecto-Componente&#10;&#10;Lets see if it builds correctly!" />
@@ -1271,7 +1280,8 @@
     <MESSAGE value="Add 1 more @JsonBackReference so it doesnt explode xD&#10;&#10;Just need to do the proper controller. The conection with BD (creation) is working fine,&#10;" />
     <MESSAGE value="API - Test editarNomeProject" />
     <MESSAGE value="API - Test editarNomeProjecto ( missed saved() ... )" />
-    <option name="LAST_COMMIT_MESSAGE" value="API - Test editarNomeProjecto ( missed saved() ... )" />
+    <MESSAGE value="Trying update() instead of saving !" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying update() instead of saving !" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1651,13 +1661,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55263156">
-          <caret line="72" column="28" selection-start-line="72" selection-start-column="28" selection-end-line="72" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.6868421">
+          <caret line="177" column="66" selection-start-line="177" selection-start-column="66" selection-end-line="177" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#CriarProjecto#0;class#Project#0" expanded="false" />
+            <element signature="method#editarNomeProjecto#0;class#Project#0" expanded="false" />
             <element signature="method#criarVersaoProjecto#0;class#Project#0" expanded="false" />
+            <element signature="method#TestVersionamentoProjecto#0;class#Project#0" expanded="false" />
             <element signature="method#getProjectoById#0;class#Project#0" expanded="false" />
+            <element signature="e#4888#4889#0" expanded="true" />
+            <element signature="e#4962#4963#0" expanded="true" />
           </folding>
         </state>
       </provider>
