@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
+    <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="Not working yet ...">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Project.java" afterPath="$PROJECT_DIR$/app/controllers/Project.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Componente.java" afterPath="$PROJECT_DIR$/app/models/Componente.java" />
     </list>
     <ignored path="ldso-az.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,11 +55,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Project.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5973684">
-              <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3857#3858#0" expanded="true" />
@@ -93,7 +93,7 @@
         <entry file="file://$PROJECT_DIR$/app/models/VersaoProjecto.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+              <caret line="35" column="43" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -119,11 +119,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Componente.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Componente.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/Componente.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.41842106">
+              <caret line="28" column="47" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -194,10 +194,10 @@
         <option value="$PROJECT_DIR$/conf/routes" />
         <option value="$PROJECT_DIR$/app/controllers/File.java" />
         <option value="$PROJECT_DIR$/app/models/Ficheiro.java" />
-        <option value="$PROJECT_DIR$/app/models/Componente.java" />
         <option value="$PROJECT_DIR$/app/models/Tipo.java" />
         <option value="$PROJECT_DIR$/app/models/VersaoProjecto.java" />
         <option value="$PROJECT_DIR$/app/controllers/Project.java" />
+        <option value="$PROJECT_DIR$/app/models/Componente.java" />
       </list>
     </option>
   </component>
@@ -903,7 +903,7 @@
       <workItem from="1447419126113" duration="305000" />
       <workItem from="1447420300568" duration="858000" />
       <workItem from="1447672525250" duration="739000" />
-      <workItem from="1447674044783" duration="2914000" />
+      <workItem from="1447674044783" duration="3618000" />
     </task>
     <task id="LOCAL-00001" summary="Fix Projecto Model">
       <created>1446117518519</created>
@@ -1103,11 +1103,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447678525762</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Checking if VS is being created .. #3&#10;(missed save())">
+      <created>1447678566183</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1447678566183</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59402000" />
+    <option name="totallyTimeSpent" value="60106000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1190,7 +1196,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Added VersaoProjecto. Not expecting to work at first try.&#10;Fixing table name" />
     <MESSAGE value="Added VersaoProjecto. Not expecting to work at first try.&#10;Fixing table name #2" />
     <MESSAGE value="Fixing VersaoProjecto..." />
     <MESSAGE value="Lets see if it works better !" />
@@ -1215,7 +1220,8 @@
     <MESSAGE value="Checking if VS is being created .. #1" />
     <MESSAGE value="Checking if VS is being created .. #2" />
     <MESSAGE value="Checking if VS is being created .. #3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Checking if VS is being created .. #3" />
+    <MESSAGE value="Checking if VS is being created .. #3&#10;(missed save())" />
+    <option name="LAST_COMMIT_MESSAGE" value="Checking if VS is being created .. #3&#10;(missed save())" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1583,31 +1589,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3857#3858#0" expanded="true" />
+            <element signature="e#3912#3913#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/VersaoProjecto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+          <caret line="35" column="43" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Componente.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.41842106">
+          <caret line="28" column="47" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="47" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5973684">
-          <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3857#3858#0" expanded="true" />
-            <element signature="e#3912#3913#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

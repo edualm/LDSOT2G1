@@ -26,9 +26,6 @@ public class Componente extends Model {
 
 
     @ManyToMany
-    @JoinTable(name="versaoprojecto_componente",
-            joinColumns = @JoinColumn(name = "versaoprojecto_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "componente_id", referencedColumnName = "id"))
     public List<VersaoProjecto> versaoprojectos;
 
     public Componente(String conteudo, Tipo tipo_id){
