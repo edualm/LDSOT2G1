@@ -28,22 +28,15 @@ public class FileProject extends Controller {
 
         try {
             String nome = dynamicForm.get("nome");
-            System.out.println("A");
-            String imgPathToSave = "images/" + nome;
-            System.out.println("B");
-            Http.MultipartFormData.FilePart picture = form.getFile("picture");
-            System.out.println("C");
-            //parse string into byte array
-               // String contentType = picture.getContentType();
-                File imgFile = picture.getFile();
-            System.out.println("D");
-                byte[] bytes = IOUtils.toByteArray(new FileInputStream(imgFile));
-            System.out.println("E");
-                Ficheiro ficheiro =  new Ficheiro(nome, bytes);
-            System.out.println("F");
-                ficheiro.save();
-            System.out.println("G");
-                return ok(Json.toJson(ficheiro));
+
+            Http.MultipartFormData.FilePart ficheiro = form.getFile("ficheiro");
+
+            File imgFile = ficheiro.getFile();
+            byte[] bytes = IOUtils.toByteArray(new FileInputStream(imgFile));
+            Ficheiro f =  new Ficheiro(nome, bytes);
+            f.save();
+
+            return ok(Json.toJson(f));
 
         } catch (Exception e) {
             ObjectNode json = Json.newObject();
