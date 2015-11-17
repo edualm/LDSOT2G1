@@ -4,6 +4,7 @@ import com.avaje.ebean.Model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -26,5 +27,6 @@ public class Ficheiro extends Model {
     public Ficheiro(String nome, byte[] ficheiro){
         this.nome = nome;
         this.ficheiro = ficheiro;
+       // FileUtils.writeByteArrayToFile(new File(imgPathToSave),bytes); ?
     }
 }
