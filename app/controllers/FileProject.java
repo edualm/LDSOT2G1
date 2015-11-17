@@ -4,6 +4,7 @@ import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import models.Ficheiro;
+import org.apache.commons.io.IOUtils;
 import play.data.DynamicForm;
 import play.libs.Json;
 import play.mvc.Controller;
@@ -34,7 +35,7 @@ public class FileProject extends Controller {
                // String contentType = picture.getContentType();
                 File imgFile = picture.getFile();
                 byte[] bytes = IOUtils.toByteArray(new FileInputStream(imgFile));
-                Ficheiro ficheiro =  new FileProject(nome, bytes);
+                Ficheiro ficheiro =  new Ficheiro(nome, bytes);
                 ficheiro.save();
 
                 return ok(Json.toJson(ficheiro));
