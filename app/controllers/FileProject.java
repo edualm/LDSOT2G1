@@ -44,6 +44,7 @@ public class FileProject extends Controller {
             ObjectNode json = Json.newObject();
             json.put("result", "error");
             json.put("excecao", e.getMessage());
+            System.out.println(e);
             return badRequest(json);
         }
     }
