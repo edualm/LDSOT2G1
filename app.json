@@ -1,0 +1,13 @@
+{
+  "name":"LDSOT2G1",
+  "scripts":{},
+  "env":{
+    "JAVA_OPTS":{
+      "required":true
+    }
+  },
+  "addons":[
+    "pgstudio",
+    "heroku-postgresql"
+  ]
+}
