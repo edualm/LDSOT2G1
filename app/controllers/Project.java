@@ -107,69 +107,42 @@ public class Project extends Controller {
             if (p.user_id == Integer.parseInt(user)){
                 VersaoProjecto oldVS = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
                 List<Componente> componentes = oldVS.componentes;
-                if(nome == "fis"){
-                    for(Componente c :componentes){
-                        if(c.tipo_id.nome == "Fisica"){
-                            VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao,oldVS.projecto_id, oldVS.user_id.toString());
-                            newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
-                            for (Componente newC : newVS.componentes){
-                                if(newC.tipo_id.nome == "Fisica"){
-                                    newC.conteudo = conteudo;
-                                    newVS.save();
-                                    newC.update();
 
-                                    json.put("result", "success");
-                                    return ok(json);
+                String tipo = null;
 
-                                }
+                if (nome.equals("fis"))
+                    tipo = "Fisica";
+                else if (nome.equals("prog"))
+                    tipo = "Programacao";
+                else if (nome.equals("elec"))
+                    tipo = "Elettrotecnica";
+
+                boolean ran = false;
+
+                for(Componente c :componentes)
+                    if(c.tipo_id.nome.equals(tipo)){
+                        ran = true;
+
+                        VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao,oldVS.projecto_id, oldVS.user_id.toString());
+                        //  newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
+
+                        for (Componente cs : oldVS.componentes)
+                            newVS.componentes.add(cs);
+
+                        for (Componente newC : newVS.componentes){
+                            if(newC.tipo_id.nome.equals(tipo)){
+                                newC.conteudo = conteudo;
+                                newVS.save();
+                                newC.update();
+
+                                json.put("result", "success");
+                                return ok(json);
+
                             }
                         }
                     }
-                }
-                else if (nome == "prog"){
-                    for(Componente c :componentes){
-                        if(c.tipo_id.nome == "Programacao"){
-                            VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao,oldVS.projecto_id, oldVS.user_id.toString());
-                            newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
-                            for (Componente newC : newVS.componentes){
-                                if(newC.tipo_id.nome == "Programacao"){
-                                    newC.conteudo = conteudo;
-                                    newVS.save();
-                                    newC.update();
 
-                                    json.put("result", "success");
-                                    return ok(json);
-                                }
-                            }
-                        }
-                    }
-                    json.put("result", "success");
-                    return ok(json);
-
-                }
-                else if(nome == "elec"){
-
-                    for(Componente c :componentes){
-                        if(c.tipo_id.nome == "Eletrotecnica"){
-                            VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao,oldVS.projecto_id, oldVS.user_id.toString());
-                            newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
-                            for (Componente newC : newVS.componentes){
-                                if(newC.tipo_id.nome == "Eletrotecnica"){
-                                    newC.conteudo = conteudo;
-                                    newVS.save();
-                                    newC.update();
-
-                                    json.put("result", "success");
-                                    return ok(json);
-                                }
-                            }
-                        }
-                    }
-                    json.put("result", "success");
-                    return ok(json);
-                }
-
-                else {
+                if (!ran) {
                     json.put("result", "error");
                     json.put("excecao", "Componente nao existente");
                     return badRequest(json);
