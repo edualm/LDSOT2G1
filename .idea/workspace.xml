@@ -75,8 +75,8 @@
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.115385">
-              <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+            <state vertical-scroll-proportion="-7.1923075">
+              <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -848,13 +848,7 @@
       <workItem from="1447686676591" duration="7378000" />
       <workItem from="1447760717298" duration="2485000" />
       <workItem from="1447847764143" duration="2239000" />
-      <workItem from="1447927905909" duration="5090000" />
-    </task>
-    <task id="LOCAL-00008" summary="Added VersaoProjecto. Not expecting to work at first try.">
-      <created>1446588630071</created>
-      <option name="number" value="00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1446588630071</updated>
+      <workItem from="1447927905909" duration="5191000" />
     </task>
     <task id="LOCAL-00009" summary="Added VersaoProjecto. Not expecting to work at first try.&#10;Fixing table name">
       <created>1446589239920</created>
@@ -1144,11 +1138,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447932967070</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="editarConteudo is now working and tested">
+      <created>1447933364959</created>
+      <option name="number" value="00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1447933364959</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78691000" />
+    <option name="totallyTimeSpent" value="78792000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1231,7 +1231,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Trying to fix foreign key error" />
     <MESSAGE value="Checking if VS is being created .. #1" />
     <MESSAGE value="Checking if VS is being created .. #2" />
     <MESSAGE value="Checking if VS is being created .. #3" />
@@ -1256,7 +1255,8 @@
     <MESSAGE value="Introducing some debug messages! #2" />
     <MESSAGE value="Introducing some debug messages! #3" />
     <MESSAGE value="Fixing bugs on editarConteudo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing bugs on editarConteudo" />
+    <MESSAGE value="editarConteudo is now working and tested" />
+    <option name="LAST_COMMIT_MESSAGE" value="editarConteudo is now working and tested" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1621,8 +1621,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385">
-          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+        <state vertical-scroll-proportion="-7.1923075">
+          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
           <folding />
         </state>
       </provider>
