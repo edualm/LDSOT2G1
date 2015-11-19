@@ -126,12 +126,18 @@ public class Project extends Controller {
                         ran = true;
                         System.out.println("Found the component name");
 
+                        System.out.println("Creating the New VersaoProjecto...");
                         VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao, oldVS.projecto_id, oldVS.user_id.toString());
                         newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
-                        System.out.println("Creating the New VersaoProjecto...");
+                        System.out.println("Removing old component...");
+                        newVS.componentes.remove(c);
+                        Componente cNew = new Componente("",c.tipo_id);
+                        cNew.save();
+                        System.out.println("Adding new Component to Versao projeto");
+                        newVS.componentes.add(cNew);
 
                         for (Componente newC : newVS.componentes) {
-                            System.out.println("ComponenteNew: " + c.tipo_id.nome);
+                            System.out.println("ComponenteNew: " + newC.tipo_id.nome);
                             if (newC.tipo_id.nome.equals(tipo)) {
                                 System.out.println("Found the  New component name");
                                 newC.conteudo = conteudo;

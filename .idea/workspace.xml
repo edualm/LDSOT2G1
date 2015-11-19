@@ -59,8 +59,8 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3380682">
-              <caret line="123" column="64" selection-start-line="123" selection-start-column="64" selection-end-line="123" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.53125">
+              <caret line="139" column="71" selection-start-line="139" selection-start-column="71" selection-end-line="139" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#CriarProjecto#0;class#Project#0" expanded="false" />
@@ -76,8 +76,8 @@
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.115385">
-              <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+            <state vertical-scroll-proportion="-11.769231">
+              <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -863,13 +863,7 @@
       <workItem from="1447686676591" duration="7378000" />
       <workItem from="1447760717298" duration="2485000" />
       <workItem from="1447847764143" duration="2239000" />
-      <workItem from="1447927905909" duration="4211000" />
-    </task>
-    <task id="LOCAL-00006" summary="Commentario API. Fix #2">
-      <created>1446120892042</created>
-      <option name="number" value="00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1446120892043</updated>
+      <workItem from="1447927905909" duration="4697000" />
     </task>
     <task id="LOCAL-00007" summary="Fixing Json recursion.">
       <created>1446587947564</created>
@@ -1159,11 +1153,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447931913142</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Introducing some debug messages! #3">
+      <created>1447932475130</created>
+      <option name="number" value="00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1447932475130</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77812000" />
+    <option name="totallyTimeSpent" value="78298000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1246,7 +1246,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Testing if components now properly are connected to projects&#10;#changed save() to update()&#10;#add on list in both sides" />
     <MESSAGE value="Trying to fix Componente-VersaoProject relation.." />
     <MESSAGE value="Trying to fix foreign key error" />
     <MESSAGE value="Checking if VS is being created .. #1" />
@@ -1271,7 +1270,8 @@
     <MESSAGE value="Testing evolutions" />
     <MESSAGE value="Introducing some debug messages!" />
     <MESSAGE value="Introducing some debug messages! #2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Introducing some debug messages! #2" />
+    <MESSAGE value="Introducing some debug messages! #3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Introducing some debug messages! #3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1644,16 +1644,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385">
-          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+        <state vertical-scroll-proportion="-11.769231">
+          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3380682">
-          <caret line="123" column="64" selection-start-line="123" selection-start-column="64" selection-end-line="123" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.53125">
+          <caret line="139" column="71" selection-start-line="139" selection-start-column="71" selection-end-line="139" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#CriarProjecto#0;class#Project#0" expanded="false" />
