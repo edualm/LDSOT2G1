@@ -6,6 +6,8 @@ import models.Componente;
 import models.Projecto;
 import models.Tipo;
 import models.VersaoProjecto;
+import play.Logger;
+import play.Logger.ALogger;
 import play.api.i18n.Messages;
 import play.api.libs.json.JsPath;
 import play.libs.Json;
@@ -23,7 +25,7 @@ import java.util.List;
  */
 public class Project extends Controller {
 
-
+    private static final play.Logger.ALogger logger = Logger.of(Project.class);
     //Finder
     public static Model.Finder<Long, Projecto> projectos = new Model.Finder(Long.class, Projecto.class);
     public static Model.Finder<Long, Tipo> tipos = new Model.Finder(Long.class, Tipo.class);
@@ -104,7 +106,7 @@ public class Project extends Controller {
             Projecto p = projectos.byId(Long.valueOf(id));
             ObjectNode json = Json.newObject();
 
-            if (p.user_id == Integer.parseInt(user)){
+            if (p.user_id == Integer.parseInt(user)) {
                 VersaoProjecto oldVS = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
                 List<Componente> componentes = oldVS.componentes;
 
@@ -119,28 +121,30 @@ public class Project extends Controller {
 
                 boolean ran = false;
 
-                for(Componente c :componentes)
-                    if(c.tipo_id.nome.equals(tipo)){
+                for (Componente c : componentes){
+                    logger.debug("Componente: " + c.tipo_id.nome);
+                    if (c.tipo_id.nome.equals(tipo)) {
                         ran = true;
+                        logger.debug("Found the component name");
 
-                        VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao,oldVS.projecto_id, oldVS.user_id.toString());
-                        //  newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
+                        VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao, oldVS.projecto_id, oldVS.user_id.toString());
+                        newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
+                        logger.debug("Creating the New VersaoProjecto...");
 
-                        for (Componente cs : oldVS.componentes)
-                            newVS.componentes.add(cs);
-
-                        for (Componente newC : newVS.componentes){
-                            if(newC.tipo_id.nome.equals(tipo)){
+                        for (Componente newC : newVS.componentes) {
+                            logger.debug("ComponenteNew: " + c.tipo_id.nome);
+                            if (newC.tipo_id.nome.equals(tipo)) {
+                                logger.debug("Found the  New component name");
                                 newC.conteudo = conteudo;
-                                newVS.save();
                                 newC.update();
-
+                                newVS.save();
                                 json.put("result", "success");
                                 return ok(json);
 
                             }
                         }
                     }
+            }
 
                 if (!ran) {
                     json.put("result", "error");
