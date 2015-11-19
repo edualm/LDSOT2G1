@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<project version="4" />
-=======
 <project version="4">
   <component name="Play2ProjectSettings">
     <option name="LANGUAGE_IMPORTS">
       <array>
-        <option value="play.data._" />
         <option value="play.api.data.Field" />
+        <option value="play.data._" />
         <option value="scala.collection.JavaConversions._" />
         <option value="play.api.templates.PlayMagic._" />
         <option value="java.lang._" />
@@ -20,4 +17,3 @@
     </option>
   </component>
 </project>
->>>>>>> master
