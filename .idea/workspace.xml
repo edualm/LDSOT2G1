@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Project.java" afterPath="$PROJECT_DIR$/app/controllers/Project.java" />
     </list>
     <ignored path="ldso-az.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,10 +22,11 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="DatabaseView">
-    <option name="FLATTEN" value="false" />
-    <option name="GROUP_BY_TYPE" value="true" />
-    <option name="SORT_CHILDREN" value="false" />
-    <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="ExternalProjectsData">
@@ -58,24 +58,36 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9413793">
-              <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.90340906">
+              <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#CriarProjecto#0;class#Project#0" expanded="false" />
+                <element signature="method#editarNomeProjecto#0;class#Project#0" expanded="false" />
+                <element signature="method#criarVersaoProjecto#0;class#Project#0" expanded="false" />
+                <element signature="method#TestVersionamentoProjecto#0;class#Project#0" expanded="false" />
                 <element signature="method#getProjectoById#0;class#Project#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VersaoProjecto.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/VersaoProjecto.java">
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-7.1923075">
+              <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.conf" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/application.conf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.115385">
+              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -84,60 +96,18 @@
         <entry file="file://$PROJECT_DIR$/conf/routes">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="71" selection-start-line="10" selection-start-column="71" selection-end-line="10" selection-end-column="71" />
+              <caret line="11" column="57" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
+      <file leaf-file-name="1.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/evolutions/default/1.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#152#153#0" expanded="false" />
-                <element signature="e#225#226#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Componente.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/Componente.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="30" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tipo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/Tipo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#519#520#0" expanded="false" />
-                <element signature="e#551#552#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Projecto.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/Projecto.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="105" selection-start-line="49" selection-start-column="105" selection-end-line="49" selection-end-column="105" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -153,6 +123,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Versionamento" />
+      </map>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -173,12 +148,14 @@
         <option value="$PROJECT_DIR$/app/models/Versaoprojecto.java" />
         <option value="$PROJECT_DIR$/app/controllers/Comment.java" />
         <option value="$PROJECT_DIR$/app/models/Tag.java" />
-        <option value="$PROJECT_DIR$/conf/routes" />
         <option value="$PROJECT_DIR$/app/controllers/File.java" />
         <option value="$PROJECT_DIR$/app/models/Ficheiro.java" />
-        <option value="$PROJECT_DIR$/app/models/Componente.java" />
         <option value="$PROJECT_DIR$/app/models/Tipo.java" />
         <option value="$PROJECT_DIR$/app/models/VersaoProjecto.java" />
+        <option value="$PROJECT_DIR$/app/models/Componente.java" />
+        <option value="$PROJECT_DIR$/conf/routes" />
+        <option value="$PROJECT_DIR$/conf/evolutions/default/1.sql" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/app/controllers/Project.java" />
       </list>
     </option>
@@ -226,13 +203,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files" />
-      </pane>
       <pane id="PackagesPane">
         <subPane />
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files" />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -276,42 +253,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LDSOT2G1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LDSOT2G1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LDSOT2G1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LDSOT2G1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -835,7 +776,7 @@
     </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1447420421118" />
+    <option name="lastUpdateTimestamp" value="1447927978562" />
     <option name="availableProjects">
       <map>
         <entry>
@@ -901,55 +842,13 @@
       <workItem from="1447417437173" duration="477000" />
       <workItem from="1447418134627" duration="948000" />
       <workItem from="1447419126113" duration="305000" />
-      <workItem from="1447420300568" duration="114000" />
-    </task>
-    <task id="LOCAL-00001" summary="Fix Projecto Model">
-      <created>1446117518519</created>
-      <option name="number" value="00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1446117518519</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Fix Projecto Model #2">
-      <created>1446117827467</created>
-      <option name="number" value="00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1446117827467</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Commentario API being done">
-      <created>1446120665127</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1446120665127</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Commentario API being done">
-      <created>1446120680890</created>
-      <option name="number" value="00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1446120680890</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Commentario API. Fix #1">
-      <created>1446120737449</created>
-      <option name="number" value="00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1446120737449</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Commentario API. Fix #2">
-      <created>1446120892042</created>
-      <option name="number" value="00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1446120892043</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Fixing Json recursion.">
-      <created>1446587947564</created>
-      <option name="number" value="00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1446587947564</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Added VersaoProjecto. Not expecting to work at first try.">
-      <created>1446588630071</created>
-      <option name="number" value="00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1446588630071</updated>
+      <workItem from="1447420300568" duration="858000" />
+      <workItem from="1447672525250" duration="739000" />
+      <workItem from="1447674044783" duration="5011000" />
+      <workItem from="1447686676591" duration="7378000" />
+      <workItem from="1447760717298" duration="2485000" />
+      <workItem from="1447847764143" duration="2239000" />
+      <workItem from="1447927905909" duration="5191000" />
     </task>
     <task id="LOCAL-00009" summary="Added VersaoProjecto. Not expecting to work at first try.&#10;Fixing table name">
       <created>1446589239920</created>
@@ -1065,11 +964,191 @@
       <option name="project" value="LOCAL" />
       <updated>1447418598479</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Testing if components now properly are connected to projects&#10;#changed save() to update()&#10;#add on list in both sides">
+      <created>1447420481934</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1447420481934</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Trying to fix Componente-VersaoProject relation..">
+      <created>1447673164212</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1447673164212</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Trying to fix foreign key error">
+      <created>1447676747521</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1447676747521</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Checking if VS is being created .. #1">
+      <created>1447677413025</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1447677413025</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Checking if VS is being created .. #2">
+      <created>1447678117523</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1447678117523</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Checking if VS is being created .. #3">
+      <created>1447678525762</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1447678525762</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Checking if VS is being created .. #3&#10;(missed save())">
+      <created>1447678566183</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1447678566183</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Not working yet ... &#10;&#10;Removed @JoinTable cause we just have Fkeys on our bridge table.">
+      <created>1447679288576</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1447679288576</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Messing around with @ManyToMAny">
+      <created>1447679546539</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1447679546539</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Adding JsonBackReference to avoid stackoverflow on JSON&#10;&#10;ManyToMany Relationship is now properly working!">
+      <created>1447680030717</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1447680030717</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Projecto, VersionamentoProjecto, and Conteudo are properly working now.">
+      <created>1447680273899</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1447680273899</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Projecto, VersionamentoProjecto, and Conteudo are properly working now.">
+      <created>1447680280162</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1447680280162</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Add 1 more @JsonBackReference so it doesnt explode xD&#10;&#10;Just need to do the proper controller. The conection with BD (creation) is working fine,&#10;">
+      <created>1447680503976</created>
+      <option name="number" value="00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1447680503976</updated>
+    </task>
+    <task id="LOCAL-00041" summary="API - Test editarNomeProject">
+      <created>1447687752025</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1447687752025</updated>
+    </task>
+    <task id="LOCAL-00042" summary="API - Test editarNomeProject">
+      <created>1447687772309</created>
+      <option name="number" value="00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1447687772309</updated>
+    </task>
+    <task id="LOCAL-00043" summary="API - Test editarNomeProjecto ( missed saved() ... )">
+      <created>1447687901389</created>
+      <option name="number" value="00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1447687901389</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Trying update() instead of saving !">
+      <created>1447688265221</created>
+      <option name="number" value="00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1447688265221</updated>
+    </task>
+    <task id="LOCAL-00045" summary="editarNomeProjecto working&#10;&#10;Improved getAllProjects to return by id order.">
+      <created>1447688587178</created>
+      <option name="number" value="00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1447688587178</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Testing editarConteudoProjecto() ...&#10;">
+      <created>1447690626876</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1447690626876</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Forgot to add the proper route!">
+      <created>1447690697977</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1447690697977</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Should be fixed">
+      <created>1447690990508</created>
+      <option name="number" value="00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1447690990508</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Not yet ...">
+      <created>1447691310389</created>
+      <option name="number" value="00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1447691310389</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Fixed double add in Componente-VersaoProjecto">
+      <created>1447691657842</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1447691657844</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Adicionar componente a projecto">
+      <created>1447693272802</created>
+      <option name="number" value="00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1447693272802</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Testing evolutions">
+      <created>1447848506985</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1447848506987</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Introducing some debug messages!">
+      <created>1447931105426</created>
+      <option name="number" value="00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1447931105426</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Introducing some debug messages! #2">
+      <created>1447931913142</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1447931913142</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Introducing some debug messages! #3">
+      <created>1447932475130</created>
+      <option name="number" value="00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1447932475130</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Fixing bugs on editarConteudo">
+      <created>1447932967070</created>
+      <option name="number" value="00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1447932967070</updated>
+    </task>
+    <task id="LOCAL-00057" summary="editarConteudo is now working and tested">
+      <created>1447933364959</created>
+      <option name="number" value="00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1447933364959</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55005000" />
+    <option name="totallyTimeSpent" value="78792000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1077,13 +1156,15 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32730263" sideWeight="0.4539121" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994652" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2138158" sideWeight="0.5084356" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2138158" sideWeight="0.49156442" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17423134" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1093,15 +1174,13 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32733408" sideWeight="0.4539121" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21481481" sideWeight="0.49156442" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1152,36 +1231,36 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Fix Projecto Model #2" />
-    <MESSAGE value="Commentario API being done" />
-    <MESSAGE value="Commentario API. Fix #1" />
-    <MESSAGE value="Commentario API. Fix #2" />
-    <MESSAGE value="Fixing Json recursion." />
-    <MESSAGE value="Added VersaoProjecto. Not expecting to work at first try." />
-    <MESSAGE value="Added VersaoProjecto. Not expecting to work at first try.&#10;Fixing table name" />
-    <MESSAGE value="Added VersaoProjecto. Not expecting to work at first try.&#10;Fixing table name #2" />
-    <MESSAGE value="Fixing VersaoProjecto..." />
-    <MESSAGE value="Lets see if it works better !" />
-    <MESSAGE value="Comments and Project Versions should be working. Lets test" />
-    <MESSAGE value="Changed from GET to POST (add Project Vers)" />
-    <MESSAGE value="Changed from GET to POST (add Project Vers)&#10;missed save" />
-    <MESSAGE value="Implemented comment edit. Testing" />
-    <MESSAGE value="Forgot to add the route" />
-    <MESSAGE value="Trying editing comment with .update()" />
-    <MESSAGE value="- Comment adding and comment editing working&#10;&#10;- Project adding and Version Projecto working &#10;&#10;(missing user auth)" />
-    <MESSAGE value="@ManyToMany between VersaoProjecto-Componente&#10;&#10;Lets see if it builds correctly!" />
-    <MESSAGE value="Forgot to add @Entity" />
-    <MESSAGE value="Relationship between Tipo and Componente" />
-    <MESSAGE value="Relationship between Tipo and Componente&#10;&#10;Fix #1" />
-    <MESSAGE value="Testing Componentes + Tipo + VersaoProjecto" />
-    <MESSAGE value="Misspeled a field.&#10;&#10;Fix #1" />
-    <MESSAGE value="Testing if components now properly are connected to projects" />
-    <MESSAGE value="Testing if components now properly are connected to projects&#10;#changed save() to update()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing if components now properly are connected to projects&#10;#changed save() to update()" />
+    <MESSAGE value="Checking if VS is being created .. #1" />
+    <MESSAGE value="Checking if VS is being created .. #2" />
+    <MESSAGE value="Checking if VS is being created .. #3" />
+    <MESSAGE value="Checking if VS is being created .. #3&#10;(missed save())" />
+    <MESSAGE value="Not working yet ... &#10;&#10;Removed @JoinTable cause we just have Fkeys on our bridge table." />
+    <MESSAGE value="Messing around with @ManyToMAny" />
+    <MESSAGE value="Adding JsonBackReference to avoid stackoverflow on JSON&#10;&#10;ManyToMany Relationship is now properly working!" />
+    <MESSAGE value="Projecto, VersionamentoProjecto, and Conteudo are properly working now." />
+    <MESSAGE value="Add 1 more @JsonBackReference so it doesnt explode xD&#10;&#10;Just need to do the proper controller. The conection with BD (creation) is working fine,&#10;" />
+    <MESSAGE value="API - Test editarNomeProject" />
+    <MESSAGE value="API - Test editarNomeProjecto ( missed saved() ... )" />
+    <MESSAGE value="Trying update() instead of saving !" />
+    <MESSAGE value="editarNomeProjecto working&#10;&#10;Improved getAllProjects to return by id order." />
+    <MESSAGE value="Testing editarConteudoProjecto() ...&#10;" />
+    <MESSAGE value="Forgot to add the proper route!" />
+    <MESSAGE value="Should be fixed" />
+    <MESSAGE value="Not yet ..." />
+    <MESSAGE value="Fixed double add in Componente-VersaoProjecto" />
+    <MESSAGE value="Adicionar componente a projecto" />
+    <MESSAGE value="Testing evolutions" />
+    <MESSAGE value="Introducing some debug messages!" />
+    <MESSAGE value="Introducing some debug messages! #2" />
+    <MESSAGE value="Introducing some debug messages! #3" />
+    <MESSAGE value="Fixing bugs on editarConteudo" />
+    <MESSAGE value="editarConteudo is now working and tested" />
+    <option name="LAST_COMMIT_MESSAGE" value="editarConteudo is now working and tested" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1190,29 +1269,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/bootstrap/css/navbar-fixed-top.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/index.scala.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="103" selection-start-line="9" selection-start-column="103" selection-end-line="9" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#152#153#0" expanded="false" />
-            <element signature="e#225#226#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1263,11 +1323,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#152#153#0" expanded="false" />
-            <element signature="e#225#226#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1393,13 +1448,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/IntegrationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6692913">
-          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/jars/play_2.11-2.4.3.jar!/play/mvc/Results.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.355">
@@ -1478,20 +1526,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/application.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.759434">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Comentario.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6409336">
@@ -1506,81 +1540,111 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0987433">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Tipo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#519#520#0" expanded="false" />
-            <element signature="e#551#552#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.26842105">
           <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#152#153#0" expanded="false" />
-            <element signature="e#225#226#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Projecto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="105" selection-start-line="49" selection-start-column="105" selection-end-line="49" selection-end-column="105" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.98421055">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf/routes">
+    <entry file="file://$PROJECT_DIR$/app/models/Tipo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="71" selection-start-line="10" selection-start-column="71" selection-end-line="10" selection-end-column="71" />
+        <state vertical-scroll-proportion="0.7605263">
+          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.044736844">
+          <caret line="48" column="28" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8657895">
+          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/VersaoProjecto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28421053">
+          <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Componente.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6421053">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/evolutions/default/1.sql">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="30" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="30" />
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/application.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.115385">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/IntegrationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/VersaoProjecto.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075">
+          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/routes">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <caret line="11" column="57" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9413793">
-          <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.90340906">
+          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#CriarProjecto#0;class#Project#0" expanded="false" />
+            <element signature="method#editarNomeProjecto#0;class#Project#0" expanded="false" />
+            <element signature="method#criarVersaoProjecto#0;class#Project#0" expanded="false" />
+            <element signature="method#TestVersionamentoProjecto#0;class#Project#0" expanded="false" />
             <element signature="method#getProjectoById#0;class#Project#0" expanded="false" />
           </folding>
         </state>

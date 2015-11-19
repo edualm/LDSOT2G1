@@ -7,21 +7,22 @@ import models.Projecto;
 import models.Tipo;
 import models.VersaoProjecto;
 import play.api.i18n.Messages;
+import play.api.libs.json.JsPath;
 import play.libs.Json;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import com.fasterxml.jackson.databind.JsonNode;
 
 
+import java.io.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Joao on 27/10/2015.
  */
 public class Project extends Controller {
-
 
     //Finder
     public static Model.Finder<Long, Projecto> projectos = new Model.Finder(Long.class, Projecto.class);
@@ -40,9 +41,11 @@ public class Project extends Controller {
         VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
         p.save();
         vs.save();
+        ObjectNode json = Json.newObject();
+        json.put("result", "success");
 
 
-        return ok(Json.toJson(p));
+        return ok(json);
         }
         catch (Exception e){
             ObjectNode json = Json.newObject();
@@ -51,6 +54,179 @@ public class Project extends Controller {
             return badRequest(json);
         }
 
+    }
+
+    public Result editarNomeProjecto(){
+        try {
+            DynamicForm form = new DynamicForm().bindFromRequest();
+
+            String id = form.get("id");
+            String nome = form.get("nome");
+            String descricao = form.get("descricao");
+            String user = form .get("userid");
+
+            Projecto p = projectos.byId(Long.valueOf(id));
+            ObjectNode json = Json.newObject();
+
+            if (p.user_id == Integer.parseInt(user)){
+                p.nome = nome;
+                p.descricao = descricao;
+                p.update();
+                json.put("result", "success");
+
+                return ok(json);
+            }
+
+            json.put("result", "error");
+            json.put("excecao", "Not authorized");
+
+            return badRequest(json);
+
+        }
+        catch (Exception e){
+            ObjectNode json = Json.newObject();
+            json.put("result", "error");
+            json.put("excecao", e.getMessage());
+
+            return badRequest(json);
+        }
+    }
+
+    public Result editarConteudoProjecto(){
+        try {
+            DynamicForm form = new DynamicForm().bindFromRequest();
+
+            String id = form.get("id");
+            String nome = form.get("nome");
+            String conteudo = form.get("conteudo");
+            String user = form .get("userid");
+
+            Projecto p = projectos.byId(Long.valueOf(id));
+            ObjectNode json = Json.newObject();
+
+            if (p.user_id == Integer.parseInt(user)) {
+                VersaoProjecto oldVS = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
+                List<Componente> componentes = oldVS.componentes;
+
+                String tipo = null;
+
+                if (nome.equals("fis"))
+                    tipo = "Fisica";
+                else if (nome.equals("prog"))
+                    tipo = "Programacao";
+                else if (nome.equals("elec"))
+                    tipo = "Eletrotecnica";
+
+                boolean ran = false;
+
+                for (Componente c : componentes){
+                    System.out.println("Componente: " + c.tipo_id.nome);
+                    System.out.println("Componente API: " + tipo);
+                    if (c.tipo_id.nome.equals(tipo)) {
+                        ran = true;
+                        System.out.println("Found the component name");
+
+                        System.out.println("Creating the New VersaoProjecto...");
+                        VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao, oldVS.projecto_id, oldVS.user_id.toString());
+                        newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
+                        System.out.println("Removing old component...");
+                        newVS.componentes.remove(c);
+                        Componente cNew = new Componente("",c.tipo_id);
+                        cNew.save();
+                        System.out.println("Adding new Component to Versao projeto");
+                        newVS.componentes.add(cNew);
+
+                        for (Componente newC : newVS.componentes) {
+                            System.out.println("ComponenteNew: " + newC.tipo_id.nome);
+                            if (newC.tipo_id.nome.equals(tipo)) {
+                                System.out.println("Found the  New component name");
+                                newC.conteudo = conteudo;
+                                newC.update();
+                                newVS.save();
+                                json.put("result", "success");
+                                return ok(json);
+
+                            }
+                        }
+                    }
+            }
+
+                if (!ran) {
+                    json.put("result", "error");
+                    json.put("excecao", "Componente nao existente");
+                    return badRequest(json);
+                }
+            }
+
+            json.put("result", "error");
+            json.put("excecao", "Not authorized");
+
+            return badRequest(json);
+
+
+        }
+        catch (Exception e){
+            ObjectNode json = Json.newObject();
+            json.put("result", "error");
+            json.put("excecao", e.getMessage());
+
+            return badRequest(json);
+        }
+    }
+
+    public Result adicionarComponenteProjecto(){
+
+        try {
+            DynamicForm form = new DynamicForm().bindFromRequest();
+
+            String id = form.get("id");
+            String componente = form.get("componente");
+            String user = form.get("userid");
+
+
+            Projecto p = projectos.byId(Long.valueOf(id));
+            ObjectNode json = Json.newObject();
+
+            if (p.user_id == Integer.parseInt(user)) {
+                //Os tipos sao estaticos (unicos)
+                VersaoProjecto lastVS = p.versoesProjecto.get(p.versoesProjecto.size() -1 );
+
+
+                Tipo t = tipos.where().eq("nome", componente).findUnique();
+                Componente c = new Componente("",t);
+                c.versaoprojectos.add(lastVS);
+                c.save();
+
+                json.put("result", "success");
+
+                return ok(json);
+
+            }
+
+
+            json.put("result", "error");
+            json.put("excecao", "Not authorized");
+
+            return badRequest(json);
+
+
+        }
+        catch (Exception e){
+            ObjectNode json = Json.newObject();
+
+            json.put("result", "error");
+            json.put("excecao", e.getMessage());
+
+            return badRequest(json);
+        }
+
+    }
+
+    public VersaoProjecto criarVersaoProjecto(String descricao, Projecto p, String user){
+        VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
+        vs.save();
+
+        return vs;
     }
 
     public Result TestVersionamentoProjecto(){
@@ -62,46 +238,37 @@ public class Project extends Controller {
             String descricao = form.get("desc");
 
             Projecto p = projectos.byId(Long.valueOf(projecto));
-            VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
-            vs.save();
+            VersaoProjecto vs = criarVersaoProjecto(descricao,p,"1");
 
 
             //Componente de Fisica
             Tipo fisica = tipos.where().eq("nome","Fisica").findUnique();
-            Componente c1 = new Componente("Conteudo da componente em MARKDOWN",fisica);
+            Componente c1 = new Componente("Conteudo da componente em MARKDOWN Fisica",fisica);
 
-            c1.save();
 
             //Componente de Programacao
             Tipo prog = tipos.where().eq("nome","Programacao").findUnique();
-            Componente c2 = new Componente("Conteudo da componente em MARKDOWN",prog);
-
-            c2.save();
+            Componente c2 = new Componente("Conteudo da componente em MARKDOWN Programacao",prog);
 
             //Componente de Electrotecnia
             Tipo eletro = tipos.where().eq("nome","Eletrotecnica").findUnique();
-            Componente c3 = new Componente("Conteudo da componente em MARKDOWW",eletro);
-
-            c3.save();
-
-            vs.componentes.add(c1);
-            vs.componentes.add(c2);
-            vs.componentes.add(c3);
+            Componente c3 = new Componente("Conteudo da componente em MARKDOWW Electrotecnia",eletro);
 
             c1.versaoprojectos.add(vs);
-            c2.versaoprojectos.add(vs);
-            c3.versaoprojectos.add(vs);
-
-
-
-            vs.save();
             c1.save();
+            c2.versaoprojectos.add(vs);
             c2.save();
+            c3.versaoprojectos.add(vs);
             c3.save();
+            vs.save();
+
+
+            ObjectNode json = Json.newObject();
+            json.put("result", "success");
 
 
 
-            return ok(Json.toJson(vs));
+            return ok(json);
         }
         catch (Exception e){
             ObjectNode json = Json.newObject();
@@ -135,6 +302,6 @@ public class Project extends Controller {
     }
 
     public  Result getAllProjectos(){
-        return ok(Json.toJson(projectos.all()));
+        return ok(Json.toJson(projectos.orderBy("id").findList()));
     }
 }
