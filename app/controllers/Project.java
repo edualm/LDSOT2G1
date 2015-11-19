@@ -2,10 +2,7 @@ package controllers;
 
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import models.Componente;
-import models.Projecto;
-import models.Tipo;
-import models.VersaoProjecto;
+import models.*;
 import play.api.i18n.Messages;
 import play.libs.Json;
 import play.data.DynamicForm;
@@ -25,7 +22,9 @@ public class Project extends Controller {
 
     //Finder
     public static Model.Finder<Long, Projecto> projectos = new Model.Finder(Long.class, Projecto.class);
+    public static Model.Finder<Long, Comentario> projectos_comentarios = new Model.Finder(Long.class, Comentario.class);
     public static Model.Finder<Long, Tipo> tipos = new Model.Finder(Long.class, Tipo.class);
+
 
     public Result CriarProjecto(){
         try {
@@ -55,8 +54,6 @@ public class Project extends Controller {
 
     public Result TestVersionamentoProjecto(){
         try {
-
-
             DynamicForm form = new DynamicForm().bindFromRequest();
             String projecto = form.get("projecto");
             String descricao = form.get("desc");
@@ -64,7 +61,6 @@ public class Project extends Controller {
             Projecto p = projectos.byId(Long.valueOf(projecto));
             VersaoProjecto vs = new VersaoProjecto(descricao, p, "1");
             vs.save();
-
 
             //Componente de Fisica
             Tipo fisica = tipos.where().eq("nome","Fisica").findUnique();
@@ -92,14 +88,10 @@ public class Project extends Controller {
             c2.versaoprojectos.add(vs);
             c3.versaoprojectos.add(vs);
 
-
-
             vs.save();
             c1.save();
             c2.save();
             c3.save();
-
-
 
             return ok(Json.toJson(vs));
         }
@@ -109,12 +101,8 @@ public class Project extends Controller {
             json.put("excecao", e.getMessage());
             return badRequest(json);
         }
-
-
-
-
-
     }
+
     public Result getProjectoById(Long id){
 
         ObjectNode response = Json.newObject();
@@ -135,11 +123,24 @@ public class Project extends Controller {
     }
 
     //Adicionar repositorio
-    //Remover projeto
-
-
 
     public  Result getAllProjectos(){
         return ok(Json.toJson(projectos.all()));
+    }
+
+    public  Result removerProjecto(Long id) {
+        ObjectNode response = Json.newObject();
+
+        if (id == 0)
+            return badRequest("Wrong Project ID");
+
+        try {
+            projectos.deleteById(id);
+            return ok(Json.toJson("Projecto " + id + " deletado com sucesso."));
+
+        } catch (Exception e) {
+            response.put("result", e.getMessage());
+            return badRequest(response);
+        }
     }
 }

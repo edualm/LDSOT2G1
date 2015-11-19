@@ -10,6 +10,7 @@ POST        /projecto               controllers.Project.CriarProjecto()
 GET         /projectos              controllers.Project.getAllProjectos()
 POST        /testVers               controllers.Project.TestVersionamentoProjecto()
 GET         /projecto/:id           controllers.Project.getProjectoById(id: Long)
+GET         /removerprojecto/:id    controllers.Project.removerProjecto(id: Long)
 
 
 POST        /comentario             controllers.Comment.addComentario()
