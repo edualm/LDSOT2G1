@@ -17,7 +17,7 @@ public class Tag extends Model{
     @Column
     public String nome;
 
-    Tag(String nome){
+    Tag(String nome) {
         this.nome = nome;
     }
 }
