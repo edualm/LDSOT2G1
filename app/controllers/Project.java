@@ -314,7 +314,9 @@ public class Project extends Controller {
             return badRequest("Wrong Project ID");
 
         try {
-            projectos.deleteById(id);
+            Projecto query = projectos.byId(id);
+            query.delete();
+
             return ok(Json.toJson("Projecto " + id + " deletado com sucesso."));
 
         } catch (Exception e) {
