@@ -302,11 +302,24 @@ public class Project extends Controller {
     }
 
     //Adicionar repositorio
-    //Remover projeto
-
-
 
     public  Result getAllProjectos(){
         return ok(Json.toJson(projectos.orderBy("id").findList()));
+    }
+
+    public  Result removerProjecto(Long id) {
+        ObjectNode response = Json.newObject();
+
+        if (id == 0)
+            return badRequest("Wrong Project ID");
+
+        try {
+            projectos.deleteById(id);
+            return ok(Json.toJson("Projecto " + id + " deletado com sucesso."));
+
+        } catch (Exception e) {
+            response.put("result", e.getMessage());
+            return badRequest(response);
+        }
     }
 }
