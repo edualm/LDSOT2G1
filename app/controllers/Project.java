@@ -115,12 +115,13 @@ public class Project extends Controller {
                 else if (nome.equals("prog"))
                     tipo = "Programacao";
                 else if (nome.equals("elec"))
-                    tipo = "Elettrotecnica";
+                    tipo = "Eletrotecnica";
 
                 boolean ran = false;
 
                 for (Componente c : componentes){
                     System.out.println("Componente: " + c.tipo_id.nome);
+                    System.out.println("Componente API: " + tipo);
                     if (c.tipo_id.nome.equals(tipo)) {
                         ran = true;
                         System.out.println("Found the component name");
