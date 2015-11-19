@@ -19,6 +19,11 @@ POST        /ficheiro               controllers.FileProject.addFile()
 GET         /ficheiros              controllers.FileProject.getAllFiles()
 GET         /ficheiro/:id           controllers.FileProject.getFileById(id: Long)
 
+POST        /tag               controllers.FileTag.addTag()
+GET         /tags              controllers.FileTag.getAllTags()
+GET         /tag/:id           controllers.FileTag.getTagById(id: Long)
+
+
 
 
 # Map static resources from the /public folder to the /assets URL path
