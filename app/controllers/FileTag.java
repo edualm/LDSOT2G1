@@ -33,6 +33,10 @@ public class FileTag extends Controller {
                 }
             }
 
+            ObjectNode json = Json.newObject();
+            json.put("result", "Tag already exists");
+            return ok(json);
+
         } catch (Exception e) {
             ObjectNode json = Json.newObject();
             json.put("result", "error");
