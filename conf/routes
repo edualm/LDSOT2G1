@@ -3,29 +3,33 @@
 # ~~~~
 
 # Home page
-GET         /                       controllers.Application.index()
+GET         /                           controllers.Application.index()
 
 #API
-POST    /projecto                   controllers.Project.CriarProjecto()
-POST    /projecto/nome              controllers.Project.editarNomeProjecto()
-POST    /projecto/editar            controllers.Project.editarConteudoProjecto()
-POST    /projecto/componente         controllers.Project.adicionarComponenteProjecto()
+POST        /projecto                   controllers.Project.CriarProjecto()
+POST        /projecto/nome              controllers.Project.editarNomeProjecto()
+POST        /projecto/editar            controllers.Project.editarConteudoProjecto()
+POST        /projecto/componente        controllers.Project.adicionarComponenteProjecto()
 
 
-GET     /projectos                  controllers.Project.getAllProjectos()
-POST    /testVers                   controllers.Project.TestVersionamentoProjecto()
-GET     /projecto/:id               controllers.Project.getProjectoById(id: Long)
+GET         /projectos                  controllers.Project.getAllProjectos()
+POST        /testVers                   controllers.Project.TestVersionamentoProjecto()
+GET         /projecto/:id               controllers.Project.getProjectoById(id: Long)
 
 
 
-POST        /comentario             controllers.Comment.addComentario()
-POST        /comentario/edit        controllers.Comment.editComment()
+POST        /comentario                 controllers.Comment.addComentario()
+POST        /comentario/edit            controllers.Comment.editComment()
 
-POST        /ficheiro               controllers.FileProject.addFile()
-GET         /ficheiros              controllers.FileProject.getAllFiles()
-GET         /ficheiro/:id           controllers.FileProject.getFileById(id: Long)
+POST        /ficheiro                   controllers.FileProject.addFile()
+GET         /ficheiros                  controllers.FileProject.getAllFiles()
+GET         /ficheiro/:id               controllers.FileProject.getFileById(id: Long)
+
+POST        /tag               controllers.FileTag.addTag()
+GET         /tags              controllers.FileTag.getAllTags()
+GET         /tag/:id           controllers.FileTag.getTagById(id: Long)
 
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file           controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
