@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/FileTag.java" afterPath="$PROJECT_DIR$/app/controllers/FileTag.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Tag.java" afterPath="$PROJECT_DIR$/app/models/Tag.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ldso-az.iws" />
@@ -99,7 +100,7 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-111.793106">
+            <state vertical-scroll-proportion="-104.75862">
               <caret line="194" column="30" selection-start-line="194" selection-start-column="25" selection-end-line="194" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -111,12 +112,12 @@
       <file leaf-file-name="FileTag.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/FileTag.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5583239">
-              <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.57757646">
+              <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1690#1691#0" expanded="true" />
-                <element signature="e#1740#1741#0" expanded="true" />
+                <element signature="e#1742#1743#0" expanded="true" />
+                <element signature="e#1792#1793#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -126,8 +127,10 @@
         <entry file="file://$PROJECT_DIR$/app/models/Tag.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="7" />
-              <folding />
+              <caret line="27" column="32" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -207,8 +210,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="759" />
-    <option name="y" value="24" />
+    <option name="x" value="886" />
+    <option name="y" value="23" />
     <option name="width" value="1104" />
     <option name="height" value="1040" />
   </component>
@@ -784,7 +787,7 @@
       <workItem from="1447933843139" duration="196000" />
       <workItem from="1447934066784" duration="703000" />
       <workItem from="1447934816155" duration="104000" />
-      <workItem from="1448400466670" duration="3859000" />
+      <workItem from="1448400466670" duration="4524000" />
     </task>
     <task id="LOCAL-00006" summary="Commentario API. Fix #2">
       <created>1446120892042</created>
@@ -1084,10 +1087,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82260000" />
+    <option name="totallyTimeSpent" value="82925000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="759" y="24" width="1104" height="1040" extended-state="0" />
+    <frame x="886" y="23" width="1104" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1553,18 +1556,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Tag.java">
+    <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="7" />
-          <folding />
+        <state vertical-scroll-proportion="-104.75862">
+          <caret line="194" column="30" selection-start-line="194" selection-start-column="25" selection-end-line="194" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
+    <entry file="file://$PROJECT_DIR$/app/models/Tag.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-111.793106">
-          <caret line="194" column="30" selection-start-line="194" selection-start-column="25" selection-end-line="194" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="32" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1573,12 +1578,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/FileTag.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5583239">
-          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.57757646">
+          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1690#1691#0" expanded="true" />
-            <element signature="e#1740#1741#0" expanded="true" />
+            <element signature="e#1742#1743#0" expanded="true" />
+            <element signature="e#1792#1793#0" expanded="true" />
           </folding>
         </state>
       </provider>

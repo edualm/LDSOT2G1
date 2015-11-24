@@ -23,7 +23,8 @@ public class FileTag extends Controller {
             String name = dynamicForm.get("nome");
 
             if (name != null) {
-                Tag query = tags.where().ilike("nome", "name").findUnique();
+                //Tag query = tags.where().ilike("nome", "name").findUnique();
+                Tag query = Tag.getTagName(name);
 
                 if (query == null) {
                     Tag t =  new Tag(name);
