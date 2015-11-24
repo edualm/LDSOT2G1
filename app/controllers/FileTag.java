@@ -15,7 +15,6 @@ public class FileTag extends Controller {
 
     //Finder
     public static Model.Finder<Long, Tag> tags = new Model.Finder(Long.class, Tag.class);
-    public static Model.Finder<String, Tag> stringTags = new Model.Finder(String.class, Tag.class);
 
     public Result addTag() {
         DynamicForm dynamicForm = new DynamicForm().bindFromRequest();
@@ -24,7 +23,7 @@ public class FileTag extends Controller {
             String name = dynamicForm.get("nome");
 
             if (name != null) {
-                Tag query = stringTags.where().ilike("nome", "name").findUnique();
+                Tag query = tags.where().ilike("nome", "name").findUnique();
 
                 if (query == null) {
                     Tag t =  new Tag(name);
