@@ -14,7 +14,8 @@ import play.mvc.Result;
 public class FileTag extends Controller {
 
     //Finder
-    public static Model.Finder<Long, models.Tag> tags = new Model.Finder(Long.class, models.Tag.class);
+    public static Model.Finder<Long, Tag> tags = new Model.Finder(Long.class, Tag.class);
+
 
     public Result addTag() {
         DynamicForm dynamicForm = new DynamicForm().bindFromRequest();
@@ -24,6 +25,14 @@ public class FileTag extends Controller {
 
             if (name != null) {
                 Tag query = tags.where().ilike("nome", "name").findUnique();
+
+                System.out.println("\nilike: ");
+                System.out.println(query);
+
+                Tag query2 = tags.where().eq("nome", "name").findUnique();
+
+                System.out.println("\neq: ");
+                System.out.println(query2);
 
                 if (query == null) {
                     Tag t =  new Tag(name);
