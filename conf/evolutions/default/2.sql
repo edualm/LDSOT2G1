@@ -20,14 +20,17 @@ Date: 2015-11-18 11:58:57
 -- Foreign Key structure for table "public"."comentario"
 -- ----------------------------
 
-ALTER TABLE "public"."comentario" ADD FOREIGN KEY ("projecto_id") REFERENCES "public"."projecto" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE "public"."comentario" DROP CONSTRAINT "comentario_projecto_id_fkey";
+
+ALTER TABLE "public"."comentario" ADD CONSTRAINT "versaoprojecto_projecto_id_fkey" ADD FOREIGN KEY ("projecto_id") REFERENCES "public"."projecto" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."versaoprojecto"
 -- ----------------------------
 
-ALTER TABLE "public"."versaoprojecto" ADD FOREIGN KEY ("projecto_id") REFERENCES "public"."projecto" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE "public"."versaoprojecto" DROP CONSTRAINT "versaoprojecto_projecto_id_fkey";
+
+ALTER TABLE "public"."versaoprojecto" ADD CONSTRAINT "versaoprojecto_projecto_id_fkey" ADD  FOREIGN KEY ("projecto_id") REFERENCES "public"."projecto" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
 
 # --- !Downs
-ALTER TABLE "public"."comentario" DROP CONSTRAINT "comentario_projecto_id_fkey";
-ALTER TABLE "public"."versaoprojecto" DROP CONSTRAINT "versaoprojecto_projecto_id_fkey";
+
