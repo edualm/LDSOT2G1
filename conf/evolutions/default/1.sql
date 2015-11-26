@@ -284,7 +284,7 @@ ALTER TABLE "public"."versaoprojecto" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Foreign Key structure for table "public"."comentario"
 -- ----------------------------
-ALTER TABLE "public"."comentario" ADD FOREIGN KEY ("projecto_id") REFERENCES "public"."projecto" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE "public"."comentario" ADD FOREIGN KEY ("projecto_id") REFERENCES "public"."projecto" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."componente"
@@ -305,7 +305,7 @@ ALTER TABLE "public"."ligacao" ADD FOREIGN KEY ("versaoprojecto_id") REFERENCES 
 -- ----------------------------
 -- Foreign Key structure for table "public"."versaoprojecto"
 -- ----------------------------
-ALTER TABLE "public"."versaoprojecto" ADD FOREIGN KEY ("projecto_id") REFERENCES "public"."projecto" ("id") ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE "public"."versaoprojecto" ADD FOREIGN KEY ("projecto_id") REFERENCES "public"."projecto" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."versaoprojecto_componente"
