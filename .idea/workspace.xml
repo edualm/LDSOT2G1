@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Project.java" afterPath="$PROJECT_DIR$/app/controllers/Project.java" />
     </list>
     <ignored path="ldso-az.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,8 +68,8 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.63278687">
-              <caret line="313" column="47" selection-start-line="313" selection-start-column="47" selection-end-line="313" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.38688526">
+              <caret line="348" column="61" selection-start-line="348" selection-start-column="61" selection-end-line="348" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -990,13 +989,7 @@
       <workItem from="1449074987220" duration="1702000" />
       <workItem from="1449077497961" duration="92000" />
       <workItem from="1449077652296" duration="2803000" />
-      <workItem from="1449093292560" duration="4792000" />
-    </task>
-    <task id="LOCAL-00021" summary="Forgot to add @Entity">
-      <created>1447084268306</created>
-      <option name="number" value="00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1447084268306</updated>
+      <workItem from="1449093292560" duration="5325000" />
     </task>
     <task id="LOCAL-00022" summary="Relationship between Tipo and Componente">
       <created>1447085066986</created>
@@ -1286,11 +1279,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449097999110</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="It was. Lets the miracles begin">
+      <created>1449098104002</created>
+      <option name="number" value="00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1449098104002</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93953000" />
+    <option name="totallyTimeSpent" value="94486000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1382,7 +1381,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="editarNomeProjecto working&#10;&#10;Improved getAllProjects to return by id order." />
     <MESSAGE value="Testing editarConteudoProjecto() ...&#10;" />
     <MESSAGE value="Forgot to add the proper route!" />
     <MESSAGE value="Should be fixed" />
@@ -1407,7 +1405,8 @@
     <MESSAGE value="evo ?" />
     <MESSAGE value="I cant believe it was the file encoding again lol... lets see" />
     <MESSAGE value="I cant believe it was the file encoding again lol... lets see #2" />
-    <option name="LAST_COMMIT_MESSAGE" value="I cant believe it was the file encoding again lol... lets see #2" />
+    <MESSAGE value="It was. Lets the miracles begin" />
+    <option name="LAST_COMMIT_MESSAGE" value="It was. Lets the miracles begin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1791,8 +1790,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63278687">
-          <caret line="313" column="47" selection-start-line="313" selection-start-column="47" selection-end-line="313" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.38688526">
+          <caret line="348" column="61" selection-start-line="348" selection-start-column="61" selection-end-line="348" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
