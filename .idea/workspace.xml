@@ -59,8 +59,8 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32352942">
-              <caret line="337" column="55" selection-start-line="337" selection-start-column="55" selection-end-line="337" selection-end-column="55" />
+            <state vertical-scroll-proportion="1.8235294">
+              <caret line="359" column="55" selection-start-line="359" selection-start-column="55" selection-end-line="359" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -989,13 +989,7 @@
       <workItem from="1449074987220" duration="1702000" />
       <workItem from="1449077497961" duration="92000" />
       <workItem from="1449077652296" duration="2803000" />
-      <workItem from="1449093292560" duration="3167000" />
-    </task>
-    <task id="LOCAL-00015" summary="Changed from GET to POST (add Project Vers)&#10;missed save">
-      <created>1446591842866</created>
-      <option name="number" value="00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1446591842866</updated>
+      <workItem from="1449093292560" duration="3970000" />
     </task>
     <task id="LOCAL-00016" summary="Implemented comment edit. Testing">
       <created>1446592407658</created>
@@ -1285,11 +1279,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449095994759</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Where are you compilation error ... :3">
+      <created>1449096479760</created>
+      <option name="number" value="00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1449096479760</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92328000" />
+    <option name="totallyTimeSpent" value="93131000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1381,7 +1381,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Adding JsonBackReference to avoid stackoverflow on JSON&#10;&#10;ManyToMany Relationship is now properly working!" />
     <MESSAGE value="Projecto, VersionamentoProjecto, and Conteudo are properly working now." />
     <MESSAGE value="Add 1 more @JsonBackReference so it doesnt explode xD&#10;&#10;Just need to do the proper controller. The conection with BD (creation) is working fine,&#10;" />
     <MESSAGE value="API - Test editarNomeProject" />
@@ -1406,7 +1405,8 @@
     <MESSAGE value="Lets try.." />
     <MESSAGE value="Trying to cover all cases. Lets try" />
     <MESSAGE value="Trying to cover all cases. Lets try #2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying to cover all cases. Lets try #2" />
+    <MESSAGE value="Where are you compilation error ... :3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Where are you compilation error ... :3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1783,8 +1783,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32352942">
-          <caret line="337" column="55" selection-start-line="337" selection-start-column="55" selection-end-line="337" selection-end-column="55" />
+        <state vertical-scroll-proportion="1.8235294">
+          <caret line="359" column="55" selection-start-line="359" selection-start-column="55" selection-end-line="359" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

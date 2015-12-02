@@ -311,46 +311,53 @@ public class Project extends Controller {
 
 
     public  Result getAllProjectos() {
-        ObjectNode response = Json.newObject();
         try {
+            ObjectNode response = Json.newObject();
             DynamicForm form = new DynamicForm().bindFromRequest();
-            String jwt = form.get("jwt");
 
-            //Se nao receber JWT é porque nao tem log in ou ja esta checkado nas cookies
-            if (jwt == null){
-
-                if (session("jwt") == null) {
-                    System.out.println("Not logged in, redirecting to auth server ...");
+            if(session("jwt") != null)
+            {
+                //Utilizador tem cookie, verificar se ainda n expirou
+                List<Sessions> query = sessions.query().where().eq("token", session("user")).findList();
+                if (query.size() > 0)
+                {
+                    System.out.println("User recognized: "+ AuthManager.currentUsername(session("jwt")));
+                    return ok(Json.toJson(projectos.orderBy("id").findList()));
+                }
+                else
+                {
+                    session().clear();
+                    System.out.println("Cookie expired, redirecting to auth server ...");
                     return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
+                }
+            }
+            else
+            {
+                if(form.get("jwt") != null){
+                    //Verificar se o JWT recebido é valido
+                    if(AuthManager.currentUsername(form.get("jwt")) != null)
+                    {
+                        session("jwt", form.get("jwt"));
+                        Sessions cookie = new Sessions(AuthManager.currentUsername(form.get("jwt")), form.get("jwt"));
+                        cookie.save();
+
+                        System.out.println("Cookie saved!");
+                        return ok(Json.toJson(projectos.orderBy("id").findList()));
+
+                    }
+                    else{
+                        response.put("result","Invalid JWT");
+                        return badRequest(response);
+                    }
                 }
                 else{
-                    List<Sessions> query = sessions.query().where().eq("token", session("user")).findList();
-                    if (query.size() > 0){
-                        System.out.println("User recognized: "+ AuthManager.currentUsername(session("jwt")));
-                        return ok(Json.toJson(projectos.orderBy("id").findList()));
-                    }
-                    session().clear();
                     System.out.println("Not logged in, redirecting to auth server ...");
                     return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
-
                 }
             }
-            System.out.println("Received JWT: " + jwt);
-
-            String userLoggedIn = AuthManager.currentUsername(jwt);
-            if (userLoggedIn == null){
-                response.put("result","Invalid JWT");
-                return badRequest(response);
-            }
-
-            session("jwt", jwt);
-            Sessions cookie = new Sessions(userLoggedIn, jwt);
-            cookie.save();
-
-            System.out.println("Cookie for "+AuthManager.currentUsername(jwt) + " saved!");
-            return ok(Json.toJson(projectos.orderBy("id").findList()));
         }
             catch(Exception e){
+                ObjectNode response = Json.newObject();
                 response.put("exception", e.getMessage());
                 return badRequest(response);
             }
