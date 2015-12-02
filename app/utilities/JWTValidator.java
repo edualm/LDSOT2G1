@@ -6,9 +6,7 @@ import org.jose4j.jwt.JwtClaims;
 import org.jose4j.jwt.consumer.JwtConsumer;
 import org.jose4j.jwt.consumer.JwtConsumerBuilder;
 
-import java.io.InputStream;
 import java.net.URL;
-import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.security.KeyFactory;
 import java.security.PublicKey;
@@ -20,7 +18,7 @@ import java.util.Base64;
  */
 
 public class JWTValidator {
-    static public final String ServerName = "jwt-auth-server";
+    static public final String ServerName = "Audiência Zero SSO";   //  debug only!!!
     static public final String KeyLink = "https://audiencia-zero-auth.herokuapp.com/rsa/base64";
 
     static private PublicKey kPublicKey = null;
