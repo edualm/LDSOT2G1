@@ -1,12 +1,13 @@
 package utilities;
 
+import org.apache.commons.io.IOUtils;
+
 import org.jose4j.jwt.JwtClaims;
 import org.jose4j.jwt.consumer.JwtConsumer;
 import org.jose4j.jwt.consumer.JwtConsumerBuilder;
 
-import java.io.InputStream;
 import java.net.URL;
-import java.net.URLConnection;
+import java.nio.charset.Charset;
 import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
@@ -17,24 +18,29 @@ import java.util.Base64;
  */
 
 public class JWTValidator {
-    static public final String ServerName = "jwt-auth-server";
+    static public final String ServerName = "Audiência Zero SSO";   //  debug only!!!
     static public final String KeyLink = "https://audiencia-zero-auth.herokuapp.com/rsa/base64";
 
     static private PublicKey kPublicKey = null;
 
     private static PublicKey getPublicKey() {
+        System.out.println("Attempting to get public key...");
+
         if (kPublicKey == null) {
             try {
                 URL url = new URL(KeyLink);
-                URLConnection conn = url.openConnection();
-                InputStream is = conn.getInputStream();
+                String b64 = IOUtils.toString(url, Charset.defaultCharset());
 
-                byte[] pubKey = Base64.getDecoder().decode(is.toString());
+                System.out.println("PubKey B64: " + b64);
+
+                byte[] pubKey = Base64.getDecoder().decode(b64);
 
                 kPublicKey = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(pubKey));
             } catch (Exception e) {
-
+                System.out.println("getPublicKey() -> " + e.getMessage());
             }
+        } else {
+            System.out.println("PubKey was already set: " + kPublicKey);
         }
 
         return kPublicKey;
@@ -65,6 +71,8 @@ public class JWTValidator {
 
     public static String getUsernameFromToken(String jwt) {
         try {
+            System.out.println("Here also.");
+
             JwtConsumer jwtConsumer = new JwtConsumerBuilder()
                     .setRequireExpirationTime() // the JWT must have an expiration time
                     .setAllowedClockSkewInSeconds(30) // allow some leeway in validating time based claims to account for clock skew
@@ -79,6 +87,8 @@ public class JWTValidator {
 
             return (String) jwtClaims.getClaimValue("username");
         } catch (Exception e) {
+            System.out.println("getUsernameFromToken() -> Exception: " + e.getMessage());
+
             return null;
         }
     }

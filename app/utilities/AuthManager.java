@@ -20,6 +20,7 @@ public class AuthManager {
     }
 
     public static String currentUsername(String jwt) {
+        System.out.println("We got here.");
 
         return (JWTValidator.getUsernameFromToken(jwt));
     }
