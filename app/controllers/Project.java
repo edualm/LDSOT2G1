@@ -316,6 +316,7 @@ public class Project extends Controller {
             String jwt = form.get("jwt");
 
             if (jwt == null){
+                System.out.println("Not logged in, redirecting to auth server ...");
                 return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
             }
             redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
