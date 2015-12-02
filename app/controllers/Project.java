@@ -8,6 +8,7 @@ import models.Tipo;
 import models.VersaoProjecto;
 import play.api.i18n.Messages;
 import play.api.libs.json.JsPath;
+import play.api.libs.ws.ssl.SystemConfiguration;
 import play.api.mvc.Security;
 import play.libs.Json;
 import play.data.DynamicForm;
@@ -309,22 +310,27 @@ public class Project extends Controller {
 
 
 
-    public  Result getAllProjectos(){
-        if(session().isEmpty()) {
-            redirect(AuthManager.AuthServer_URI+"?callback="+ AuthManager.Server_URI+"projectos");
+    public  Result getAllProjectos() {
+        try {
             DynamicForm form = new DynamicForm().bindFromRequest();
             String jwt = form.get("jwt");
-            System.out.println("Received JWT: "+jwt);
-            session().put("token",jwt);
-        }
 
-        else
-        {
-            //TODO: check token on session BD and compare with username
+            if (jwt == null){
+                return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
+            }
+            redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
+            System.out.println("Received JWT: " + jwt);
+            session().put("token", jwt);
+
+            String userLoggedIn = AuthManager.currentUsername(jwt);
+            System.out.println("Logged in username: "+ userLoggedIn);
+
             return ok(Json.toJson(projectos.orderBy("id").findList()));
         }
-        ObjectNode response = Json.newObject();
-        response.put("result", "Authentication error");
-        return badRequest(response);
+            catch(Exception e){
+                ObjectNode response = Json.newObject();
+                response.put("exception", e.getMessage());
+                return badRequest(response);
+            }
     }
 }

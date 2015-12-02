@@ -19,12 +19,8 @@ public class AuthManager {
         return (JWTValidator.acceptToken(authCookie.value()));
     }
 
-    public static String currentUsername(Http.Cookies allCookies) {
-        Http.Cookie authCookie = allCookies.get("jwt");
+    public static String currentUsername(String jwt) {
 
-        if (authCookie == null)
-            return null;
-
-        return (JWTValidator.getUsernameFromToken(authCookie.value()));
+        return (JWTValidator.getUsernameFromToken(jwt));
     }
 }
