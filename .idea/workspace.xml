@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conf/evolutions/default/2.sql" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Project.java" afterPath="$PROJECT_DIR$/app/controllers/Project.java" />
     </list>
     <ignored path="ldso-az.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,7 +59,7 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.0311475">
+            <state vertical-scroll-proportion="0.7491803">
               <caret line="363" column="20" selection-start-line="363" selection-start-column="20" selection-end-line="363" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -897,13 +897,7 @@
       <workItem from="1449074987220" duration="1702000" />
       <workItem from="1449077497961" duration="92000" />
       <workItem from="1449077652296" duration="2803000" />
-      <workItem from="1449093292560" duration="4267000" />
-    </task>
-    <task id="LOCAL-00017" summary="Forgot to add the route">
-      <created>1446592553850</created>
-      <option name="number" value="00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1446592553850</updated>
+      <workItem from="1449093292560" duration="4448000" />
     </task>
     <task id="LOCAL-00018" summary="Trying editing comment with .update()">
       <created>1446592776602</created>
@@ -1193,11 +1187,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449097280068</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="is it in this function? :3">
+      <created>1449097576956</created>
+      <option name="number" value="00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1449097576956</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93428000" />
+    <option name="totallyTimeSpent" value="93609000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1289,7 +1289,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Add 1 more @JsonBackReference so it doesnt explode xD&#10;&#10;Just need to do the proper controller. The conection with BD (creation) is working fine,&#10;" />
     <MESSAGE value="API - Test editarNomeProject" />
     <MESSAGE value="API - Test editarNomeProjecto ( missed saved() ... )" />
     <MESSAGE value="Trying update() instead of saving !" />
@@ -1314,7 +1313,8 @@
     <MESSAGE value="Trying to cover all cases. Lets try #2" />
     <MESSAGE value="Where are you compilation error ... :3" />
     <MESSAGE value="You sneaky.." />
-    <option name="LAST_COMMIT_MESSAGE" value="You sneaky.." />
+    <MESSAGE value="is it in this function? :3" />
+    <option name="LAST_COMMIT_MESSAGE" value="is it in this function? :3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1678,14 +1678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf/evolutions/default/2.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Projecto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6377049">
@@ -1696,7 +1688,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.0311475">
+        <state vertical-scroll-proportion="0.7491803">
           <caret line="363" column="20" selection-start-line="363" selection-start-column="20" selection-end-line="363" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
