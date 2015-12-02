@@ -1,14 +1,13 @@
 package controllers;
 
+import com.avaje.ebean.Expr;
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import models.Componente;
-import models.Projecto;
-import models.Tipo;
-import models.VersaoProjecto;
+import models.*;
 import play.api.i18n.Messages;
 import play.api.libs.json.JsPath;
 import play.api.libs.ws.ssl.SystemConfiguration;
+import play.api.mvc.LegacyI18nSupport;
 import play.api.mvc.Security;
 import play.libs.Json;
 import play.data.DynamicForm;
@@ -31,6 +30,7 @@ public class Project extends Controller {
     //Finder
     public static Model.Finder<Long, Projecto> projectos = new Model.Finder(Long.class, Projecto.class);
     public static Model.Finder<Long, Tipo> tipos = new Model.Finder(Long.class, Tipo.class);
+    public static Model.Finder<Long, Sessions> sessions = new Model.Finder(String.class, Sessions.class);
 
     public Result CriarProjecto(){
         try {
@@ -311,6 +311,7 @@ public class Project extends Controller {
 
 
     public  Result getAllProjectos() {
+        ObjectNode response = Json.newObject();
         try {
             DynamicForm form = new DynamicForm().bindFromRequest();
             String jwt = form.get("jwt");
@@ -320,18 +321,28 @@ public class Project extends Controller {
                 return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
             }
             System.out.println("Received JWT: " + jwt);
-            session().put("token", jwt);
-
-            System.out.println("huh?!");
 
             String userLoggedIn = AuthManager.currentUsername(jwt);
 
-            System.out.println("Logged in username: "+ userLoggedIn);
 
-            return ok(Json.toJson(projectos.orderBy("id").findList()));
+            if (userLoggedIn == null){
+                response.put("result","Invalid JWT");
+                return badRequest(response);
+            }
+
+            //Check if its on session
+            List<Sessions> query = sessions.query().where().and(Expr.eq("username", userLoggedIn), Expr.eq("token", jwt)).findList();
+
+            if(query.size() == 1){
+                System.out.println("Logged in username: "+ userLoggedIn);
+
+                return ok(Json.toJson(projectos.orderBy("id").findList()));
+            }
+            response.put("result", "Session expired. Login again");
+
+            return badRequest(response);
         }
             catch(Exception e){
-                ObjectNode response = Json.newObject();
                 response.put("exception", e.getMessage());
                 return badRequest(response);
             }
