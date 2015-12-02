@@ -35,7 +35,7 @@ public class JWTValidator {
 
                 kPublicKey = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(pubKey));
             } catch (Exception e) {
-
+                System.out.println("getPublicKey() -> " + e.getMessage());
             }
         }
 
@@ -82,7 +82,7 @@ public class JWTValidator {
             return (String) jwtClaims.getClaimValue("username");
         } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());
-            
+
             return null;
         }
     }
