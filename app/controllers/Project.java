@@ -310,7 +310,7 @@ public class Project extends Controller {
 
 
 
-    public  Result getAllProjectos() {
+    public  Result getAllProjectos() {/*
         try {
             ObjectNode response = Json.newObject();
             DynamicForm form = new DynamicForm().bindFromRequest();
@@ -360,6 +360,7 @@ public class Project extends Controller {
                 ObjectNode response = Json.newObject();
                 response.put("exception", e.getMessage());
                 return badRequest(response);
-            }
+            }*/
+        return ok();
     }
 }
