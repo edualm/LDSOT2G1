@@ -71,6 +71,8 @@ public class JWTValidator {
 
     public static String getUsernameFromToken(String jwt) {
         try {
+            System.out.println("Here also.");
+            
             JwtConsumer jwtConsumer = new JwtConsumerBuilder()
                     .setRequireExpirationTime() // the JWT must have an expiration time
                     .setAllowedClockSkewInSeconds(30) // allow some leeway in validating time based claims to account for clock skew

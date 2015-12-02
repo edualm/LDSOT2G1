@@ -322,6 +322,8 @@ public class Project extends Controller {
             System.out.println("Received JWT: " + jwt);
             session().put("token", jwt);
 
+            System.out.println("huh?!");
+
             String userLoggedIn = AuthManager.currentUsername(jwt);
 
             System.out.println("Logged in username: "+ userLoggedIn);
