@@ -319,14 +319,14 @@ public class Project extends Controller {
             //Se nao receber JWT é porque nao tem log in ou ja esta checkado nas cookies
             if (jwt == null){
 
-                if (session().isEmpty()) {
+                if (session("jwt") == null) {
                     System.out.println("Not logged in, redirecting to auth server ...");
                     return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
                 }
                 else{
-                    List<Sessions> query = sessions.query().where().eq("token", session().get("jwt")).findList();
+                    List<Sessions> query = sessions.query().where().eq("token", session("user")).findList();
                     if (query.size() > 0){
-                        System.out.println("User recognized: "+AuthManager.currentUsername(jwt));
+                        System.out.println("User recognized: "+ AuthManager.currentUsername(session("jwt")));
                         return ok(Json.toJson(projectos.orderBy("id").findList()));
                     }
                     session().clear();
@@ -343,7 +343,7 @@ public class Project extends Controller {
                 return badRequest(response);
             }
 
-            session().put("jwt", jwt);
+            session("jwt", jwt);
             Sessions cookie = new Sessions(userLoggedIn, jwt);
             cookie.save();
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="Trying to cover all cases. Lets try #2">
+    <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Project.java" afterPath="$PROJECT_DIR$/app/controllers/Project.java" />
     </list>
@@ -59,8 +59,8 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.20588236">
-              <caret line="319" column="29" selection-start-line="319" selection-start-column="29" selection-end-line="319" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.32352942">
+              <caret line="337" column="55" selection-start-line="337" selection-start-column="55" selection-end-line="337" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -989,13 +989,7 @@
       <workItem from="1449074987220" duration="1702000" />
       <workItem from="1449077497961" duration="92000" />
       <workItem from="1449077652296" duration="2803000" />
-      <workItem from="1449093292560" duration="2696000" />
-    </task>
-    <task id="LOCAL-00014" summary="Changed from GET to POST (add Project Vers)">
-      <created>1446591703108</created>
-      <option name="number" value="00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1446591703108</updated>
+      <workItem from="1449093292560" duration="3167000" />
     </task>
     <task id="LOCAL-00015" summary="Changed from GET to POST (add Project Vers)&#10;missed save">
       <created>1446591842866</created>
@@ -1285,11 +1279,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449095850536</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Trying to cover all cases. Lets try #2">
+      <created>1449095994759</created>
+      <option name="number" value="00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1449095994759</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91857000" />
+    <option name="totallyTimeSpent" value="92328000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1783,8 +1783,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.20588236">
-          <caret line="319" column="29" selection-start-line="319" selection-start-column="29" selection-end-line="319" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.32352942">
+          <caret line="337" column="55" selection-start-line="337" selection-start-column="55" selection-end-line="337" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
