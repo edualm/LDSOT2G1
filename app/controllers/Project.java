@@ -8,11 +8,14 @@ import models.Tipo;
 import models.VersaoProjecto;
 import play.api.i18n.Messages;
 import play.api.libs.json.JsPath;
+import play.api.mvc.Security;
 import play.libs.Json;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
+import utilities.AuthManager;
 
 
 import java.io.Console;
@@ -307,6 +310,21 @@ public class Project extends Controller {
 
 
     public  Result getAllProjectos(){
-        return ok(Json.toJson(projectos.orderBy("id").findList()));
+        if(session().isEmpty()) {
+            redirect(AuthManager.AuthServer_URI+"?callback="+ AuthManager.Server_URI+"projectos");
+            DynamicForm form = new DynamicForm().bindFromRequest();
+            String jwt = form.get("jwt");
+            System.out.println("Received JWT: "+jwt);
+            session().put("token",jwt);
+        }
+
+        else
+        {
+            //TODO: check token on session BD and compare with username
+            return ok(Json.toJson(projectos.orderBy("id").findList()));
+        }
+        ObjectNode response = Json.newObject();
+        response.put("result", "Authentication error");
+        return badRequest(response);
     }
 }
