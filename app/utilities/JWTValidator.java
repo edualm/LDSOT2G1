@@ -23,6 +23,8 @@ public class JWTValidator {
     static private PublicKey kPublicKey = null;
 
     private static PublicKey getPublicKey() {
+        System.out.println("Attempting to get public key...");
+
         if (kPublicKey == null) {
             try {
                 URL url = new URL(KeyLink);
@@ -37,6 +39,8 @@ public class JWTValidator {
             } catch (Exception e) {
                 System.out.println("getPublicKey() -> " + e.getMessage());
             }
+        } else {
+            System.out.println("PubKey was already set: " + kPublicKey);
         }
 
         return kPublicKey;
@@ -81,7 +85,7 @@ public class JWTValidator {
 
             return (String) jwtClaims.getClaimValue("username");
         } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
+            System.out.println("getUsernameFromToken() -> Exception: " + e.getMessage());
 
             return null;
         }

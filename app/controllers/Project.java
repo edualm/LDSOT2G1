@@ -323,6 +323,7 @@ public class Project extends Controller {
             session().put("token", jwt);
 
             String userLoggedIn = AuthManager.currentUsername(jwt);
+
             System.out.println("Logged in username: "+ userLoggedIn);
 
             return ok(Json.toJson(projectos.orderBy("id").findList()));
