@@ -59,8 +59,8 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47863248">
-              <caret line="318" column="84" selection-start-line="318" selection-start-column="84" selection-end-line="318" selection-end-column="84" />
+            <state vertical-scroll-proportion="0.5754986">
+              <caret line="320" column="13" selection-start-line="320" selection-start-column="13" selection-end-line="320" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -911,13 +911,7 @@
       <workItem from="1448881502838" duration="75000" />
       <workItem from="1449074987220" duration="1702000" />
       <workItem from="1449077497961" duration="92000" />
-      <workItem from="1449077652296" duration="2442000" />
-    </task>
-    <task id="LOCAL-00011" summary="Fixing VersaoProjecto...">
-      <created>1446590222668</created>
-      <option name="number" value="00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1446590222668</updated>
+      <workItem from="1449077652296" duration="2803000" />
     </task>
     <task id="LOCAL-00012" summary="Lets see if it works better !">
       <created>1446591203355</created>
@@ -1207,11 +1201,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449080007772</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Setting Crypto Secret .. #2&#10;">
+      <created>1449080295989</created>
+      <option name="number" value="00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1449080295989</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88800000" />
+    <option name="totallyTimeSpent" value="89161000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1303,7 +1303,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Checking if VS is being created .. #3" />
     <MESSAGE value="Checking if VS is being created .. #3&#10;(missed save())" />
     <MESSAGE value="Not working yet ... &#10;&#10;Removed @JoinTable cause we just have Fkeys on our bridge table." />
     <MESSAGE value="Messing around with @ManyToMAny" />
@@ -1328,7 +1327,8 @@
     <MESSAGE value="testing auth on API method" />
     <MESSAGE value="Some debuggin ... #1" />
     <MESSAGE value="Setting Crypto Secret .." />
-    <option name="LAST_COMMIT_MESSAGE" value="Setting Crypto Secret .." />
+    <MESSAGE value="Setting Crypto Secret .. #2&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setting Crypto Secret .. #2&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1699,8 +1699,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47863248">
-          <caret line="318" column="84" selection-start-line="318" selection-start-column="84" selection-end-line="318" selection-end-column="84" />
+        <state vertical-scroll-proportion="0.5754986">
+          <caret line="320" column="13" selection-start-line="320" selection-start-column="13" selection-end-line="320" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

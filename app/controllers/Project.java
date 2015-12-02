@@ -319,7 +319,6 @@ public class Project extends Controller {
                 System.out.println("Not logged in, redirecting to auth server ...");
                 return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
             }
-            redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
             System.out.println("Received JWT: " + jwt);
             session().put("token", jwt);
 
