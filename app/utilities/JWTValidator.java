@@ -29,6 +29,8 @@ public class JWTValidator {
                 URLConnection conn = url.openConnection();
                 InputStream is = conn.getInputStream();
 
+                System.out.println("PubKey B64: " + is.toString());
+
                 byte[] pubKey = Base64.getDecoder().decode(is.toString());
 
                 kPublicKey = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(pubKey));
@@ -79,6 +81,8 @@ public class JWTValidator {
 
             return (String) jwtClaims.getClaimValue("username");
         } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+            
             return null;
         }
     }
