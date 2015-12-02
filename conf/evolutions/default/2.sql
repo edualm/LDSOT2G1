@@ -21,7 +21,7 @@ Date: 2015-11-18 11:58:57
 -- ----------------------------
 CREATE TABLE "public"."sessions" (
  "username" varchar(255) COLLATE "default" NOT NULL,
- "token" varchar(255) COLLATE "default" NOT NULL,
+ "token" text COLLATE "default" NOT NULL,
  "expires" date NOT NULL
 )
 WITH (OIDS=FALSE)
