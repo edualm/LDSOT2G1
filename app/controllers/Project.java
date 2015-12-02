@@ -316,20 +316,36 @@ public class Project extends Controller {
             DynamicForm form = new DynamicForm().bindFromRequest();
             String jwt = form.get("jwt");
 
+            //Se nao receber JWT é porque nao tem log in ou ja esta checkado nas cookies
             if (jwt == null){
-                System.out.println("Not logged in, redirecting to auth server ...");
-                return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
+
+                if (session().isEmpty()) {
+                    System.out.println("Not logged in, redirecting to auth server ...");
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
+                }
+                else{
+                    List<Sessions> query = sessions.query().where().eq("token", session().get("jwt")).findList();
+                    if (query.size() > 0){
+                        System.out.println("User recognized: "+AuthManager.currentUsername(jwt));
+                        return ok(Json.toJson(projectos.orderBy("id").findList()));
+                    }
+                    session().clear();
+                    System.out.println("Not logged in, redirecting to auth server ...");
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
+
+                }
             }
             System.out.println("Received JWT: " + jwt);
 
             String userLoggedIn = AuthManager.currentUsername(jwt);
-
-
             if (userLoggedIn == null){
                 response.put("result","Invalid JWT");
                 return badRequest(response);
             }
 
+            session().put("jwt", jwt);
+            Sessions cookie = new Sessions(userLoggedIn, jwt);
+            cookie.save();
             //Check if its on session
             List<Sessions> query = sessions.query().where().and(Expr.eq("username", userLoggedIn), Expr.eq("token", jwt)).findList();
 
