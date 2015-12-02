@@ -345,12 +345,14 @@ public class Project extends Controller {
                         return ok(Json.toJson(projectos.orderBy("id").findList()));
 
                     }
-                    else{
+                    else
+                    {
                         response.put("result","Invalid JWT");
                         return badRequest(response);
                     }
                 }
-                else{
+                else
+                {
                     System.out.println("Not logged in, redirecting to auth server ...");
                     return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
                 }
