@@ -1,14 +1,9 @@
 package utilities;
 
-import org.jose4j.jwk.PublicJsonWebKey;
-import org.jose4j.jwk.RsaJsonWebKey;
 import org.jose4j.jwt.JwtClaims;
-import org.jose4j.jwt.consumer.InvalidJwtException;
 import org.jose4j.jwt.consumer.JwtConsumer;
 import org.jose4j.jwt.consumer.JwtConsumerBuilder;
 
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
@@ -16,49 +11,45 @@ import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
-import java.util.Base64.*;
 
 /**
  * Created by MegaEduX on 03/11/15.
  */
 
 public class JWTValidator {
-    private static class NoSavedKeyPairException extends Exception {}
-
-    private static final String kPublicKey = "jwt-publicKey";
-    private static final String kPrivateKey = "jwt-privateKey";
-
-    private static RsaJsonWebKey jsonWebKey = null;
-
     static public final String ServerName = "jwt-auth-server";
-    static public final Integer MinimumPasswordLength = 8;
     static public final String KeyLink = "https://audiencia-zero-auth.herokuapp.com/rsa/base64";
 
+    static private PublicKey kPublicKey = null;
+
+    private static PublicKey getPublicKey() {
+        if (kPublicKey == null) {
+            try {
+                URL url = new URL(KeyLink);
+                URLConnection conn = url.openConnection();
+                InputStream is = conn.getInputStream();
+
+                byte[] pubKey = Base64.getDecoder().decode(is.toString());
+
+                kPublicKey = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(pubKey));
+            } catch (Exception e) {
+
+            }
+        }
+
+        return kPublicKey;
+    }
 
     public static boolean acceptToken(String jwt) {
-    try
-    {
-
-        URL url = new URL(KeyLink);
-        URLConnection conn = url.openConnection();
-        InputStream is = conn.getInputStream();
-
-        // Decode data on other side, by processing encoded data
-        byte[] valueDecoded= Base64.getDecoder().decode(is.toString());
-        PublicKey publicKey = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(valueDecoded));
-        RsaJsonWebKey rsaJwk = (RsaJsonWebKey) PublicJsonWebKey.Factory.newPublicJwk(publicKey);
-
-
-
-        JwtConsumer jwtConsumer = new JwtConsumerBuilder()
+        try {
+            JwtConsumer jwtConsumer = new JwtConsumerBuilder()
                 .setRequireExpirationTime() // the JWT must have an expiration time
                 .setAllowedClockSkewInSeconds(30) // allow some leeway in validating time based claims to account for clock skew
                 .setRequireSubject() // the JWT must have a subject claim
                 .setExpectedIssuer(ServerName) // whom the JWT needs to have been issued by
                 .setExpectedAudience(ServerName) // to whom the JWT is intended for
-                    .setVerificationKey(publicKey) // verify the signature with the public key
+                .setVerificationKey(getPublicKey()) // verify the signature with the public key
                 .build(); // create the JwtConsumer instance
-
 
             JwtClaims jwtClaims = jwtConsumer.processToClaims(jwt);
 
@@ -73,27 +64,14 @@ public class JWTValidator {
     }
 
     public static String getUsernameFromToken(String jwt) {
-
-
         try {
-            URL url = new URL(KeyLink);
-            URLConnection conn = url.openConnection();
-            InputStream is = conn.getInputStream();
-
-
-
-            // Decode data on other side, by processing encoded data
-            byte[] valueDecoded= Base64.getDecoder().decode(is.toString());
-            PublicKey publicKey = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(valueDecoded));
-            RsaJsonWebKey rsaJwk = (RsaJsonWebKey) PublicJsonWebKey.Factory.newPublicJwk(publicKey);
-
             JwtConsumer jwtConsumer = new JwtConsumerBuilder()
                     .setRequireExpirationTime() // the JWT must have an expiration time
                     .setAllowedClockSkewInSeconds(30) // allow some leeway in validating time based claims to account for clock skew
                     .setRequireSubject() // the JWT must have a subject claim
                     .setExpectedIssuer(ServerName) // whom the JWT needs to have been issued by
                     .setExpectedAudience(ServerName) // to whom the JWT is intended for
-                    .setVerificationKey(publicKey) // verify the signature with the public key
+                    .setVerificationKey(getPublicKey()) // verify the signature with the public key
                     .build(); // create the JwtConsumer instance
 
             JwtClaims jwtClaims = jwtConsumer.processToClaims(jwt);
