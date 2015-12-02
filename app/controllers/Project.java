@@ -346,17 +346,9 @@ public class Project extends Controller {
             session().put("jwt", jwt);
             Sessions cookie = new Sessions(userLoggedIn, jwt);
             cookie.save();
-            //Check if its on session
-            List<Sessions> query = sessions.query().where().and(Expr.eq("username", userLoggedIn), Expr.eq("token", jwt)).findList();
 
-            if(query.size() == 1){
-                System.out.println("Logged in username: "+ userLoggedIn);
-
-                return ok(Json.toJson(projectos.orderBy("id").findList()));
-            }
-            response.put("result", "Session expired. Login again");
-
-            return badRequest(response);
+            System.out.println("Cookie for "+AuthManager.currentUsername(jwt) + " saved!");
+            return ok(Json.toJson(projectos.orderBy("id").findList()));
         }
             catch(Exception e){
                 response.put("exception", e.getMessage());
