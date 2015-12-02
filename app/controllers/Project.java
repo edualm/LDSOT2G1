@@ -310,9 +310,9 @@ public class Project extends Controller {
 
 
 
-    public  Result getAllProjectos() {/*
+    public  Result getAllProjectos() {
+        ObjectNode response = Json.newObject();
         try {
-            ObjectNode response = Json.newObject();
             DynamicForm form = new DynamicForm().bindFromRequest();
 
             if(session("jwt") != null)
@@ -357,10 +357,8 @@ public class Project extends Controller {
             }
         }
             catch(Exception e){
-                ObjectNode response = Json.newObject();
                 response.put("exception", e.getMessage());
                 return badRequest(response);
-            }*/
-        return ok();
+            }
     }
 }
