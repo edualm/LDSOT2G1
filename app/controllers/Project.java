@@ -334,7 +334,7 @@ public class Project extends Controller {
             else
             {
                 if(form.get("jwt") != null){
-                    //Verificar se o JWT recebido é valido
+                    //Verificar se o JWT recebido ? valido
                     if(AuthManager.currentUsername(form.get("jwt")) != null)
                     {
                         session("jwt", form.get("jwt"));
