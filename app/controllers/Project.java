@@ -611,8 +611,7 @@ public class Project extends Controller {
 					q.delete();
 
                     response.put("result", "success");
-
-					return ok(response);
+                    return ok(response);
                 }
                 else
                 {
@@ -634,8 +633,10 @@ public class Project extends Controller {
 
                         System.out.println("Cookie saved!");
                         Projecto q = projectos.byId(id);
-						q.delete();
-						return ok(Json.toJson("Projecto " + id + " deletado com sucesso."));
+                        q.delete();
+
+                        response.put("result", "success");
+                        return ok(response);
 
                     }
                     else
