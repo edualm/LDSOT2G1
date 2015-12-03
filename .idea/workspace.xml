@@ -119,8 +119,8 @@
       <file leaf-file-name="3.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/conf/evolutions/default/3.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8168761">
-              <caret line="56" column="58" selection-start-line="56" selection-start-column="58" selection-end-line="56" selection-end-column="58" />
+            <state vertical-scroll-proportion="0.45062837">
+              <caret line="44" column="76" selection-start-line="44" selection-start-column="76" selection-end-line="44" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -950,13 +950,7 @@
       <workItem from="1449077497961" duration="92000" />
       <workItem from="1449077652296" duration="2803000" />
       <workItem from="1449093292560" duration="11711000" />
-      <workItem from="1449136478972" duration="3266000" />
-    </task>
-    <task id="LOCAL-00029" summary="Trying to fix Componente-VersaoProject relation..">
-      <created>1447673164212</created>
-      <option name="number" value="00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1447673164212</updated>
+      <workItem from="1449136478972" duration="3789000" />
     </task>
     <task id="LOCAL-00030" summary="Trying to fix foreign key error">
       <created>1447676747521</created>
@@ -1246,11 +1240,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449139328148</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Fixed evolutions. Lets try">
+      <created>1449139769164</created>
+      <option name="number" value="00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1449139769164</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104138000" />
+    <option name="totallyTimeSpent" value="104661000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1342,7 +1342,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Introducing some debug messages!" />
     <MESSAGE value="Introducing some debug messages! #2" />
     <MESSAGE value="Merge branch 'master' of github.com:MegaEduX/LDSOT2G1&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;conf/routes&#10;" />
     <MESSAGE value="Added necessary libs and starting working on user auth for API." />
@@ -1367,7 +1366,8 @@
     <MESSAGE value="Added authorization too all API methods. Tomorrow I'll do some intensive testing but I guess they are working.&#10;&#10;&#10;Also changed BD, lets try that evolution" />
     <MESSAGE value="Logout implemented" />
     <MESSAGE value="Trigger updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trigger updated" />
+    <MESSAGE value="Fixed evolutions. Lets try" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed evolutions. Lets try" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1777,8 +1777,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/evolutions/default/3.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8168761">
-          <caret line="56" column="58" selection-start-line="56" selection-start-column="58" selection-end-line="56" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.45062837">
+          <caret line="44" column="76" selection-start-line="44" selection-start-column="76" selection-end-line="44" selection-end-column="76" />
           <folding />
         </state>
       </provider>
