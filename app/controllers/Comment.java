@@ -8,6 +8,7 @@ import play.data.DynamicForm;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import utilities.AuthManager;
 
 import java.util.Date;
 
@@ -28,9 +29,10 @@ public class Comment extends Controller{
             String msg = form.get("mensagem");
             String projecto = form.get("projecto");
 
+
             Projecto p = projectos.byId(Long.valueOf(projecto));
             Date data = new Date();
-            Integer user_id = 1;
+            String user_id = AuthManager.currentUsername(session("jwt"));
             Comentario c = new Comentario(data, msg, user_id, p);
             c.save();
 

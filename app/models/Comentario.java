@@ -25,14 +25,14 @@ public class Comentario extends Model {
     public String mensagem;
 
     @Column
-    public Integer user_id;
+    public String user_id;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="projecto_id", referencedColumnName = "id")
     @JsonBackReference
     public Projecto projecto_id;
 
-    public Comentario(Date data, String mensagem, Integer user_id, Projecto projecto_id){
+    public Comentario(Date data, String mensagem, String user_id, Projecto projecto_id){
         this.data = data;
         this.mensagem = mensagem;
         this.user_id = user_id;

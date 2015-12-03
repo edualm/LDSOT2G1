@@ -15,7 +15,6 @@ Date: 2015-11-18 11:58:57
 */
 
 # --- !Ups
-
 -- -----------------------------
 -- Foreign Key structure for table "public"."comentario"
 -- ----------------------------
