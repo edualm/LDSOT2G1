@@ -318,7 +318,7 @@ public class Project extends Controller {
             if(session("jwt") != null)
             {
                 //Utilizador tem cookie, verificar se ainda n expirou
-                List<Sessions> query = sessions.query().where().eq("token", session("user")).findList();
+                List<Sessions> query = sessions.query().where().eq("token", session("jwt")).findList();
                 if (query.size() > 0)
                 {
                     System.out.println("User recognized: "+ AuthManager.currentUsername(session("jwt")));
