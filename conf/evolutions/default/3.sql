@@ -42,7 +42,7 @@ CREATE FUNCTION delete_old_rows() RETURNS trigger
 LANGUAGE plpgsql
 AS $$
 BEGIN
-  DELETE FROM "public"."sessions" WHERE expires < NOW() - INTERVAL '1 day';
+  DELETE FROM "public"."sessions" WHERE expires < NOW() - INTERVAL  '02:00:00';
   RETURN NULL;
 END;
 $$;
