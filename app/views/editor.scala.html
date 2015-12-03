@@ -1,9 +1,13 @@
 @(projectTitle: String, projectDescription: String, projectTeam: String, componentes: List[Componente])
 
-@main("Welcome to Play") {
+@main("Edit Project") {
 <link href="@routes.Assets.versioned("stylesheets/simplemde.min.css")" rel="stylesheet">
 
 <div class="container">
+    <div class="page-header">
+        <h1>Edit Project</h1>
+    </div>
+
     <div class="form-group">
         <div class="input-group">
             <div class="input-group-addon"><span class="glyphicon glyphicon-text-size"></span></div>
@@ -41,7 +45,7 @@
 
     <ul class="nav nav-tabs nav-justified" role="tablist">
         @for(c <- componentes) {
-            <li role="presentation"><a href="#@c.tipo_id.nome" aria-controls="home" role="tab" data-toggle="tab">@c.tipo_id.nome</a></li>
+            <li role="presentation"><a href="#@c.tipo_id.nome-tab" aria-controls="home" role="tab" data-toggle="tab">@c.tipo_id.nome</a></li>
         }
         <!--<li role="presentation" class="active"><a href="#componente1" aria-controls="home" role="tab" data-toggle="tab">Componente 1</a></li>
         <li role="presentation"><a href="#componente2" aria-controls="profile" role="tab" data-toggle="tab">Componente 2</a></li>
@@ -53,7 +57,7 @@
         <!-- Tab panes -->
     <div class="tab-content">
         @for(c <- componentes) {
-            <li role="presentation"><a href="#@c.tipo_id.nome" aria-controls="home" role="tab" data-toggle="tab">@c.tipo_id.nome</a></li>
+            <div role="tabpanel" class="tab-pane" id="@c.tipo_id.nome-tab"><textarea id="@c.tipo_id.nome">@c.conteudo</textarea></div>
         }
     </div>
 
@@ -68,9 +72,9 @@
     <!--<script src="@routes.Assets.versioned("javascripts/jquery-2.1.4.js")"></script>-->
 
 <script>
-    var cmpEditor1 = new SimpleMDE({ element: document.getElementById("markdownEditor1") });
-    var cmpEditor2 = new SimpleMDE({ element: document.getElementById("markdownEditor2") });
-    var cmpEditor3 = new SimpleMDE({ element: document.getElementById("markdownEditor3") });
+    @for(c <- componentes) {
+        new SimpleMDE({ element: document.getElementById("@c.tipo_id.nome") });
+    }
 
     /*  $(function() {
         $('#componentTabs a').click(function (e) {
