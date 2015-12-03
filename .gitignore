@@ -1,3 +1,4 @@
+
 #### joe made this: https://goel.io/joe
 
 #####=== Java ===#####
@@ -83,3 +84,5 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
+.DS_Store
+Thumbs.db
