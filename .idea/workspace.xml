@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6f080594-c254-4176-8f72-ad62a65c6574" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Project.java" afterPath="$PROJECT_DIR$/app/controllers/Project.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/evolutions/default/3.sql" afterPath="$PROJECT_DIR$/conf/evolutions/default/3.sql" />
     </list>
     <ignored path="ldso-az.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,10 +56,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Project.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Project.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.720548">
+            <state vertical-scroll-proportion="0.0">
               <caret line="569" column="120" selection-start-line="569" selection-start-column="120" selection-end-line="569" selection-end-column="120" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -113,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="3.sql" pinned="false" current-in-tab="false">
+      <file leaf-file-name="3.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/conf/evolutions/default/3.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="52" column="12" selection-start-line="52" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.48767123">
+              <caret line="45" column="75" selection-start-line="45" selection-start-column="75" selection-end-line="45" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -196,8 +196,8 @@
         <option value="$PROJECT_DIR$/conf/routes" />
         <option value="$PROJECT_DIR$/app/controllers/Application.java" />
         <option value="$PROJECT_DIR$/conf/evolutions/default/2.sql" />
-        <option value="$PROJECT_DIR$/conf/evolutions/default/3.sql" />
         <option value="$PROJECT_DIR$/app/controllers/Project.java" />
+        <option value="$PROJECT_DIR$/conf/evolutions/default/3.sql" />
       </list>
     </option>
   </component>
@@ -1057,13 +1057,7 @@
       <workItem from="1449077497961" duration="92000" />
       <workItem from="1449077652296" duration="2803000" />
       <workItem from="1449093292560" duration="11711000" />
-      <workItem from="1449136478972" duration="7304000" />
-    </task>
-    <task id="LOCAL-00034" summary="Checking if VS is being created .. #3&#10;(missed save())">
-      <created>1447678566183</created>
-      <option name="number" value="00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1447678566183</updated>
+      <workItem from="1449136478972" duration="7671000" />
     </task>
     <task id="LOCAL-00035" summary="Not working yet ... &#10;&#10;Removed @JoinTable cause we just have Fkeys on our bridge table.">
       <created>1447679288576</created>
@@ -1353,11 +1347,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449142573199</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Some debugging">
+      <created>1449143802447</created>
+      <option name="number" value="00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1449143802447</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108176000" />
+    <option name="totallyTimeSpent" value="108543000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1449,7 +1449,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Some debuggin ... #1" />
     <MESSAGE value="Setting Crypto Secret .." />
     <MESSAGE value="Setting Crypto Secret .. #2&#10;" />
     <MESSAGE value="Lets try.." />
@@ -1474,7 +1473,8 @@
     <MESSAGE value="Fixed evolutions. Lets try #3" />
     <MESSAGE value="Fixed evolutions. Lets try #4" />
     <MESSAGE value="Fixed criarProjecto POST" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed criarProjecto POST" />
+    <MESSAGE value="Some debugging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some debugging" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1844,14 +1844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf/evolutions/default/3.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="12" selection-start-line="52" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/conf/routes">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1862,7 +1854,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.720548">
+        <state vertical-scroll-proportion="0.0">
           <caret line="569" column="120" selection-start-line="569" selection-start-column="120" selection-end-line="569" selection-end-column="120" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1870,6 +1862,14 @@
             <element signature="method#getProjectoById#0;class#Project#0" expanded="false" />
             <element signature="e#21157#21180#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/evolutions/default/3.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48767123">
+          <caret line="45" column="75" selection-start-line="45" selection-start-column="75" selection-end-line="45" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>

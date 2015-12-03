@@ -43,7 +43,7 @@ LANGUAGE plpgsql
 AS
 $$
 BEGIN
-  DELETE FROM "public"."sessions" WHERE expires < (NOW() - INTERVAL '2:00:00');;
+  DELETE FROM "public"."sessions" WHERE expires < (NOW() - INTERVAL '2 hour');;
   RETURN NULL;;
 END;;
 $$;
