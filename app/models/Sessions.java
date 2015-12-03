@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -23,11 +24,11 @@ public class Sessions extends Model {
     public String token;
 
     @Column
-    public Date expires;
+    public Timestamp expires;
 
     public Sessions(String username, String jwt){
         this.username = username;
         this.token = jwt;
-        this.expires = new Date();
+        this.expires = new Timestamp(new Date().getTime());
     }
 }
