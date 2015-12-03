@@ -54,6 +54,4 @@ EXECUTE PROCEDURE delete_old_rows();
 
 
 # --- !Downs
-ALTER TABLE "public"."comentario" ALTER COLUMN user_id TYPE  int4;
-ALTER TABLE "public"."projecto" ALTER COLUMN user_id TYPE  int4;
-ALTER TABLE "public"."versaoprojecto" ALTER COLUMN user_id TYPE  int4;
+DROP TRIGGER trigger_delete_old_rows ON "public"."sessions";
