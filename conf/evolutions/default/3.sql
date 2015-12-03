@@ -27,11 +27,29 @@ ALTER TABLE "public"."comentario" ALTER COLUMN user_id TYPE  varchar(255);
 -- Table structure for projecto
 -- ----------------------------
 ALTER TABLE "public"."projecto" ALTER COLUMN user_id TYPE  varchar(255);
+-- ----------------------------
 
 
 -- ----------------------------
 -- Table structure for versaoprojecto
 ALTER TABLE "public"."versaoprojecto" ALTER COLUMN user_id TYPE  varchar(255);
+
+
+-- ----------------------------
+-- Table structure for projecto
+-- ----------------------------
+CREATE FUNCTION delete_old_rows() RETURNS trigger
+LANGUAGE plpgsql
+AS $$
+BEGIN
+  DELETE FROM "public"."sessions" WHERE expires < NOW() - INTERVAL '1 day';
+  RETURN NULL;
+END;
+$$;
+
+CREATE TRIGGER trigger_delete_old_rows
+AFTER INSERT OR UPDATE OR DELETE ON "public"."sessions"
+EXECUTE PROCEDURE delete_old_rows();
 
 
 
