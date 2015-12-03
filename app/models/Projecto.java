@@ -35,12 +35,12 @@ public class Projecto extends Model {
     public List<VersaoProjecto> versoesProjecto;
 
     @Column
-    public Integer user_id;
+    public String user_id;
 
     public Projecto(String nome, String descricao , String user_id){
         this.nome = nome;
         this.descricao = descricao;
-        this.user_id = (Integer) 1;
+        this.user_id = user_id;
     }
 
     public static Finder<Long,Projecto> find = new Finder(Long.class, Projecto.class);

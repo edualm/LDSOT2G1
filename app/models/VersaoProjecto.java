@@ -31,7 +31,7 @@ public class VersaoProjecto extends Model {
     public Projecto projecto_id;
 
     @Column
-    public Integer user_id;
+    public String user_id;
 
     @ManyToMany
     @JsonManagedReference
@@ -41,6 +41,6 @@ public class VersaoProjecto extends Model {
     public VersaoProjecto(String descricao , Projecto projecto_id, String user_id){
         this.descricao = descricao;
         this.projecto_id = projecto_id;
-        this.user_id = (Integer) 1;
+        this.user_id = user_id;
     }
 }

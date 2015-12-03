@@ -1,6 +1,9 @@
 package utilities;
 
+
 import play.mvc.Http;
+
+import java.util.List;
 
 /**
  * Created by MegaEduX on 03/11/15.
@@ -24,4 +27,7 @@ public class AuthManager {
 
         return (JWTValidator.getUsernameFromToken(jwt));
     }
+
+
+
 }
