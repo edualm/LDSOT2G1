@@ -12,11 +12,18 @@ POST        /projecto/editar            controllers.Project.editarConteudoProjec
 POST        /projecto/componente        controllers.Project.adicionarComponenteProjecto()
 
 
+<<<<<<< HEAD
+GET     /projectos                  controllers.Project.getAllProjectos()
+POST    /testVers                   controllers.Project.TestVersionamentoProjecto()
+GET     /projecto/:id               controllers.Project.getProjectoById(id: Long)
+GET     /removerprojecto/:id        controllers.Project.removerProjecto(id: Long)
+=======
 GET         /projectos                  controllers.Project.getAllProjectos()
 POST        /testVers                   controllers.Project.TestVersionamentoProjecto()
 GET         /projecto/:id               controllers.Project.getProjectoById(id: Long)
 
 
+>>>>>>> master
 
 POST        /comentario                 controllers.Comment.addComentario()
 POST        /comentario/edit            controllers.Comment.editComment()
