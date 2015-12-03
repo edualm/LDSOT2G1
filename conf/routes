@@ -11,7 +11,7 @@ GET         /logout                 controllers.Application.logout()
 POST        /projecto                   controllers.Project.CriarProjecto()
 POST        /projecto/nome              controllers.Project.editarNomeProjecto()
 POST        /projecto/editar            controllers.Project.editarConteudoProjecto()
-POST        /projecto/componente         controllers.Project.adicionarComponenteProjecto()
+POST        /projecto/componente        controllers.Project.adicionarComponenteProjecto()
 
 
 GET         /projectos                  controllers.Project.getAllProjectos()

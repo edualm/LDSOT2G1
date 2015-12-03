@@ -597,7 +597,8 @@ public class Project extends Controller {
             return badRequest("Wrong Project ID");
 
         try {
-			
+
+            DynamicForm form = new DynamicForm().bindFromRequest();
 			
 			if(session("jwt") != null)
             {
@@ -606,10 +607,12 @@ public class Project extends Controller {
                 if (query.size() > 0)
                 {
                     System.out.println("User recognized: "+ AuthManager.currentUsername(session("jwt")));
-                    Projecto query = projectos.byId(id);
-					query.delete();
+                    Projecto q = projectos.byId(id);
+					q.delete();
 
-					return ok(Json.toJson("Projecto " + id + " deletado com sucesso."));;
+                    response.put("result", "success");
+
+					return ok(response);
                 }
                 else
                 {
@@ -620,7 +623,7 @@ public class Project extends Controller {
             }
             else
             {
-                if(form.get("jwt") != null){
+                if( form.get("jwt") != null){
                     //Verificar se o JWT recebido ? valido
                     if(AuthManager.currentUsername(form.get("jwt")) != null)
                     {
@@ -630,8 +633,8 @@ public class Project extends Controller {
                         cookie.save();
 
                         System.out.println("Cookie saved!");
-                        Projecto query = projectos.byId(id);
-						query.delete();
+                        Projecto q = projectos.byId(id);
+						q.delete();
 						return ok(Json.toJson("Projecto " + id + " deletado com sucesso."));
 
                     }
