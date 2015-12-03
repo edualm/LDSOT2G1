@@ -1,9 +1,14 @@
+@(projectTitle: String, projectDescription: String, projectTeam: String, componentes: List[Componente])
+
 @main("Welcome to Play") {
 <link href="@routes.Assets.versioned("stylesheets/simplemde.min.css")" rel="stylesheet">
 
 <div class="container">
     <div class="form-group">
-        <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+        <div class="input-group">
+            <div class="input-group-addon"><span class="glyphicon glyphicon-text-size"></span></div>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="@projectTitle">
+        </div>
     </div>
 
     <br />
@@ -11,21 +16,46 @@
     <div class="row">
         <div class="col-md-2"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTE2OGY5OTU4NSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1MTY4Zjk5NTg1Ij48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQzLjU0MTY2NjAzMDg4Mzc5IiB5PSI3NC42NSI+MTQweDE0MDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="Test Image" class="img-circle"></div>
         <div class="col-md-10">
-            <p><input type="text" class="form-control" id="description" name="description" placeholder="Description"></p>
-            <br />
-            <p><input type="text" class="form-control" id="team" name="team" placeholder="Team"></p>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
+                    <input type="text" class="form-control" id="description" name="description" placeholder="Description" value="@projectDescription">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                    <input type="text" class="form-control" id="team" name="team" placeholder="Team" value="@projectTeam" disabled="disabled">
+                </div>
+            </div>
         </div>
     </div>
 
     <br />
 
-    <textarea id="markdownEditor">
-        # Test Header
+    <!--<ul id="componentTabs" class="nav nav-tabs nav-justified">
+        <li role="presentation" class="active"><a href="#">Componente #1</a></li>
+        <li role="presentation"><a href="#">Componente #2</a></li>
+        <li role="presentation"><a href="#">Componente #3</a></li>
+    </ul>-->
 
-        ### Test Sub-Header
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        @for(c <- componentes) {
+            <li role="presentation"><a href="#@c.tipo_id.nome" aria-controls="home" role="tab" data-toggle="tab">@c.tipo_id.nome</a></li>
+        }
+        <!--<li role="presentation" class="active"><a href="#componente1" aria-controls="home" role="tab" data-toggle="tab">Componente 1</a></li>
+        <li role="presentation"><a href="#componente2" aria-controls="profile" role="tab" data-toggle="tab">Componente 2</a></li>
+        <li role="presentation"><a href="#componente3" aria-controls="messages" role="tab" data-toggle="tab">Componente 3</a></li>-->
+    </ul>
 
-        Test text
-    </textarea>
+    <br />
+
+        <!-- Tab panes -->
+    <div class="tab-content">
+        @for(c <- componentes) {
+            <li role="presentation"><a href="#@c.tipo_id.nome" aria-controls="home" role="tab" data-toggle="tab">@c.tipo_id.nome</a></li>
+        }
+    </div>
 
     <div class="form-group">
         <label for="exampleInputFile">Attachments</label>
@@ -35,8 +65,19 @@
 </div>
 
 <script src="@routes.Assets.versioned("javascripts/simplemde.min.js")"></script>
+    <!--<script src="@routes.Assets.versioned("javascripts/jquery-2.1.4.js")"></script>-->
 
 <script>
-    var simplemde = new SimpleMDE({ element: document.getElementById("markdownEditor") });
+    var cmpEditor1 = new SimpleMDE({ element: document.getElementById("markdownEditor1") });
+    var cmpEditor2 = new SimpleMDE({ element: document.getElementById("markdownEditor2") });
+    var cmpEditor3 = new SimpleMDE({ element: document.getElementById("markdownEditor3") });
+
+    /*  $(function() {
+        $('#componentTabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        });
+    }); */
+
 </script>
 }
