@@ -567,6 +567,7 @@ public class Project extends Controller {
                     {
                         session("jwt", form.get("jwt"));
                         Sessions cookie = new Sessions(AuthManager.currentUsername(form.get("jwt")), form.get("jwt"));
+                        System.out.print("Cookie on BD: "+cookie.username+ "\n Cookie data: "+ cookie.expires.toString());
                         cookie.save();
 
                         System.out.println("Cookie saved!");
