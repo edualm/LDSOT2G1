@@ -49,7 +49,7 @@ END;;
 $$;
 
 CREATE TRIGGER trigger_delete_old_rows
-AFTER INSERT OR UPDATE OR DELETE ON "public"."sessions"
+AFTER INSERT OR DELETE ON "public"."sessions"
 EXECUTE PROCEDURE delete_old_rows();
 
 
