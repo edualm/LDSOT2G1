@@ -45,7 +45,7 @@ public class Project extends Controller {
                 {
                     String nome = form.get("nome");
                     String descricao = form.get("descricao");
-                    String user = form.get("user");
+                    String user = query.get(0).username;
 
 
                     Projecto p = new Projecto(nome,descricao,user);
@@ -76,7 +76,7 @@ public class Project extends Controller {
 
                         String nome = form.get("nome");
                         String descricao = form.get("descricao");
-                        String user = form.get("user");
+                        String user = cookie.username;
 
 
                         Projecto p = new Projecto(nome,descricao,user);
