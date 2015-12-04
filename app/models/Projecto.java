@@ -43,7 +43,7 @@ public class Projecto extends Model {
         this.user_id = user_id;
     }
 
-    public static Finder<Long,Projecto> find = new Finder(Long.class, Projecto.class);
+    public static Finder<Long, Projecto> find = new Finder(Long.class, Projecto.class);
 
     public static Projecto getLastProjectCreatedByUser(Integer user_id, String nome){
 

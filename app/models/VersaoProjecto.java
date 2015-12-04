@@ -9,6 +9,8 @@ import play.data.validation.Constraints;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by Joao Almeida on 03/11/15.
@@ -32,15 +34,19 @@ public class VersaoProjecto extends Model {
 
     @Column
     public String user_id;
+	
+	@Column
+	public Timestamp data;
 
     @ManyToMany
     @JsonManagedReference
     public List<Componente> componentes;
 
 
-    public VersaoProjecto(String descricao , Projecto projecto_id, String user_id){
+    public VersaoProjecto(String descricao , Projecto projecto_id, String user_id) {
         this.descricao = descricao;
         this.projecto_id = projecto_id;
         this.user_id = user_id;
+		this.data = new Timestamp( new Date().getTime());
     }
 }
