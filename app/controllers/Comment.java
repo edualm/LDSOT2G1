@@ -10,6 +10,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import utilities.AuthManager;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -31,9 +32,8 @@ public class Comment extends Controller{
 
 
             Projecto p = projectos.byId(Long.valueOf(projecto));
-            Date data = new Date();
             String user_id = AuthManager.currentUsername(session("jwt"));
-            Comentario c = new Comentario(data, msg, user_id, p);
+            Comentario c = new Comentario(msg, user_id, p);
             c.save();
 
             return ok(Json.toJson(c));
@@ -58,7 +58,7 @@ public class Comment extends Controller{
 
             Comentario c = comentarios.byId(Long.valueOf(id));
             c.mensagem = msg;
-            c.data = todayDate;
+            c.data = new Timestamp( new Date().getTime());
             c.update();
 
             return ok(Json.toJson(c));

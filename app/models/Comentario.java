@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import play.data.validation.Constraints;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -19,7 +20,7 @@ public class Comentario extends Model {
     public Integer id;
 
     @Column
-    public Date data;
+    public Timestamp data;
 
     @Column
     public String mensagem;
@@ -32,8 +33,8 @@ public class Comentario extends Model {
     @JsonBackReference
     public Projecto projecto_id;
 
-    public Comentario(Date data, String mensagem, String user_id, Projecto projecto_id){
-        this.data = data;
+    public Comentario(String mensagem, String user_id, Projecto projecto_id){
+        this.data = new Timestamp( new Date().getTime());
         this.mensagem = mensagem;
         this.user_id = user_id;
         this.projecto_id = projecto_id;

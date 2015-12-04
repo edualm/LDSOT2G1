@@ -20,7 +20,9 @@ Date: 2015-11-18 11:58:57
 -- Table structure for comentario
 -- ----------------------------
 ALTER TABLE "public"."versaoprojecto" ADD data timestamp;
+ALTER TABLE "public"."comentario" ALTER COLUMN data TYPE timestamp;
 
 
 # --- !Downs
 ALTER TABLE "public"."versaoprojecto" DROP data;
+ALTER TABLE "public"."comentario" ALTER COLUMN data TYPE date;
