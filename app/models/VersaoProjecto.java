@@ -32,6 +32,9 @@ public class VersaoProjecto extends Model {
 
     @Column
     public String user_id;
+	
+	@Column
+	public Timestamp data;
 
     @ManyToMany
     @JsonManagedReference
@@ -42,5 +45,6 @@ public class VersaoProjecto extends Model {
         this.descricao = descricao;
         this.projecto_id = projecto_id;
         this.user_id = user_id;
+		this.data = new Timestamp( new Date().getTime());
     }
 }
