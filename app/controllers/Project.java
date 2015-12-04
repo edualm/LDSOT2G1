@@ -608,10 +608,19 @@ public class Project extends Controller {
                 {
                     System.out.println("User recognized: "+ AuthManager.currentUsername(session("jwt")));
                     Projecto q = projectos.byId(id);
-					q.delete();
+                    String user = query.get(0).username;
 
-                    response.put("result", "success");
-                    return ok(response);
+
+                    if(q.user_id.equals(user)){
+                        q.delete();
+
+                        response.put("result", "success");
+                        return ok(response);
+                    }
+                    else{
+                        response.put("result", "Not authorized");
+                        return unauthorized(response);
+                    }
                 }
                 else
                 {
@@ -630,13 +639,21 @@ public class Project extends Controller {
                         Sessions cookie = new Sessions(AuthManager.currentUsername(form.get("jwt")), form.get("jwt"));
                         System.out.print("Cookie on BD: "+cookie.username+ "\n Cookie data: "+ cookie.expires.toString());
                         cookie.save();
+                        String username = cookie.username;
 
                         System.out.println("Cookie saved!");
                         Projecto q = projectos.byId(id);
-                        q.delete();
 
-                        response.put("result", "success");
-                        return ok(response);
+                        if(q.user_id.equals(username)){
+                            q.delete();
+
+                            response.put("result", "success");
+                            return ok(response);
+                        }
+                        else{
+                            response.put("result", "Not authorized");
+                            return unauthorized(response);
+                        }
 
                     }
                     else
