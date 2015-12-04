@@ -38,7 +38,7 @@ public class VersaoProjecto extends Model {
     public List<Componente> componentes;
 
 
-    public VersaoProjecto(String descricao , Projecto projecto_id, String user_id){
+    public VersaoProjecto(String descricao , Projecto projecto_id, String user_id) {
         this.descricao = descricao;
         this.projecto_id = projecto_id;
         this.user_id = user_id;

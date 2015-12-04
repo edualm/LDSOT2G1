@@ -1,11 +1,41 @@
-@(projectTitle: String, projectDescription: String, projectTeam: String, componentes: List[Componente])
+@(projectTitle: String, projectDescription: String, projectTeam: String, componentes: List[Componente], versions: List[Integer])
 
 @main("Edit Project") {
 <link href="@routes.Assets.versioned("stylesheets/simplemde.min.css")" rel="stylesheet">
 
 <div class="container">
     <div class="page-header">
-        <h1>Edit Project</h1>
+        <div class="row">
+            <div class="col-md-10">
+                <h1>Edit Project</h1>
+            </div>
+            <div class="col-md-1">
+                <br />
+                <div class="pull-right">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="versions-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Versions
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="versions-dropdown">
+                            @for(id <- versions) {
+                                @if(id == versions.size()) {
+                                    <li><a href="#">Version @id (Current)</a></li>
+                                } else {
+                                    <li><a href="#">Version @id</a></li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <br />
+                <div class="pull-right">
+                    <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="form-group">
@@ -61,10 +91,36 @@
         }
     </div>
 
-    <div class="form-group">
-        <label for="exampleInputFile">Attachments</label>
-        <input type="file" id="exampleInputFile">
-        <p><a href="#">Image.png</a> (100 KB) &bull; <a href="#">Remove</a></p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Tags</label>
+                <br />
+                <span class="label label-default">Default&nbsp;&nbsp;<span aria-hidden="true">&times;</span></span>&nbsp;
+                <span class="label label-default">Default&nbsp;&nbsp;<span aria-hidden="true">&times;</span></span>&nbsp;
+                <span class="label label-default">Default&nbsp;&nbsp;<span aria-hidden="true">&times;</span></span>
+            </div>
+
+            <hr />
+
+            <form class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control input-sm" id="tag" name="tag" placeholder="Tag Name">
+                </div>
+                &nbsp;
+                <button type="submit" class="btn btn-default btn-sm">Add</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="exampleInputFile">Attachments</label>
+                <input type="file" id="exampleInputFile">
+
+                <hr />
+
+                <p><a href="#">Image.png</a> (100 KB) &bull; <a href="#">Remove</a></p>
+            </div>
+        </div>
     </div>
 </div>
 
