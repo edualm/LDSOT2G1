@@ -7,6 +7,7 @@ import play.mvc.Result;
 
 import utilities.AuthManager;
 import views.html.editor;
+import views.html.generic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,10 @@ public class Editor extends Controller {
             List<Sessions> query = Project.sessions.query().where().eq("token", session("jwt")).findList();
             if (query.size() > 0) {
                 Projecto p = Project.projectos.byId(id);
+
+                if (p == null) {
+                    return notFound(generic.render("Not Found!", "Project not found."));
+                }
 
                 String user = query.get(0).username;
 

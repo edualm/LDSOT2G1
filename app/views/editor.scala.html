@@ -85,7 +85,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     @for(mt <- missingTipos) {
-                        <li><a href="#">@mt.nome</a></li>
+                        <li><a href="#" id="component-type-@mt.id" name="componentCreationItem">@mt.nome</a></li>
                     }
                 </ul>
             </li>
@@ -134,13 +134,14 @@
     </div>
 </div>
 
-<script src="@routes.Assets.versioned("javascripts/simplemde.min.js")"></script>
+    <!-- Need to find a better way than injecting jQuery twice. -->
+    <script src="@routes.Assets.versioned("javascripts/jquery-2.1.4.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/simplemde.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/editor.js")"></script>
 
 <script>
     @for(c <- componentes) {
         new SimpleMDE({ element: document.getElementById("@c.tipo_id.nome") });
     }
-
-
 </script>
 }
