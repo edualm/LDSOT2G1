@@ -1,4 +1,4 @@
-@(projectTitle: String, projectDescription: String, projectTeam: String, componentes: List[Componente], versions: List[Integer])
+@(projectTitle: String, projectDescription: String, projectTeam: String, componentes: List[Componente], missingTipos: List[Tipo], currentVersion: VersaoProjecto, olderVersions: List[VersaoProjecto])
 
 @main("Edit Project") {
 <link href="@routes.Assets.versioned("stylesheets/simplemde.min.css")" rel="stylesheet">
@@ -18,11 +18,13 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="versions-dropdown">
-                            @for(id <- versions) {
-                                @if(id == versions.size()) {
-                                    <li><a href="#">Version @id (Current)</a></li>
-                                } else {
-                                    <li><a href="#">Version @id</a></li>
+                            <li><a href="#">@currentVersion.data (Current)</a></li>
+
+                            @if(olderVersions.nonEmpty) {
+                                <li role="separator" class="divider"></li>
+
+                                @for(v <- olderVersions) {
+                                    <li><a href="#">Version @v.data</a></li>
                                 }
                             }
                         </ul>
@@ -67,19 +69,27 @@
 
     <br />
 
-    <!--<ul id="componentTabs" class="nav nav-tabs nav-justified">
-        <li role="presentation" class="active"><a href="#">Componente #1</a></li>
-        <li role="presentation"><a href="#">Componente #2</a></li>
-        <li role="presentation"><a href="#">Componente #3</a></li>
-    </ul>-->
+    <!-- Create Components -->
+
+
 
     <ul class="nav nav-tabs nav-justified" role="tablist">
         @for(c <- componentes) {
             <li role="presentation"><a href="#@c.tipo_id.nome-tab" aria-controls="home" role="tab" data-toggle="tab">@c.tipo_id.nome</a></li>
         }
-        <!--<li role="presentation" class="active"><a href="#componente1" aria-controls="home" role="tab" data-toggle="tab">Componente 1</a></li>
-        <li role="presentation"><a href="#componente2" aria-controls="profile" role="tab" data-toggle="tab">Componente 2</a></li>
-        <li role="presentation"><a href="#componente3" aria-controls="messages" role="tab" data-toggle="tab">Componente 3</a></li>-->
+
+        @if(missingTipos.nonEmpty) {
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    New Component <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    @for(mt <- missingTipos) {
+                        <li><a href="#">@mt.nome</a></li>
+                    }
+                </ul>
+            </li>
+        }
     </ul>
 
     <br />
@@ -125,19 +135,12 @@
 </div>
 
 <script src="@routes.Assets.versioned("javascripts/simplemde.min.js")"></script>
-    <!--<script src="@routes.Assets.versioned("javascripts/jquery-2.1.4.js")"></script>-->
 
 <script>
     @for(c <- componentes) {
         new SimpleMDE({ element: document.getElementById("@c.tipo_id.nome") });
     }
 
-    /*  $(function() {
-        $('#componentTabs a').click(function (e) {
-            e.preventDefault()
-            $(this).tab('show')
-        });
-    }); */
 
 </script>
 }

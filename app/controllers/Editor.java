@@ -8,18 +8,16 @@ import play.mvc.Result;
 import utilities.AuthManager;
 import views.html.editor;
 
-import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by MegaEduX on 03/12/15.
  */
+
 public class Editor extends Controller {
     public Result showTestPage() {
-        return ok(editor.render("foo", "bar", "baz", null, null));
+        return ok(editor.render("foo", "bar", "baz", null, null, null, null));
     }
 
     public Result editProject(Long id) {
@@ -34,13 +32,32 @@ public class Editor extends Controller {
                 if (p.user_id.equals(user)) {
                     System.out.println("editProject(): Auth success!");
 
-                    ArrayList<Integer> versionIds = new ArrayList<>();
+                    ArrayList<Tipo> missingTipos = new ArrayList<>();
 
-                    for (VersaoProjecto vp : p.versoesProjecto) {
-                        versionIds.add(versionIds.size() + 1);
+                    List<Componente> currentComponents = p.versoesProjecto.get(p.versoesProjecto.size() - 1).componentes;
+
+                    for (Tipo t: Tipo.getTipos()) {
+                        boolean contains = false;
+
+                        for (Componente c : currentComponents) {
+                            if (c.tipo_id.equals(t)) {
+                                contains = true;
+
+                                break;
+                            }
+                        }
+
+                        if (!contains)
+                            missingTipos.add(t);
                     }
 
-                    return ok(editor.render(p.nome, p.descricao, AuthManager.currentUsername(session("jwt")), p.versoesProjecto.get(p.versoesProjecto.size() - 1).componentes, versionIds));
+                    return ok(editor.render(p.nome,
+                            p.descricao,
+                            AuthManager.currentUsername(session("jwt")),
+                            p.versoesProjecto.get(p.versoesProjecto.size() - 1).componentes,
+                            missingTipos,
+                            p.versoesProjecto.get(p.versoesProjecto.size() - 1),
+                            p.versoesProjecto));
                 }
             }
         }
