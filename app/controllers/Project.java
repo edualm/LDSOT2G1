@@ -220,7 +220,7 @@ public class Project extends Controller {
                 List<Sessions> query = sessions.query().where().eq("token", session("jwt")).findList();
                 if (query.size() > 0) {
                     String id = form.get("id");
-                    String conteudo = form.get("conteudo");
+                    //String conteudo = form.get("conteudo");
                     String user = query.get(0).username;
 
                     List<Tipo> tipos = Tipo.getTipos();
@@ -236,20 +236,21 @@ public class Project extends Controller {
                         boolean ran = false;
 
                         for (Tipo t : tipos) {
-                            String tStr = form.get(t.nome);
+                            String componentContent = form.get(t.nome);
 
-                            if (tStr != null) {
+                            if (componentContent != null) {
                                 for (Componente c : componentes) {
                                     System.out.println("Componente: " + c.tipo_id.nome);
-                                    System.out.println("Componente API: " + tStr);
+                                    System.out.println("Componente API: " + t.nome);
 
-                                    if (c.tipo_id.nome.equals(tStr)) {
+                                    if (c.tipo_id.nome.equals(t.nome)) {
                                         ran = true;
                                         System.out.println("Found the component name");
 
                                         newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
                                         System.out.println("Removing old component...");
                                         newVS.componentes.remove(c);
+
                                         Componente cNew = new Componente("", c.tipo_id);
                                         cNew.save();
                                         System.out.println("Adding new Component to Versao projeto");
@@ -257,9 +258,10 @@ public class Project extends Controller {
 
                                         for (Componente newC : newVS.componentes) {
                                             System.out.println("ComponenteNew: " + newC.tipo_id.nome);
-                                            if (newC.tipo_id.nome.equals(tStr)) {
+
+                                            if (newC.tipo_id.nome.equals(componentContent)) {
                                                 System.out.println("Found the  New component name");
-                                                newC.conteudo = conteudo;
+                                                newC.conteudo = form.get(t.nome);
                                                 newC.update();
                                             }
                                         }

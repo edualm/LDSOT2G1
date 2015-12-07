@@ -31,9 +31,40 @@ $('[name="componentCreationItem"]').click(function() {
 });
 
 $("#save").click(function() {
-    for (var idx in editors) {
-        console.log('Editor contents: ' + editors[idx].value());
+    var urlSpl = location.pathname.split('/');
+    var proj = urlSpl[urlSpl.length - 1];
+
+    var xhr = getXMLHTTP();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+
+            console.log("Name and description changed!");
+
+            //  Change me!
+
+            //  location.reload();
+
+            var xhr2 = getXMLHTTP();
+
+            var componentParams = 'id=' + proj;
+
+            for (var idx in editors) {
+                console.log('Editor contents: ' + editors[idx].value());
+
+                //  Now what...
+            }
+        }
     }
 
-    console.log('Now do something with this.');
+    var nameParams = 'id=' + proj + '&nome=' + $("#name").val + '&descricao=' + $("#description").val;
+
+    console.log('Name Params: ' + nameParams);
+
+    xhr.open('POST', '/projecto/nome', true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xhr.send(nameParams);
 });
