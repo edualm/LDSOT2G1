@@ -2,6 +2,7 @@ package controllers;
 
 import models.*;
 
+import org.apache.commons.lang3.ArrayUtils;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -10,6 +11,8 @@ import views.html.editor;
 import views.html.generic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,6 +20,12 @@ import java.util.List;
  */
 
 public class Editor extends Controller {
+    public static <T> T[] reverse(T[] array) {
+        T[] copy = array.clone();
+        Collections.reverse(Arrays.asList(copy));
+        return copy;
+    }
+
     public Result showTestPage() {
         return ok(editor.render("foo", "bar", "baz", null, null, null, null));
     }
@@ -56,12 +65,11 @@ public class Editor extends Controller {
                             missingTipos.add(t);
                     }
 
-                    //  Debug code inc...
+                    ArrayList<VersaoProjecto> vps = new ArrayList<>(p.versoesProjecto);
 
-                    for (Componente c : p.versoesProjecto.get(p.versoesProjecto.size() - 1).componentes) {
-                        System.out.println(c.id);
-                        System.out.println(c.conteudo);
-                    }
+                    Collections.reverse(vps);
+
+                    vps.remove(0);
 
                     return ok(editor.render(p.nome,
                             p.descricao,
@@ -69,7 +77,7 @@ public class Editor extends Controller {
                             p.versoesProjecto.get(p.versoesProjecto.size() - 1).componentes,
                             missingTipos,
                             p.versoesProjecto.get(p.versoesProjecto.size() - 1),
-                            p.versoesProjecto));
+                            vps));
                 }
             }
         }

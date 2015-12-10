@@ -18,13 +18,13 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="versions-dropdown">
-                            <li><a href="#">@currentVersion.data (Current)</a></li>
+                            <li><a href="#"><b>Current</b>: @currentVersion.data.format("dd-mm-yyyy HH:mm")</a></li>
 
                             @if(olderVersions.nonEmpty) {
                                 <li role="separator" class="divider"></li>
 
                                 @for(v <- olderVersions) {
-                                    <li><a href="#">Version @v.data</a></li>
+                                    <li><a href="#"><b>Old</b>: @v.data.format("dd-mm-yyyy HH:mm")</a></li>
                                 }
                             }
                         </ul>
@@ -156,7 +156,7 @@
     if (!done) {
     setTimeout(function() {
     editors.push(new SimpleMDE({ element: document.getElementById("@c.tipo_id.nome") }));
-    }, 100)
+    }, 1)
 
         }
 });
