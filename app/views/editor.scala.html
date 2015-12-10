@@ -75,7 +75,7 @@
 
     <ul class="nav nav-tabs nav-justified" role="tablist">
         @for(c <- componentes) {
-            <li role="presentation"><a href="#@c.tipo_id.nome-tab" aria-controls="home" role="tab" data-toggle="tab">@c.tipo_id.nome</a></li>
+            <li name="tab" role="presentation"><a id="@c.tipo_id.nome-tabActivator" href="#@c.tipo_id.nome-tab" aria-controls="home" role="tab" data-toggle="tab">@c.tipo_id.nome</a></li>
         }
 
         @if(missingTipos.nonEmpty) {
@@ -144,7 +144,22 @@
     var editors = [];
 
     @for(c <- componentes) {
-        editors.push(new SimpleMDE({ element: document.getElementById("@c.tipo_id.nome") }));
+        $("#@c.tipo_id.nome-tabActivator").click(function() {
+    var done = false;
+
+    for (var ed in editors) {
+        if (editors[ed].element.id == "@c.tipo_id.nome") {
+            done = true;
+        }
+    }
+
+    if (!done) {
+    setTimeout(function() {
+    editors.push(new SimpleMDE({ element: document.getElementById("@c.tipo_id.nome") }));
+    }, 100)
+
+        }
+});
     }
 </script>
 }

@@ -61,7 +61,7 @@ public class Project extends Controller {
                 {
                     session().clear();
                     System.out.println("Cookie expired, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
                 }
             }
             else
@@ -98,7 +98,7 @@ public class Project extends Controller {
                 else
                 {
                     System.out.println("Not logged in, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
                 }
             }
         }
@@ -150,7 +150,7 @@ public class Project extends Controller {
                 {
                     session().clear();
                     System.out.println("Cookie expired, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
                 }
             }
             else
@@ -194,7 +194,7 @@ public class Project extends Controller {
                 else
                 {
                     System.out.println("Not logged in, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
                 }
             }
         }
@@ -233,6 +233,8 @@ public class Project extends Controller {
 
                         VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao, oldVS.projecto_id, oldVS.user_id.toString());
 
+                        newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
+
                         boolean ran = false;
 
                         for (Tipo t : tipos) {
@@ -245,18 +247,22 @@ public class Project extends Controller {
 
                                     if (c.tipo_id.nome.equals(t.nome)) {
                                         ran = true;
-                                        System.out.println("Found the component name");
+                                        System.out.println("Found the component name.");
 
-                                        newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
                                         System.out.println("Removing old component...");
                                         newVS.componentes.remove(c);
 
-                                        Componente cNew = new Componente("", c.tipo_id);
+                                        Componente cNew = new Componente(componentContent, c.tipo_id);
                                         cNew.save();
+
                                         System.out.println("Adding new Component to Versao projeto");
                                         newVS.componentes.add(cNew);
 
-                                        for (Componente newC : newVS.componentes) {
+                                        cNew.update();
+
+                                        //  ??? lolwut
+
+                                        /*  for (Componente newC : newVS.componentes) {
                                             System.out.println("ComponenteNew: " + newC.tipo_id.nome);
 
                                             if (newC.tipo_id.nome.equals(componentContent)) {
@@ -264,7 +270,7 @@ public class Project extends Controller {
                                                 newC.conteudo = form.get(t.nome);
                                                 newC.update();
                                             }
-                                        }
+                                        }   */
                                     }
                                 }
 
@@ -290,15 +296,15 @@ public class Project extends Controller {
                     return unauthorized(response);
                 } else {
                     session().clear();
+
                     System.out.println("Cookie expired, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
                 }
             } else {
                 System.out.println("Not logged in, redirecting to auth server ...");
-                return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             ObjectNode json = Json.newObject();
             json.put("result", "error");
             json.put("excecao", e.getMessage());
@@ -353,7 +359,7 @@ public class Project extends Controller {
                 {
                     session().clear();
                     System.out.println("Cookie expired, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
                 }
             }
             else
@@ -406,7 +412,7 @@ public class Project extends Controller {
                 else
                 {
                     System.out.println("Not logged in, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
                 }
             }
         }
@@ -461,7 +467,7 @@ public class Project extends Controller {
                 {
                     session().clear();
                     System.out.println("Cookie expired, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()) + "projectos");
                 }
             }
             else
@@ -488,7 +494,7 @@ public class Project extends Controller {
                 else
                 {
                     System.out.println("Not logged in, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI + "projectos");
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()) + "projectos");
                 }
             }
         }
@@ -534,7 +540,7 @@ public class Project extends Controller {
                 {
                     session().clear();
                     System.out.println("Cookie expired, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
                 }
             }
             else
@@ -573,7 +579,7 @@ public class Project extends Controller {
                 else
                 {
                     System.out.println("Not logged in, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
                 }
             }
         }

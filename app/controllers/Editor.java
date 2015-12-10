@@ -56,6 +56,13 @@ public class Editor extends Controller {
                             missingTipos.add(t);
                     }
 
+                    //  Debug code inc...
+
+                    for (Componente c : p.versoesProjecto.get(p.versoesProjecto.size() - 1).componentes) {
+                        System.out.println(c.id);
+                        System.out.println(c.conteudo);
+                    }
+
                     return ok(editor.render(p.nome,
                             p.descricao,
                             AuthManager.currentUsername(session("jwt")),

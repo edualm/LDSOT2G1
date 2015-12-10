@@ -54,7 +54,7 @@ public class Comment extends Controller{
                 {
                     session().clear();
                     System.out.println("Cookie expired, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
                 }
             }
             else
@@ -90,7 +90,7 @@ public class Comment extends Controller{
                 else
                 {
                     System.out.println("Not logged in, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
                 }
             }
         } catch (Exception e) {
@@ -134,7 +134,7 @@ public class Comment extends Controller{
                 } else {
                     session().clear();
                     System.out.println("Cookie expired, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
                 }
             } else {
                 if (form.get("jwt") != null) {
@@ -172,7 +172,7 @@ public class Comment extends Controller{
                     }
                 } else {
                     System.out.println("Not logged in, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
                 }
             }
         }

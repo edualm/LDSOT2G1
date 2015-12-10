@@ -47,24 +47,38 @@ $("#save").click(function() {
 
             //  location.reload();
 
+            var componentObj = {
+                id: proj
+            };
+
+            for (var idx in editors)
+                componentObj[editors[idx].element.id] = editors[idx].value();
+
+            console.log(componentObj);
+
             var xhr2 = getXMLHTTP();
 
-            var componentParams = 'id=' + proj;
+            xhr2.open('POST', '/projecto/editar', true);
+            xhr2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-            for (var idx in editors) {
-                console.log('Editor contents: ' + editors[idx].value());
-
-                //  Now what...
+            xhr2.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    console.log("We good? We good.");
+                }
             }
+
+            xhr2.send($.param(componentObj));
         }
     }
 
-    var nameParams = 'id=' + proj + '&nome=' + $("#name").val + '&descricao=' + $("#description").val;
-
-    console.log('Name Params: ' + nameParams);
-
     xhr.open('POST', '/projecto/nome', true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    var nameParams = $.param({
+        id: proj,
+        nome: $("#title").val(),
+        descricao: $("#description").val()
+    });
 
     xhr.send(nameParams);
 });
