@@ -51,7 +51,7 @@ public class ProjectTag extends Controller {
         }
     }
 
-    public Result getTagById(Long id){
+    public static Result getTagById(Long id){
 
         ObjectNode response = Json.newObject();
 

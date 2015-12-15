@@ -1,5 +1,6 @@
 package controllers;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -502,6 +503,98 @@ public class Project extends Controller {
                 response.put("exception", e.getMessage());
                 return badRequest(response);
             }
+    }
+
+    public Result addTagProjeto(Long projectId, Long tagId) {
+        //  create tag if it doesn't exist
+        //  add to project
+
+        ObjectNode response = Json.newObject();
+
+        if (projectId < 0 || tagId < 0) {
+            response.put("result", "Wrong project or tag ID.");
+
+            return badRequest(response);
+        }
+
+        try {
+            DynamicForm form = new DynamicForm().bindFromRequest();
+
+            if(session("jwt") != null) {
+                List<Sessions> query = sessions.query().where().eq("token", session("jwt")).findList();
+
+                if (query.size() > 0) {
+                    System.out.println("User recognized: "+ AuthManager.currentUsername(session("jwt")));
+                    Projecto q = projectos.byId(projectId);
+                    String user = query.get(0).username;
+
+                    List<Tag> tags = Ebean.find(Tag.class).where().eq("id", tagId).findList();
+
+                    if (tags.size() == 1) {
+                        Tag tag = tags.get(0);
+
+                        q.tags.add(tag);
+
+                        q.save();
+                        tag.save();
+
+                        return ok();
+                    } else {
+                        response.put("result", "Tag not found!");
+
+                        return notFound(response);
+                    }
+                } else {
+                    session().clear();
+                    System.out.println("Cookie expired, redirecting to auth server ...");
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
+                }
+            }
+            else
+            {
+                if( form.get("jwt") != null){
+                    //Verificar se o JWT recebido ? valido
+                    if(AuthManager.currentUsername(form.get("jwt")) != null)
+                    {
+                        session("jwt", form.get("jwt"));
+                        Sessions cookie = new Sessions(AuthManager.currentUsername(form.get("jwt")), form.get("jwt"));
+                        System.out.print("Cookie on BD: "+cookie.username+ "\n Cookie data: "+ cookie.expires.toString());
+                        cookie.save();
+                        String username = cookie.username;
+
+                        System.out.println("Cookie saved!");
+                        Projecto q = projectos.byId(id);
+
+                        if(q.user_id.equals(username)){
+                            q.delete();
+
+                            response.put("result", "success");
+                            return ok(response);
+                        }
+                        else{
+                            response.put("result", "Not authorized");
+                            return unauthorized(response);
+                        }
+
+                    }
+                    else
+                    {
+                        response.put("result","Invalid JWT");
+                        return badRequest(response);
+                    }
+                }
+                else
+                {
+                    System.out.println("Not logged in, redirecting to auth server ...");
+                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
+                }
+            }
+        }
+        catch(Exception e){
+            response.put("exception", e.getMessage());
+            return badRequest(response);
+        }
+    }
     }
 
     public  Result removerProjecto(Long id) {
