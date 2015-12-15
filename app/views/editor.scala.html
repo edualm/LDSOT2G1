@@ -1,4 +1,4 @@
-@(projectTitle: String, projectDescription: String, projectTeam: String, componentes: List[Componente], missingTipos: List[Tipo], currentVersion: VersaoProjecto, olderVersions: List[VersaoProjecto])
+@(projectTitle: String, projectDescription: String, projectTeam: String, componentes: List[Componente], missingTipos: List[Tipo], currentVersion: VersaoProjecto, olderVersions: List[VersaoProjecto], tags: List[ProjectTag])
 
 @main("Edit Project") {
 <link href="@routes.Assets.versioned("stylesheets/simplemde.min.css")" rel="stylesheet">
@@ -106,16 +106,16 @@
             <div class="form-group">
                 <label>Tags</label>
                 <br />
-                <span class="label label-default">Default&nbsp;&nbsp;<span aria-hidden="true">&times;</span></span>&nbsp;
-                <span class="label label-default">Default&nbsp;&nbsp;<span aria-hidden="true">&times;</span></span>&nbsp;
-                <span class="label label-default">Default&nbsp;&nbsp;<span aria-hidden="true">&times;</span></span>
+                @for(t <- tags) {
+                    <span class="label label-default">@t.nome&nbsp;&nbsp;<span aria-hidden="true">&times;</span></span>&nbsp;
+                }
             </div>
 
             <hr />
 
             <form class="form-inline">
                 <div class="form-group">
-                    <input type="text" class="form-control input-sm" id="tag" name="tag" placeholder="Tag Name">
+                    <input type="text" class="form-control input-sm" id="tag" name="tag" placeholder="ProjectTag Name">
                 </div>
                 &nbsp;
                 <button type="submit" class="btn btn-default btn-sm">Add</button>
@@ -155,7 +155,13 @@
 
     if (!done) {
     setTimeout(function() {
-    editors.push(new SimpleMDE({ element: document.getElementById("@c.tipo_id.nome") }));
+        var ed = new SimpleMDE({ element: document.getElementById("@c.tipo_id.nome") });
+
+        ed.toolbarElements["side-by-side"].remove();
+        ed.toolbarElements["fullscreen"].remove();
+
+        editors.push(ed);
+
     }, 1)
 
         }

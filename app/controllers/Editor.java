@@ -26,13 +26,10 @@ public class Editor extends Controller {
         return copy;
     }
 
-    public Result showTestPage() {
-        return ok(editor.render("foo", "bar", "baz", null, null, null, null));
-    }
-
     public Result editProject(Long id) {
         if (session("jwt") != null) {
             //Utilizador tem cookie, verificar se ainda n expirou
+
             List<Sessions> query = Project.sessions.query().where().eq("token", session("jwt")).findList();
             if (query.size() > 0) {
                 Projecto p = Project.projectos.byId(id);
@@ -71,13 +68,16 @@ public class Editor extends Controller {
 
                     vps.remove(0);
 
+                    System.out.println("Tags: " + p.tags);
+
                     return ok(editor.render(p.nome,
                             p.descricao,
                             AuthManager.currentUsername(session("jwt")),
                             p.versoesProjecto.get(p.versoesProjecto.size() - 1).componentes,
                             missingTipos,
                             p.versoesProjecto.get(p.versoesProjecto.size() - 1),
-                            vps));
+                            vps,
+                            p.tags));
                 }
             }
         }

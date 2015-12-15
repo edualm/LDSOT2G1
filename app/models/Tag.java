@@ -2,6 +2,8 @@ package models;
 
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.annotation.Nullable;
 import javax.persistence.*;
@@ -19,6 +21,11 @@ public class Tag extends Model{
 
     @Column
     public String nome;
+
+    @ManyToMany()
+    @JoinTable(name = "projecto_tag", joinColumns = @JoinColumn(name = "tag"), inverseJoinColumns = @JoinColumn(name = "projecto"))
+    @JsonManagedReference
+    public List<Projecto> projectos;
 
     public  Tag(String nome) {
         this.nome = nome;
