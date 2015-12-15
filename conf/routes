@@ -25,9 +25,10 @@ POST        /ficheiro                   controllers.FileProject.addFile()
 GET         /ficheiros                  controllers.FileProject.getAllFiles()
 GET         /ficheiro/:id               controllers.FileProject.getFileById(id: Long)
 
-POST        /tag                        controllers.FileTag.addTag()
-GET         /tags                       controllers.FileTag.getAllTags()
-GET         /tag/:id                    controllers.FileTag.getTagById(id: Long)
+POST        /tag                        controllers.ProjectTag.addTag()
+GET         /tags                       controllers.ProjectTag.getAllTags()
+GET         /tag/:id                    controllers.ProjectTag.getTagById(id: Long)
+GET         /tags/:id                   controllers.ProjectTag.getTagsForProject(id: Long)
 
 GET         /editor/:id                 controllers.Editor.editProject(id: Long)
 

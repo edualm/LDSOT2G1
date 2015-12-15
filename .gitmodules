@@ -1,3 +1,0 @@
-[submodule "jwt-auth-server"]
-	path = jwt-auth-server
-	url = git@github.com:MegaEduX/jwt-auth-server.git

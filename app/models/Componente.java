@@ -1,5 +1,6 @@
 package models;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
 import com.avaje.ebeaninternal.server.cache.CachedManyIds;
 import com.fasterxml.jackson.annotation.JsonBackReference;

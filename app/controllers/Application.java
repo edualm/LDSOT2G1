@@ -16,7 +16,6 @@ public class Application extends Controller {
 
     public static Model.Finder<Long, Sessions> sessions = new Model.Finder(String.class, Sessions.class);
 
-
     public Result index() {
         return ok(index.render("Your new application is ready."));
     }
@@ -38,7 +37,7 @@ public class Application extends Controller {
 
             session().clear();
             return ok(index.render("Logged out"));
-        }catch (Exception e){
+        } catch (Exception e){
                 session().clear();
             return ok(index.render("Logged out"));
         }

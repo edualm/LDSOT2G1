@@ -34,6 +34,11 @@ public class Projecto extends Model {
     @JsonManagedReference
     public List<VersaoProjecto> versoesProjecto;
 
+    @ManyToMany()
+    @JoinTable(name = "projecto_tag", joinColumns = @JoinColumn(name = "projecto"), inverseJoinColumns = @JoinColumn(name = "tag"))
+    @JsonManagedReference
+    public List<Tag> tags;
+
     @Column
     public String user_id;
 
