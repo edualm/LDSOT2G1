@@ -37,26 +37,28 @@ public class Project extends Controller {
         try {
             DynamicForm form = new DynamicForm().bindFromRequest();
 
-            if(session("jwt") != null)
-            {
+            //if(session("jwt") != null)
+           // {
                 //Utilizador tem cookie, verificar se ainda n expirou
-                List<Sessions> query = sessions.query().where().eq("token", session("jwt")).findList();
-                if (query.size() > 0)
-                {
-                    String nome = form.get("nome");
-                    String descricao = form.get("descricao");
-                    String user = query.get(0).username;
+                //List<Sessions> query = sessions.query().where().eq("token", session("jwt")).findList();
+                //if (query.size() > 0)
+                //{
+                    String nome = form.get("title");
+                    String descricao = form.get("description");
+                    //String user = query.get(0).username;
+                    String user = "username";
 
 
                     Projecto p = new Projecto(nome,descricao,user);
-                    VersaoProjecto vs = new VersaoProjecto(descricao, p, AuthManager.currentUsername(session("jwt")));
+                   // VersaoProjecto vs = new VersaoProjecto(descricao, p, AuthManager.currentUsername(session("jwt")));
+                    VersaoProjecto vs = new VersaoProjecto(descricao, p, "username");
                     p.save();
                     vs.save();
                     response.put("result", "success");
 
 
                     return ok(response);
-                }
+               /* }
                 else
                 {
                     session().clear();
@@ -74,8 +76,8 @@ public class Project extends Controller {
                         Sessions cookie = new Sessions(AuthManager.currentUsername(form.get("jwt")), form.get("jwt"));
                         cookie.save();
 
-                        String nome = form.get("nome");
-                        String descricao = form.get("descricao");
+                        String nome = form.get("title");
+                        String descricao = form.get("description");
                         String user = cookie.username;
 
 
@@ -100,7 +102,7 @@ public class Project extends Controller {
                     System.out.println("Not logged in, redirecting to auth server ...");
                     return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
                 }
-            }
+            }*/
         }
         catch (Exception e){
             ObjectNode json = Json.newObject();
