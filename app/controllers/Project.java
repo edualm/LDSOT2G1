@@ -3,6 +3,7 @@ package controllers;
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.*;
 import play.api.i18n.Messages;
@@ -505,45 +506,59 @@ public class Project extends Controller {
             }
     }
 
-    public Result addTagProjeto(Long projectId, Long tagId) {
+    public Result editarTagsProjecto(/* Long projectId, Long tagId */) {
         //  create tag if it doesn't exist
         //  add to project
 
         ObjectNode response = Json.newObject();
 
-        if (projectId < 0 || tagId < 0) {
-            response.put("result", "Wrong project or tag ID.");
+        DynamicForm form = new DynamicForm().bindFromRequest();
 
-            return badRequest(response);
-        }
+        String tagsArrJSON = form.get("tags");
 
         try {
-            DynamicForm form = new DynamicForm().bindFromRequest();
-
-            if(session("jwt") != null) {
+            if (session("jwt") != null) {
                 List<Sessions> query = sessions.query().where().eq("token", session("jwt")).findList();
 
                 if (query.size() > 0) {
-                    System.out.println("User recognized: "+ AuthManager.currentUsername(session("jwt")));
-                    Projecto q = projectos.byId(projectId);
+                    System.out.println("User recognized: " + AuthManager.currentUsername(session("jwt")));
+                    Projecto q = projectos.byId(Long.valueOf(form.get("project")));
                     String user = query.get(0).username;
 
-                    List<Tag> tags = Ebean.find(Tag.class).where().eq("id", tagId).findList();
+                    JsonNode tagsNode = Json.parse(tagsArrJSON);
 
-                    if (tags.size() == 1) {
-                        Tag tag = tags.get(0);
+                    while (q.tags.size() > 0) {
+                        Tag t = q.tags.get(0);
 
-                        q.tags.add(tag);
+                        t.projectos.remove(q);
+                        q.tags.remove(t);
 
-                        q.save();
-                        tag.save();
-
-                        return ok();
-                    } else {
-                        response.put("result", "Tag not found!");
-
-                        return notFound(response);
+                        t.save();
                     }
+
+                    q.save();
+
+                    for (JsonNode j : tagsNode) {
+                        Tag t = Tag.getTagNamed(j.asText());
+
+                        if (t == null) {
+                            t = new Tag(j.asText());
+
+                            t.save();
+                        }
+
+                        q.tags.add(t);
+
+                        t.save();
+
+                        System.out.println("Added tag: " + t.nome);
+                    }
+
+                    System.out.println("Tags: " + q.tags);
+
+                    q.save();
+
+                    return ok();
                 } else {
                     session().clear();
                     System.out.println("Cookie expired, redirecting to auth server ...");
@@ -552,7 +567,7 @@ public class Project extends Controller {
             }
             else
             {
-                if( form.get("jwt") != null){
+                /*  if( form.get("jwt") != null){
                     //Verificar se o JWT recebido ? valido
                     if(AuthManager.currentUsername(form.get("jwt")) != null)
                     {
@@ -587,14 +602,15 @@ public class Project extends Controller {
                 {
                     System.out.println("Not logged in, redirecting to auth server ...");
                     return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
-                }
+                }   */
+
+                return notFound();
             }
         }
         catch(Exception e){
             response.put("exception", e.getMessage());
             return badRequest(response);
         }
-    }
     }
 
     public  Result removerProjecto(Long id) {

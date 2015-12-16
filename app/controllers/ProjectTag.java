@@ -10,7 +10,6 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +28,7 @@ public class ProjectTag extends Controller {
             String name = dynamicForm.get("nome");
 
             if (name != null) {
-                models.Tag query = models.Tag.getTagName(name);
+                models.Tag query = models.Tag.getTagNamed(name);
 
                 if (query == null) {
                     models.Tag t =  new models.Tag(name);
@@ -83,6 +82,18 @@ public class ProjectTag extends Controller {
         }
 
         return notFound();
+    }
+
+    public Result getOrCreateTagNamed(String name) {
+        Tag t = Tag.getTagNamed(name);
+
+        if (t == null) {
+            t = new Tag(name);
+
+            t.save();
+        }
+
+        return ok(t.id.toString());
     }
 
 }

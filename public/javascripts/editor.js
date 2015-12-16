@@ -82,3 +82,66 @@ $("#save").click(function() {
 
     xhr.send(nameParams);
 });
+
+$("#add-tag").click(function() {
+    console.log("Yeah!");
+
+    var urlSpl = location.pathname.split('/');
+    var proj = urlSpl[urlSpl.length - 1];
+
+    tags.push($("#new-tag").val());
+
+    var xhr = getXMLHTTP();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            console.log("Done!");
+        }
+    }
+
+    xhr.open('POST', '/projecto/tag', true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    var params = $.param({
+        project: proj,
+        tags: JSON.stringify(tags)
+    });
+
+    console.log("Tags: " + JSON.stringify(tags));
+
+    xhr.send(params);
+
+    return false;
+});
+
+$('[name="tag-remove"]').click(function() {
+    var urlSpl = location.pathname.split('/');
+    var proj = urlSpl[urlSpl.length - 1];
+
+    var spl = $(this).attr('id').split('-');
+    var tagName = spl[spl.length - 1];
+
+    var index = tags.indexOf(tagName);
+
+    tags.splice(index, 1);
+
+    var xhr = getXMLHTTP();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            console.log("Done!");
+        }
+    }
+
+    xhr.open('POST', '/projecto/tag', true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    var params = $.param({
+        project: proj,
+        tags: JSON.stringify(tags)
+    });
+
+    xhr.send(params);
+
+    return false;
+});

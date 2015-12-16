@@ -70,6 +70,10 @@ public class Editor extends Controller {
 
                     System.out.println("Tags: " + p.tags);
 
+                    for (Tag t : p.tags) {
+                        System.out.println("Tag: " + t.nome);
+                    }
+
                     return ok(editor.render(p.nome,
                             p.descricao,
                             AuthManager.currentUsername(session("jwt")),

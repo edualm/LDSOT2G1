@@ -107,19 +107,20 @@
                 <label>Tags</label>
                 <br />
                 @for(t <- tags) {
-                    <span class="label label-default">@t.nome&nbsp;&nbsp;<span aria-hidden="true">&times;</span></span>&nbsp;
+                    <span class="label label-default">@t.nome&nbsp;&nbsp;<a href="#" id="tag-@t.nome" name="tag-remove"><span aria-hidden="true">&times;</span></a></span>&nbsp;
                 }
             </div>
 
             <hr />
 
-            <form class="form-inline">
+            <div class="form-inline">
                 <div class="form-group">
-                    <input type="text" class="form-control input-sm" id="tag" name="tag" placeholder="ProjectTag Name">
+                    <!--<input type="hidden" name="project"-->
+                    <input type="text" class="form-control input-sm" id="new-tag" name="tag" placeholder="Tag Name">
                 </div>
                 &nbsp;
-                <button type="submit" class="btn btn-default btn-sm">Add</button>
-            </form>
+                <button id="add-tag" type="submit" class="btn btn-default btn-sm">Add</button>
+            </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
@@ -143,29 +144,34 @@
 <script>
     var editors = [];
 
-    @for(c <- componentes) {
-        $("#@c.tipo_id.nome-tabActivator").click(function() {
-    var done = false;
+    var tags = [];
 
-    for (var ed in editors) {
-        if (editors[ed].element.id == "@c.tipo_id.nome") {
-            done = true;
-        }
+    @for(t <- tags) {
+        tags.push("@t.nome");
     }
 
-    if (!done) {
-    setTimeout(function() {
-        var ed = new SimpleMDE({ element: document.getElementById("@c.tipo_id.nome") });
+    @for(c <- componentes) {
+        $("#@c.tipo_id.nome-tabActivator").click(function() {
+            var done = false;
 
-        ed.toolbarElements["side-by-side"].remove();
-        ed.toolbarElements["fullscreen"].remove();
+            for (var ed in editors) {
+                if (editors[ed].element.id == "@c.tipo_id.nome") {
+                    done = true;
+                }
+            }
 
-        editors.push(ed);
+            if (!done) {
+                setTimeout(function() {
+                    var ed = new SimpleMDE({ element: document.getElementById("@c.tipo_id.nome") });
 
-    }, 1)
+                    ed.toolbarElements["side-by-side"].remove();
+                    ed.toolbarElements["fullscreen"].remove();
 
-        }
-});
+                    editors.push(ed);
+
+                }, 1);
+            }
+        });
     }
 </script>
 }

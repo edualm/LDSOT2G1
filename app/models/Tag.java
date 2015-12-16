@@ -32,7 +32,7 @@ public class Tag extends Model{
     }
 
     @Nullable
-    public static Tag getTagName(String name) {
+    public static Tag getTagNamed(String name) {
         List<Tag> results = Ebean.find(Tag.class).where().eq("nome", name).findList();
 
         if (results.size() != 0)

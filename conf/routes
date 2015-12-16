@@ -12,6 +12,7 @@ POST        /projecto                   controllers.Project.CriarProjecto()
 POST        /projecto/nome              controllers.Project.editarNomeProjecto()
 POST        /projecto/editar            controllers.Project.editarConteudoProjecto()
 POST        /projecto/componente        controllers.Project.adicionarComponenteProjecto()
+POST        /projecto/tag               controllers.Project.editarTagsProjecto()
 
 
 GET         /projectos                  controllers.Project.getAllProjectos()
@@ -27,7 +28,8 @@ GET         /ficheiro/:id               controllers.FileProject.getFileById(id: 
 
 POST        /tag                        controllers.ProjectTag.addTag()
 GET         /tags                       controllers.ProjectTag.getAllTags()
-GET         /tag/:id                    controllers.ProjectTag.getTagById(id: Long)
+#GET         /tag/:id                    controllers.ProjectTag.getTagById(id: Long)
+#GET         /tag/:name                  controllers.ProjectTag.getTagNamed(name: String)
 GET         /tags/:id                   controllers.ProjectTag.getTagsForProject(id: Long)
 
 GET         /editor/:id                 controllers.Editor.editProject(id: Long)
