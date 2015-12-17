@@ -7,7 +7,6 @@
     }
   },
   "addons":[
-    "pgstudio",
-    "heroku-postgresql"
+    "heroku-postgresql:hobbydev"
   ]
 }
