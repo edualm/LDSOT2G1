@@ -7,6 +7,6 @@
     }
   },
   "addons":[
-    "heroku-postgresql:hobbydev"
+    "heroku-postgresql:hobby-dev"
   ]
 }
