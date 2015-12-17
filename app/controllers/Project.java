@@ -16,7 +16,7 @@ import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import utilities.AuthManager;
-
+import views.html.*;
 
 import java.io.Console;
 import java.util.ArrayList;
@@ -53,7 +53,6 @@ public class Project extends Controller {
                     p.save();
                     vs.save();
                     response.put("result", "success");
-
 
                     return ok(response);
                 }
@@ -534,8 +533,8 @@ public class Project extends Controller {
     }
 
     //Adicionar repositorio
-
     public  Result getAllProjectos() {
+
         ObjectNode response = Json.newObject();
         try {
             DynamicForm form = new DynamicForm().bindFromRequest();
@@ -547,7 +546,7 @@ public class Project extends Controller {
                 if (query.size() > 0)
                 {
                     System.out.println("User recognized: "+ AuthManager.currentUsername(session("jwt")));
-                    return ok(Json.toJson(projectos.orderBy("id").findList()));
+                    return ok(projects.render(projectos.orderBy("id").findList()));
                 }
                 else
                 {
@@ -568,8 +567,7 @@ public class Project extends Controller {
                         cookie.save();
 
                         System.out.println("Cookie saved!");
-                        return ok(Json.toJson(projectos.orderBy("id").findList()));
-
+                        return ok(projects.render(projectos.orderBy("id").findList()));
                     }
                     else
                     {
