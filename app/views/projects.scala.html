@@ -1,0 +1,33 @@
+@(projectos: List[Projecto])
+
+@main("Projectos") {
+  <link href="@routes.Assets.versioned("stylesheets/simplemde.min.css")" rel="stylesheet">
+
+<div class="container">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-md-10">
+        <h1>Projetos</h1>
+        <br>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Projeto</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(p <- projectos) {
+              <tr>
+                <th><a href="#@p.nome">@p.nome</a></th>
+                <td>@p.descricao</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+}
