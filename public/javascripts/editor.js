@@ -1,3 +1,5 @@
+$("#fullPageLoading").hide();
+
 $('[name="componentCreationItem"]').click(function() {
     var spl = $(this).attr('id').split('-');
     var id = spl[spl.length - 1];
@@ -28,6 +30,8 @@ $('[name="componentCreationItem"]').click(function() {
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     xhr.send(params);
+
+    $("#fullPageLoading").show();
 });
 
 $("#save").click(function() {
@@ -64,6 +68,8 @@ $("#save").click(function() {
             xhr2.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     console.log("We good? We good.");
+
+                    $("#fullPageLoading").hide();
                 }
             }
 
@@ -81,6 +87,8 @@ $("#save").click(function() {
     });
 
     xhr.send(nameParams);
+
+    $("#fullPageLoading").show();
 });
 
 $("#add-tag").click(function() {
@@ -96,6 +104,10 @@ $("#add-tag").click(function() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             console.log("Done!");
+
+            $("#tags-group").append('<span class="label label-default" id="span-' + $("#new-tag").val() + '">' + $("#new-tag").val() + '&nbsp;&nbsp;<a href="#" id="tag-' + $("#new-tag").val() + '" name="tag-remove"><span aria-hidden="true">&times;</span></a></span>&nbsp;');
+
+            $("#fullPageLoading").hide();
         }
     }
 
@@ -111,10 +123,12 @@ $("#add-tag").click(function() {
 
     xhr.send(params);
 
+    $("#fullPageLoading").show();
+
     return false;
 });
 
-$('[name="tag-remove"]').click(function() {
+$(document).on('click', '[name="tag-remove"]', function() {
     var urlSpl = location.pathname.split('/');
     var proj = urlSpl[urlSpl.length - 1];
 
@@ -130,6 +144,10 @@ $('[name="tag-remove"]').click(function() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             console.log("Done!");
+
+            $("#span-" + $("#new-tag").val()).remove();
+
+            $("#fullPageLoading").hide();
         }
     }
 
@@ -142,6 +160,8 @@ $('[name="tag-remove"]').click(function() {
     });
 
     xhr.send(params);
+
+    $("#fullPageLoading").show();
 
     return false;
 });

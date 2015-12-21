@@ -27,6 +27,10 @@ public class Editor extends Controller {
     }
 
     public Result editProject(Long id) {
+        return editProjectWithVersion(id, Integer.toUnsignedLong(0));
+    }
+
+    public Result editProjectWithVersion(Long id, Long verId) {
         if (session("jwt") != null) {
             //Utilizador tem cookie, verificar se ainda n expirou
 
@@ -74,12 +78,20 @@ public class Editor extends Controller {
                         System.out.println("Tag: " + t.nome);
                     }
 
-                    return ok(editor.render(p.nome,
-                            p.descricao,
-                            AuthManager.currentUsername(session("jwt")),
-                            p.versoesProjecto.get(p.versoesProjecto.size() - 1).componentes,
+                    VersaoProjecto ver = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
+
+                    if (verId != 0)
+                        for (VersaoProjecto v : p.versoesProjecto)
+                            if (v.id.longValue() == verId) {
+                                ver = v;
+
+                                break;
+                            }
+
+                    return ok(editor.render(p,
+                            ver.componentes,
                             missingTipos,
-                            p.versoesProjecto.get(p.versoesProjecto.size() - 1),
+                            ver,
                             vps,
                             p.tags));
                 }
