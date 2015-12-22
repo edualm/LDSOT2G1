@@ -1,30 +1,21 @@
 package controllers;
 
-import com.avaje.ebean.Expr;
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.*;
-import play.api.i18n.Messages;
-import play.api.libs.json.JsPath;
-import play.api.libs.ws.ssl.SystemConfiguration;
-import play.api.mvc.LegacyI18nSupport;
-import play.api.mvc.Security;
+import org.apache.commons.io.IOUtils;
 import play.libs.Json;
 import play.data.DynamicForm;
-import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import utilities.AuthManager;
-
-
-import java.io.Console;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Joao on 27/10/2015.
- */
+
 public class Project extends Controller {
 
     //Finder
@@ -36,6 +27,7 @@ public class Project extends Controller {
         ObjectNode response = Json.newObject();
         try {
             DynamicForm form = new DynamicForm().bindFromRequest();
+            Http.MultipartFormData multipartForm = request().body().asMultipartFormData();
 
             if(session("jwt") != null)
             {
@@ -46,12 +38,24 @@ public class Project extends Controller {
                     String nome = form.get("title");
                     String descricao = form.get("description");
                     String user = query.get(0).username;
-                    //String user = "username";
+
+                    Projecto p;
+
+                   Http.MultipartFormData.FilePart ficheiro = multipartForm.getFile("file");
+
+                    if(ficheiro != null) {
+                        File imgFile = ficheiro.getFile();
+                        byte[] bytes = IOUtils.toByteArray(new FileInputStream(imgFile));
+                        p = new Projecto(nome,descricao,user, bytes);
+
+                    }
+
+                    else {
+                        p = new Projecto(nome,descricao,user, null);
+                    }
 
 
-                    Projecto p = new Projecto(nome,descricao,user);
-                   VersaoProjecto vs = new VersaoProjecto(descricao, p, AuthManager.currentUsername(session("jwt")));
-                    //VersaoProjecto vs = new VersaoProjecto(descricao, p, "username");
+                    VersaoProjecto vs = new VersaoProjecto(descricao, p, AuthManager.currentUsername(session("jwt")));
                     p.save();
                     vs.save();
                     response.put("result", "success");
@@ -81,7 +85,20 @@ public class Project extends Controller {
                         String user = cookie.username;
 
 
-                        Projecto p = new Projecto(nome,descricao,user);
+                        Projecto p;
+
+                        Http.MultipartFormData.FilePart ficheiro = multipartForm.getFile("file");
+
+                        if(ficheiro != null) {
+                            File imgFile = ficheiro.getFile();
+                            byte[] bytes = IOUtils.toByteArray(new FileInputStream(imgFile));
+                            p = new Projecto(nome,descricao,user, bytes);
+                        }
+
+                        else {
+                            p = new Projecto(nome,descricao,user, null);
+                        }
+
                         VersaoProjecto vs = new VersaoProjecto(descricao, p, AuthManager.currentUsername(session("jwt")));
                         p.save();
                         vs.save();
@@ -93,7 +110,7 @@ public class Project extends Controller {
                     }
                     else
                     {
-                        response.put("result","Invalid JWT");
+                        response.put("result", "Invalid JWT");
                         return badRequest(response);
                     }
                 }

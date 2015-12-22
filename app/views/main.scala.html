@@ -72,7 +72,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="myModalLabel">Criar Projecto</h4>
                         </div>
-                        <form role="form" action="/projecto" method="POST">
+                        <form role="form" action="/projecto" method="POST" enctype="multipart/form-data">
                             <div class="modal-body">
 
                                      <div class="input-group">
@@ -91,16 +91,20 @@
                                         </div-->
 
                                     <div class="input-group">
-                                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput"></div>
-                                        <div>
-                                            <span class="btn btn-default btn-file"><span class="fileinput-new">Seleccionar imagem</span><span class="fileinput-exists">Alterar</span><input type="file" name="..."></span>
-                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Apagar</a>
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="fileinput-preview thumbnail" data-trigger="fileinput"></div>
+                                            <div>
+                                                <span class="btn btn-default btn-file">
+                                                    <span class="fileinput-new">Seleccionar imagem</span>
+                                                    <span class="fileinput-exists">Alterar</span>
+                                                    <input type="file" id="file" name="file">
+                                                </span>
+                                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Apagar</a>
+                                            </div>
                                         </div>
                                     </div>
-                                    </div>
 
-                                <input hidden type="text" id="jwt" name="jwt" value="eyJraWQiOm51bGwsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJBdWRpw6puY2lhIFplcm8gU1NPIiwiYXVkIjoiQXVkacOqbmNpYSBaZXJvIFNTTyIsImV4cCI6MTQ1MDMxMzI3OCwianRpIjoiMTdMWDNicjBaTHc4elk0QnBMcHBIZyIsImlhdCI6MTQ1MDMwNjA3OCwibmJmIjoxNDUwMzA1OTU4LCJzdWIiOiJhdXRoIiwidXNlcm5hbWUiOiJ1c2VybmFtZSIsImlkIjoxNDEsImlwIjoiMTg4LjgzLjI0MS43MiJ9.MJYPBSrHN9JlKP7cs_GjdbBHm6az9bwAU5PGKX-sOoyz9FmbuQw_Db1MYw3Y1byu6mKGG8PZLPCc0pDFksMq_T7kwDU-8eZdKaSCIOBMhvet4KWVFzkVER9u3nII9kD3EHU_hTd6ZXOhDjWMEC0bAIGw9ZnHCs-5PK8n4fZ4D-E7SHRSx_0PG8-zNgsbLJ5An4knk_h7RdXECC4miHff1DbbfKzRo39NNLAGULcnMSd6pzsFeVsLSrcIElfCABSx8EmnvUd51Ydz50NIxse96UG1r86cxW68edteZhgwRXc7PFu7LbODatPFpHhURnWw4NLBZ--UOg1wv8flVQH2Xg">
+                                <input hidden type="text" id="jwt" name="jwt" value="eyJraWQiOm51bGwsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJBdWRpw6puY2lhIFplcm8gU1NPIiwiYXVkIjoiQXVkacOqbmNpYSBaZXJvIFNTTyIsImV4cCI6MTQ1MDgwMzk5MiwianRpIjoiajMyeFZUVS1zSHFsUEZGYkNQX1hlQSIsImlhdCI6MTQ1MDc5Njc5MiwibmJmIjoxNDUwNzk2NjcyLCJzdWIiOiJhdXRoIiwidXNlcm5hbWUiOiJ1c2VybmFtZSIsImlkIjoxNDEsImlwIjoiMzcuMTg5LjIyNi4xNjIifQ.Uh00-E2mFQ7gPmBkNHiLSMExsXknuIlS6GKAx4esLng8iVmX55Fgrq1wWyWqTjfaWuUJEo947HeuTleKv2y5uDBOqZ6lDtzG10JWJc53vPHFAXZsHgJtYtJVZJlkXBAMfS5BgUns1auKASKg3BgJTqTZDl_0NTmHNyMUS0TKjJguqduBqYJT3wO61lv9pOhJHnsPNhXwBjT9j9OUCrT7w0bJDs3Lsaqc3CjBbqKVlny_zzncvubiRL2YhyruzZEX1KuX7A7txKOKNlTUtBUtjnziLV7Kc-IdFNiFw6b7gRQ5EyTBLnKQDy8tOgUWkbQTZWgHUoglAoL9Ka_E9yS8mg">
 
                             </div>
 
