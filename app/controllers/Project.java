@@ -2,18 +2,27 @@ package controllers;
 
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import models.*;
+
 import org.apache.commons.io.IOUtils;
+
 import play.libs.Json;
+
 import play.data.DynamicForm;
+
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
-import utilities.AuthManager;
+
+import java.io.Console;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import utilities.AuthManager;
+
+import models.*;
+import views.html.*;
 
 
 public class Project extends Controller {
@@ -59,7 +68,6 @@ public class Project extends Controller {
                     p.save();
                     vs.save();
                     response.put("result", "success");
-
 
                     return ok(response);
                 }
@@ -553,8 +561,8 @@ public class Project extends Controller {
     }
 
     //Adicionar repositorio
-
     public  Result getAllProjectos() {
+
         ObjectNode response = Json.newObject();
         try {
             DynamicForm form = new DynamicForm().bindFromRequest();
@@ -566,7 +574,7 @@ public class Project extends Controller {
                 if (query.size() > 0)
                 {
                     System.out.println("User recognized: "+ AuthManager.currentUsername(session("jwt")));
-                    return ok(Json.toJson(projectos.orderBy("id").findList()));
+                    return ok(projects.render(projectos.orderBy("id").findList()));
                 }
                 else
                 {
@@ -587,8 +595,7 @@ public class Project extends Controller {
                         cookie.save();
 
                         System.out.println("Cookie saved!");
-                        return ok(Json.toJson(projectos.orderBy("id").findList()));
-
+                        return ok(projects.render(projectos.orderBy("id").findList()));
                     }
                     else
                     {
