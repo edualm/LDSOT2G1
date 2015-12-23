@@ -26,6 +26,13 @@ public class Projecto extends Model {
     @Column
     public String descricao;
 
+    @Column
+    @Lob
+    public byte[] imagem;
+
+    @Column
+    public String user_id;
+
     @OneToMany(mappedBy = "projecto_id")
     @JsonManagedReference
     public List<Comentario> comentarios;
@@ -34,13 +41,12 @@ public class Projecto extends Model {
     @JsonManagedReference
     public List<VersaoProjecto> versoesProjecto;
 
-    @Column
-    public String user_id;
 
-    public Projecto(String nome, String descricao , String user_id){
+    public Projecto(String nome, String descricao , String user_id , byte[] imagem){
         this.nome = nome;
         this.descricao = descricao;
         this.user_id = user_id;
+        this.imagem = imagem;
     }
 
     public static Finder<Long, Projecto> find = new Finder(Long.class, Projecto.class);
