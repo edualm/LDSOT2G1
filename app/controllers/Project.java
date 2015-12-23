@@ -200,7 +200,7 @@ public class Project extends Controller {
                 }
             }
         }
-        catch (Exception e){
+        catch (Exception e) {
             ObjectNode json = Json.newObject();
             json.put("result", "error");
             json.put("excecao", e.getMessage());

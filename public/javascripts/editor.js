@@ -1,5 +1,3 @@
-$("#fullPageLoading").hide();
-
 $('[name="componentCreationItem"]').click(function() {
     var spl = $(this).attr('id').split('-');
     var id = spl[spl.length - 1];
@@ -36,7 +34,13 @@ $('[name="componentCreationItem"]').click(function() {
 
 $("#save").click(function() {
     var urlSpl = location.pathname.split('/');
-    var proj = urlSpl[urlSpl.length - 1];
+
+    var proj = 0;
+
+    if (urlSpl[urlSpl.length - 2] == 'version')
+        proj = urlSpl[urlSpl.length - 3];
+    else
+        proj = urlSpl[urlSpl.length - 1];
 
     var xhr = getXMLHTTP();
 
@@ -46,10 +50,6 @@ $("#save").click(function() {
             console.log(xhr.responseText);
 
             console.log("Name and description changed!");
-
-            //  Change me!
-
-            //  location.reload();
 
             var componentObj = {
                 id: proj
@@ -70,6 +70,8 @@ $("#save").click(function() {
                     console.log("We good? We good.");
 
                     $("#fullPageLoading").hide();
+
+                    location.href = '/editor/' + proj;
                 }
             }
 

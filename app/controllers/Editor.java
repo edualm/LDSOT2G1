@@ -42,6 +42,16 @@ public class Editor extends Controller {
                     return notFound(generic.render("Not Found!", "Project not found."));
                 }
 
+                VersaoProjecto ver = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
+
+                if (verId != 0)
+                    for (VersaoProjecto v : p.versoesProjecto)
+                        if (v.id.longValue() == verId) {
+                            ver = v;
+
+                            break;
+                        }
+
                 String user = query.get(0).username;
 
                 if (p.user_id.equals(user)) {
@@ -49,7 +59,7 @@ public class Editor extends Controller {
 
                     ArrayList<Tipo> missingTipos = new ArrayList<>();
 
-                    List<Componente> currentComponents = p.versoesProjecto.get(p.versoesProjecto.size() - 1).componentes;
+                    List<Componente> currentComponents = ver.componentes;
 
                     for (Tipo t: Tipo.getTipos()) {
                         boolean contains = false;
@@ -70,23 +80,13 @@ public class Editor extends Controller {
 
                     Collections.reverse(vps);
 
-                    vps.remove(0);
+                    for (int i = 0; i < vps.size(); i++) {
+                        if (vps.get(i).id == ver.id) {
+                            vps.remove(i);
 
-                    System.out.println("Tags: " + p.tags);
-
-                    for (Tag t : p.tags) {
-                        System.out.println("Tag: " + t.nome);
+                            break;
+                        }
                     }
-
-                    VersaoProjecto ver = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
-
-                    if (verId != 0)
-                        for (VersaoProjecto v : p.versoesProjecto)
-                            if (v.id.longValue() == verId) {
-                                ver = v;
-
-                                break;
-                            }
 
                     return ok(editor.render(p,
                             ver.componentes,
