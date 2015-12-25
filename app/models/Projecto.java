@@ -53,7 +53,7 @@ public class Projecto extends Model {
     public String getImageBase64() {
         if (imagem != null) {
             try {
-                return new String(Base64.getEncoder().encode(imagem), "UTF-8");
+                return "data:image/png;base64," + (new String(Base64.getEncoder().encode(imagem), "UTF-8"));
             } catch (Exception e) {
 
             }
