@@ -23,6 +23,8 @@ public class FileProject extends Controller {
     public static Model.Finder<Long, models.Ficheiro> ficheiros = new Model.Finder(Long.class, models.Ficheiro.class);
 
     public Result addFile() {
+        // TODO: 26/12/15 User auth check!
+
         DynamicForm dynamicForm = new DynamicForm().bindFromRequest();
         Http.MultipartFormData form = request().body().asMultipartFormData();
 
@@ -46,7 +48,8 @@ public class FileProject extends Controller {
         }
     }
 
-    public Result getFileById(Long id){
+    public Result getFileById(Long id) {
+        // TODO: 26/12/15 User auth check!
 
         ObjectNode response = Json.newObject();
 

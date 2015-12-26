@@ -31,7 +31,7 @@ public class Application extends Controller {
                     if(query.size() > 0){
                         query.get(0).delete();
                         session().clear();
-                        return ok(index.render("Logged out"));
+                        return ok(index.render("Logged out."));
                     }
                 }
             }
