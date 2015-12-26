@@ -18,7 +18,7 @@ public class Application extends Controller {
 
 
     public Result index() {
-        return ok(index.render("Your new application is ready.", AuthManager.isLoggedIn(request().cookies())));
+        return ok(index.render("Your new application is ready.", AuthManager.authCheck(session(), new DynamicForm().bindFromRequest())));
     }
 
     public Result logout() {
@@ -31,16 +31,16 @@ public class Application extends Controller {
                     if(query.size() > 0){
                         query.get(0).delete();
                         session().clear();
-                        return ok(index.render("Logged out.", AuthManager.isLoggedIn(request().cookies())));
+                        return ok(index.render("Logged out.", AuthManager.authCheck(session(), new DynamicForm().bindFromRequest())));
                     }
                 }
             }
 
             session().clear();
-            return ok(index.render("Logged out", AuthManager.isLoggedIn(request().cookies())));
+            return ok(index.render("Logged out", AuthManager.authCheck(session(), new DynamicForm().bindFromRequest())));
         }catch (Exception e){
                 session().clear();
-            return ok(index.render("Logged out", AuthManager.isLoggedIn(request().cookies())));
+            return ok(index.render("Logged out", AuthManager.authCheck(session(), new DynamicForm().bindFromRequest())));
         }
     }
 

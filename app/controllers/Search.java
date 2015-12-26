@@ -22,6 +22,6 @@ public class Search extends Controller {
 
         List<Projecto> res = Ebean.find(Projecto.class).where().or(Expr.icontains("nome", query), Expr.icontains("descricao", query)).findList();
 
-        return ok(search.render(res, AuthManager.isLoggedIn(request().cookies())));
+        return ok(search.render(res, AuthManager.authCheck(session(), form)));
     }
 }
