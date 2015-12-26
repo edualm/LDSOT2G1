@@ -230,7 +230,7 @@ public class Project extends Controller {
     }
 
     public Result getAllProjectos() {
-        return ok(projects.render(projectos.orderBy("id").findList()));
+        return ok(projects.render(projectos.orderBy("id").findList(), AuthManager.isLoggedIn(request().cookies())));
     }
 
     public  Result removerProjecto(Long id) {
