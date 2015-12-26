@@ -29,7 +29,7 @@ public class Comment extends Controller{
     public Result addComentario() {
         DynamicForm form = new DynamicForm().bindFromRequest();
 
-        if (Authentication.authCheck(session(), form)) {
+        if (AuthManager.authCheck(session(), form)) {
             ObjectNode response = Json.newObject();
 
             String msg = form.get("mensagem");
@@ -49,7 +49,7 @@ public class Comment extends Controller{
     public Result editComment() {
         DynamicForm form = new DynamicForm().bindFromRequest();
 
-        if (Authentication.authCheck(session(), form)) {
+        if (AuthManager.authCheck(session(), form)) {
             ObjectNode response = Json.newObject();
 
             String msg = form.get("msg");

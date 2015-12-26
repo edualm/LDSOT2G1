@@ -36,7 +36,7 @@ public class Project extends Controller {
 
         DynamicForm form = new DynamicForm().bindFromRequest();
 
-        if (Authentication.authCheck(session(), form)) {
+        if (AuthManager.authCheck(session(), form)) {
             Http.MultipartFormData multipartForm = request().body().asMultipartFormData();
 
             String nome = form.get("title");
@@ -79,7 +79,7 @@ public class Project extends Controller {
 
         DynamicForm form = new DynamicForm().bindFromRequest();
 
-        if (Authentication.authCheck(session(), form)) {
+        if (AuthManager.authCheck(session(), form)) {
             String id = form.get("id");
             String nome = form.get("nome");
             String descricao = form.get("descricao");
@@ -111,7 +111,7 @@ public class Project extends Controller {
 
         DynamicForm form = new DynamicForm().bindFromRequest();
 
-        if (Authentication.authCheck(session(), form)) {
+        if (AuthManager.authCheck(session(), form)) {
             String id = form.get("id");
             String nome = form.get("nome");
             String conteudo = form.get("conteudo");
@@ -180,7 +180,7 @@ public class Project extends Controller {
 
         DynamicForm form = new DynamicForm().bindFromRequest();
 
-        if (Authentication.authCheck(session(), form)) {
+        if (AuthManager.authCheck(session(), form)) {
             String id = form.get("id");
             String componente = form.get("componente");
             String user = AuthManager.currentUsername(session("jwt"));
@@ -230,7 +230,9 @@ public class Project extends Controller {
     }
 
     public Result getAllProjectos() {
-        return ok(projects.render(projectos.orderBy("id").findList(), AuthManager.isLoggedIn(request().cookies())));
+        DynamicForm form = new DynamicForm().bindFromRequest();
+
+        return ok(projects.render(projectos.orderBy("id").findList(), AuthManager.authCheck(session(), form)));
     }
 
     public  Result removerProjecto(Long id) {
@@ -241,7 +243,7 @@ public class Project extends Controller {
 
         DynamicForm form = new DynamicForm().bindFromRequest();
 
-        if (Authentication.authCheck(session(), form)) {
+        if (AuthManager.authCheck(session(), form)) {
             Projecto q = projectos.byId(id);
             String user = AuthManager.currentUsername(session("jwt"));
 

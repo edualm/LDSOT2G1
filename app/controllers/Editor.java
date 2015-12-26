@@ -22,7 +22,7 @@ public class Editor extends Controller {
     public Result editProject(Long id) {
         DynamicForm form = new DynamicForm().bindFromRequest();
 
-        if (Authentication.authCheck(session(), form)) {
+        if (AuthManager.authCheck(session(), form)) {
             Projecto p = Project.projectos.byId(id);
 
             String user = AuthManager.currentUsername(session("jwt"));
