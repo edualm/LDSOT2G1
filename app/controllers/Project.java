@@ -45,18 +45,21 @@ public class Project extends Controller {
 
             Projecto p = null;
 
-            Http.MultipartFormData.FilePart ficheiro = multipartForm.getFile("file");
-
             try {
+                Http.MultipartFormData.FilePart ficheiro = multipartForm.getFile("file");
                 byte[] bytes = null;
 
                 if (ficheiro != null) {
                     File imgFile = ficheiro.getFile();
 
                     bytes = IOUtils.toByteArray(new FileInputStream(imgFile));
+                    p = new Projecto(nome, descricao, user, bytes);
+                }
+                else{
+                    System.out.print("Este projeto vem sem imagem!");
+                    p = new Projecto(nome, descricao, user, null);
                 }
 
-                p = new Projecto(nome, descricao, user, bytes);
             } catch (Exception e) {
                 p = new Projecto(nome, descricao, user, null);
             }
