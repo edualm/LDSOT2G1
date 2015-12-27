@@ -20,166 +20,59 @@ import java.util.List;
  */
 public class Comment extends Controller{
 
-    //Finder
+    //  Finder
+
     public static Model.Finder<Long, Projecto> projectos = new Model.Finder(Long.class, Projecto.class);
     public static Model.Finder<Long, Comentario> comentarios = new Model.Finder(Long.class, Comentario.class);
     public static Model.Finder<Long, Sessions> sessions = new Model.Finder(String.class, Sessions.class);
 
-
     public Result addComentario() {
-        ObjectNode response = Json.newObject();
-        try {
-            DynamicForm form = new DynamicForm().bindFromRequest();
+        DynamicForm form = new DynamicForm().bindFromRequest();
 
-            if(session("jwt") != null)
-            {
-                //Utilizador tem cookie, verificar se ainda n expirou
-                List<Sessions> query = sessions.query().where().eq("token", session("jwt")).findList();
-                if (query.size() > 0)
-                {
-                    System.out.println("User recognized: "+ AuthManager.currentUsername(session("jwt")));
-                    String msg = form.get("mensagem");
-                    String projecto = form.get("projecto");
+        if (AuthManager.authCheck(session(), form)) {
+            ObjectNode response = Json.newObject();
 
+            String msg = form.get("mensagem");
+            String projecto = form.get("projecto");
 
-                    Projecto p = projectos.byId(Long.valueOf(projecto));
-                    String user_id = AuthManager.currentUsername(session("jwt"));
-                    Comentario c = new Comentario(msg, user_id, p);
-                    c.save();
+            Projecto p = projectos.byId(Long.valueOf(projecto));
+            String user_id = AuthManager.currentUsername(session("jwt"));
+            Comentario c = new Comentario(msg, user_id, p);
+            c.save();
 
-                    response.put("result", "success");
-                    return ok(response);
-                }
-                else
-                {
-                    session().clear();
-                    System.out.println("Cookie expired, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
-                }
-            }
-            else
-            {
-                if( form.get("jwt") != null){
-                    //Verificar se o JWT recebido ? valido
-                    if(AuthManager.currentUsername(form.get("jwt")) != null)
-                    {
-                        session("jwt", form.get("jwt"));
-                        Sessions cookie = new Sessions(AuthManager.currentUsername(form.get("jwt")), form.get("jwt"));
-                        System.out.print("Cookie on BD: "+cookie.username+ "\n Cookie data: "+ cookie.expires.toString());
-                        cookie.save();
-
-                        String msg = form.get("mensagem");
-                        String projecto = form.get("projecto");
-
-
-                        Projecto p = projectos.byId(Long.valueOf(projecto));
-                        String user_id = AuthManager.currentUsername(session("jwt"));
-                        Comentario c = new Comentario(msg, user_id, p);
-                        c.save();
-
-                        response.put("result", "success");
-                        return ok(response);
-
-                    }
-                    else
-                    {
-                        response.put("result","Invalid JWT");
-                        return badRequest(response);
-                    }
-                }
-                else
-                {
-                    System.out.println("Not logged in, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
-                }
-            }
-        } catch (Exception e) {
-            ObjectNode json = Json.newObject();
-            json.put("result", "error");
-            json.put("excecao", e.getMessage());
-            return badRequest(json);
-        }
+            response.put("result", "success");
+            return ok(response);
+        } else
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
     }
 
-    public Result editComment(){
-        ObjectNode response = Json.newObject();
+    public Result editComment() {
+        DynamicForm form = new DynamicForm().bindFromRequest();
 
-        try {
-            DynamicForm form = new DynamicForm().bindFromRequest();
+        if (AuthManager.authCheck(session(), form)) {
+            ObjectNode response = Json.newObject();
 
-            if (session("jwt") != null) {
-                //Utilizador tem cookie, verificar se ainda n expirou
-                List<Sessions> query = sessions.query().where().eq("token", session("jwt")).findList();
-                if (query.size() > 0) {
-                    String msg = form.get("msg");
-                    String id = form.get("id");
-                    String user = query.get(0).username;
+            String msg = form.get("msg");
+            String id = form.get("id");
+            String user = AuthManager.currentUsername(session("jwt"));
 
-                    Date todayDate = new Date();
+            Date todayDate = new Date();
 
-                    Comentario c = comentarios.byId(Long.valueOf(id));
+            Comentario c = comentarios.byId(Long.valueOf(id));
 
-                    if (c.user_id.equals(user)) {
-                        c.mensagem = msg;
-                        c.data = new Timestamp(new Date().getTime());
-                        c.update();
+            if (c.user_id.equals(user)) {
+                c.mensagem = msg;
+                c.data = new Timestamp(new Date().getTime());
+                c.update();
 
-                        response.put("result", "success");
-                        return ok(response);
+                response.put("result", "success");
+                return ok(response);
 
-                    } else {
-                        response.put("result", "Not authorized");
-                        return unauthorized(response);
-                    }
-                } else {
-                    session().clear();
-                    System.out.println("Cookie expired, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
-                }
             } else {
-                if (form.get("jwt") != null) {
-                    //Verificar se o JWT recebido ? valido
-                    if (AuthManager.currentUsername(form.get("jwt")) != null) {
-                        session("jwt", form.get("jwt"));
-                        Sessions cookie = new Sessions(AuthManager.currentUsername(form.get("jwt")), form.get("jwt"));
-                        System.out.print("Cookie on BD: " + cookie.username + "\n Cookie data: " + cookie.expires.toString());
-                        cookie.save();
-
-                        String msg = form.get("msg");
-                        String id = form.get("id");
-                        String username = cookie.username;
-
-                        Date todayDate = new Date();
-
-                        Comentario c = comentarios.byId(Long.valueOf(id));
-
-                        if (c.user_id.equals(username)) {
-                            c.mensagem = msg;
-                            c.data = new Timestamp(new Date().getTime());
-                            c.update();
-
-                            response.put("result", "success");
-                            return ok(response);
-                        } else {
-                            response.put("result", "Not authorized");
-                            return unauthorized(response);
-                        }
-
-
-                    } else {
-                        response.put("result", "Invalid JWT");
-                        return badRequest(response);
-                    }
-                } else {
-                    System.out.println("Not logged in, redirecting to auth server ...");
-                    return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
-                }
+                response.put("result", "Not authorized");
+                return unauthorized(response);
             }
-        }
-        catch (Exception e) {
-            response.put("result", "error");
-            response.put("excecao", e.getMessage());
-            return badRequest(response);
-        }
+        } else
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
     }
 }

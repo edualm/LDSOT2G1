@@ -7,6 +7,7 @@ import models.Projecto;
 import play.mvc.Result;
 import play.data.DynamicForm;
 import play.mvc.Controller;
+import utilities.AuthManager;
 import views.html.search;
 
 /**
@@ -21,6 +22,6 @@ public class Search extends Controller {
 
         List<Projecto> res = Ebean.find(Projecto.class).where().or(Expr.icontains("nome", query), Expr.icontains("descricao", query)).findList();
 
-        return ok(search.render(res));
+        return ok(search.render(res, AuthManager.authCheck(session(), form)));
     }
 }

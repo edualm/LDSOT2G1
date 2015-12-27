@@ -1,6 +1,6 @@
-@(projectos: List[Projecto])
+@(projectos: List[Projecto], loggedIn: Boolean)
 
-@main("Search Results") {
+@main("Search Results", loggedIn, "search") {
     <link href="@routes.Assets.versioned("stylesheets/simplemde.min.css")" rel="stylesheet">
 
     <div class="container">
