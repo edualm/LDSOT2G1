@@ -14,7 +14,7 @@ import java.util.List;
 
 public class AuthManager {
     public static String AuthServer_URI = "https://audiencia-zero-auth.herokuapp.com/login";
-    //  public static String Server_URI = "https://audiencia-zero.herokuapp.com/";
+    public static String Server_URI = "https://audiencia-zero.herokuapp.com/";
 
     static public String getServerURL(Http.Request request) {
         return "https://" + getServerURI(request) + "/";
@@ -40,12 +40,8 @@ public class AuthManager {
 
     static public boolean authCheck(Http.Session session, DynamicForm form) {
         try {
-            System.out.println("!!!");
-
             if (form.get("jwt") != null) {
-                System.out.println("Here! 1");
                 if (AuthManager.currentUsername(form.get("jwt")) != null) {
-                    System.out.println("Here! 2");
                     session.put("jwt", form.get("jwt"));
 
                     Sessions cookie = new Sessions(AuthManager.currentUsername(form.get("jwt")), form.get("jwt"));
@@ -63,15 +59,11 @@ public class AuthManager {
             if (session.get("jwt") != null) {
                 List<Sessions> query = Ebean.find(Sessions.class).where().eq("token", session.get("jwt")).findList();
 
-                System.out.println("2 !!!");
-
                 if (query.size() > 0)
                     return true;
                 else
                     session.clear();
             }
-
-            System.out.println("OMG !!!");
 
             return false;
         } catch(Exception e) {

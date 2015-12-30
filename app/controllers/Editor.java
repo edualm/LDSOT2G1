@@ -2,7 +2,8 @@ package controllers;
 
 import models.*;
 
-import org.apache.commons.lang3.ArrayUtils;
+import play.data.DynamicForm;
+
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -35,9 +36,10 @@ public class Editor extends Controller {
         
         if (AuthManager.authCheck(session(), form)) {
             Projecto p = Project.projectos.byId(id);
-            
+            String user = AuthManager.currentUsername(session("jwt"));
+
             if (p == null)
-                return notFound(generic.render("Not Found!", "Project not found."));
+                return notFound(generic.render("Not Found!", "Project not found.", true));
             
             VersaoProjecto ver = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
             
@@ -48,8 +50,6 @@ public class Editor extends Controller {
                         
                         break;
                     }
-            
-            String user = query.get(0).username;
             
             if (p.user_id.equals(user)) {
                 System.out.println("editProject(): Auth success!");

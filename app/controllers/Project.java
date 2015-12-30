@@ -2,6 +2,7 @@
 package controllers;
 
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import org.apache.commons.io.IOUtils;
@@ -237,6 +238,58 @@ public class Project extends Controller {
         DynamicForm form = new DynamicForm().bindFromRequest();
         
         return ok(projects.render(projectos.orderBy("id").findList(), AuthManager.authCheck(session(), form)));
+    }
+
+    public Result editarTagsProjecto(/* Long projectId, Long tagId */) {
+        //  create tag if it doesn't exist
+        //  add to project
+
+        ObjectNode response = Json.newObject();
+
+        DynamicForm form = new DynamicForm().bindFromRequest();
+
+        String tagsArrJSON = form.get("tags");
+
+        if (AuthManager.authCheck(session(), form)) {
+            Projecto q = projectos.byId(Long.valueOf(form.get("project")));
+            String user = AuthManager.currentUsername(session("jwt"));
+
+            JsonNode tagsNode = Json.parse(tagsArrJSON);
+
+            while (q.tags.size() > 0) {
+                Tag t = q.tags.get(0);
+
+                t.projectos.remove(q);
+                q.tags.remove(t);
+
+                t.save();
+            }
+
+            q.save();
+
+            for (JsonNode j : tagsNode) {
+                Tag t = Tag.getTagNamed(j.asText());
+
+                if (t == null) {
+                    t = new Tag(j.asText());
+
+                    t.save();
+                }
+
+                q.tags.add(t);
+
+                t.save();
+
+                System.out.println("Added tag: " + t.nome);
+            }
+
+            System.out.println("Tags: " + q.tags);
+
+            q.save();
+
+            return ok();
+        } else
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
     }
     
     public  Result removerProjecto(Long id) {
