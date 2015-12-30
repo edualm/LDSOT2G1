@@ -7,6 +7,7 @@ import play.data.validation.Constraints;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 /**
@@ -15,6 +16,8 @@ import java.util.List;
 
 @Entity
 public class Projecto extends Model {
+
+    private static String kWhitePixel = "data:image/gif;base64,R0lGODlhCgAKAPcAAAAAAIAAAACAAICAAAAAgIAAgACAgMDAwMDcwKbK8P/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////78KCgpICAgP8AAAD/AP//AAAA//8A/wD//////yH5BAEAAAoALAAAAAAKAAoAAAgTABUIHEiwoMGDCBMqXMiwYcKAAAA7";
 
     @Id
     @Column(unique = true)
@@ -25,6 +28,13 @@ public class Projecto extends Model {
 
     @Column
     public String descricao;
+
+    @Column
+    @Lob
+    public byte[] imagem;
+
+    @Column
+    public String user_id;
 
     @OneToMany(mappedBy = "projecto_id")
     @JsonManagedReference
@@ -39,13 +49,23 @@ public class Projecto extends Model {
     @JsonManagedReference
     public List<Tag> tags;
 
-    @Column
-    public String user_id;
-
-    public Projecto(String nome, String descricao , String user_id){
+    public Projecto(String nome, String descricao , String user_id , byte[] imagem){
         this.nome = nome;
         this.descricao = descricao;
         this.user_id = user_id;
+        this.imagem = imagem;
+    }
+
+    public String getImageBase64() {
+        if (imagem != null) {
+            try {
+                return "data:image/png;base64," + (new String(Base64.getEncoder().encode(imagem), "UTF-8"));
+            } catch (Exception e) {
+
+            }
+        }
+
+        return kWhitePixel;
     }
 
     public static Finder<Long, Projecto> find = new Finder(Long.class, Projecto.class);

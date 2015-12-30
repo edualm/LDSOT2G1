@@ -2,11 +2,14 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET         /                       controllers.Application.index()
-GET         /logout                 controllers.Application.logout()
+# Home page
+
+GET         /                           controllers.Application.index()
+GET         /logout                     controllers.Application.logout()
+GET         /search                     controllers.Search.searchResults()
 
 #API
-POST        /projecto                   controllers.Project.CriarProjecto()
+POST        /projecto                   controllers.Project.criarProjecto()
 POST        /projecto/nome              controllers.Project.editarNomeProjecto()
 POST        /projecto/editar            controllers.Project.editarConteudoProjecto()
 POST        /projecto/componente        controllers.Project.adicionarComponenteProjecto()
@@ -14,7 +17,7 @@ POST        /projecto/tag               controllers.Project.editarTagsProjecto()
 
 GET         /projectos                  controllers.Project.getAllProjectos()
 GET         /projecto/:id               controllers.Project.getProjectoById(id: Long)
-GET     	/removerprojecto/:id        controllers.Project.removerProjecto(id: Long)
+GET         /removerprojecto/:id        controllers.Project.removerProjecto(id: Long)
 
 POST        /comentario                 controllers.Comment.addComentario()
 POST        /comentario/edit            controllers.Comment.editComment()

@@ -1,6 +1,6 @@
 @(project: Projecto, componentes: List[Componente], missingTipos: List[Tipo], currentVersion: VersaoProjecto, olderVersions: List[VersaoProjecto], tags: List[Tag])
 
-@main("Edit Project") {
+@main("Edit Project", new Boolean(true), "editor") {
 <link href="@routes.Assets.versioned("stylesheets/simplemde.min.css")" rel="stylesheet">
 
 <div class="container">

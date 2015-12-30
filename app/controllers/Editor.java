@@ -25,79 +25,74 @@ public class Editor extends Controller {
         Collections.reverse(Arrays.asList(copy));
         return copy;
     }
-
+    
     public Result editProject(Long id) {
         return editProjectWithVersion(id, Integer.toUnsignedLong(0));
     }
-
+    
     public Result editProjectWithVersion(Long id, Long verId) {
-        if (session("jwt") != null) {
-            //Utilizador tem cookie, verificar se ainda n expirou
-
-            List<Sessions> query = Project.sessions.query().where().eq("token", session("jwt")).findList();
-            if (query.size() > 0) {
-                Projecto p = Project.projectos.byId(id);
-
-                if (p == null) {
-                    return notFound(generic.render("Not Found!", "Project not found."));
-                }
-
-                VersaoProjecto ver = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
-
-                if (verId != 0)
-                    for (VersaoProjecto v : p.versoesProjecto)
-                        if (v.id.longValue() == verId) {
-                            ver = v;
-
-                            break;
-                        }
-
-                String user = query.get(0).username;
-
-                if (p.user_id.equals(user)) {
-                    System.out.println("editProject(): Auth success!");
-
-                    ArrayList<Tipo> missingTipos = new ArrayList<>();
-
-                    List<Componente> currentComponents = ver.componentes;
-
-                    for (Tipo t: Tipo.getTipos()) {
-                        boolean contains = false;
-
-                        for (Componente c : currentComponents) {
-                            if (c.tipo_id.equals(t)) {
-                                contains = true;
-
-                                break;
-                            }
-                        }
-
-                        if (!contains)
-                            missingTipos.add(t);
+        DynamicForm form = new DynamicForm().bindFromRequest();
+        
+        if (AuthManager.authCheck(session(), form)) {
+            Projecto p = Project.projectos.byId(id);
+            
+            if (p == null)
+                return notFound(generic.render("Not Found!", "Project not found."));
+            
+            VersaoProjecto ver = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
+            
+            if (verId != 0)
+                for (VersaoProjecto v : p.versoesProjecto)
+                    if (v.id.longValue() == verId) {
+                        ver = v;
+                        
+                        break;
                     }
-
-                    ArrayList<VersaoProjecto> vps = new ArrayList<>(p.versoesProjecto);
-
-                    Collections.reverse(vps);
-
-                    for (int i = 0; i < vps.size(); i++) {
-                        if (vps.get(i).id == ver.id) {
-                            vps.remove(i);
-
+            
+            String user = query.get(0).username;
+            
+            if (p.user_id.equals(user)) {
+                System.out.println("editProject(): Auth success!");
+                
+                ArrayList<Tipo> missingTipos = new ArrayList<>();
+                
+                List<Componente> currentComponents = ver.componentes;
+                
+                for (Tipo t: Tipo.getTipos()) {
+                    boolean contains = false;
+                    
+                    for (Componente c : currentComponents) {
+                        if (c.tipo_id.equals(t)) {
+                            contains = true;
+                            
                             break;
                         }
                     }
-
-                    return ok(editor.render(p,
-                            ver.componentes,
-                            missingTipos,
-                            ver,
-                            vps,
-                            p.tags));
+                    
+                    if (!contains)
+                        missingTipos.add(t);
                 }
+                
+                ArrayList<VersaoProjecto> vps = new ArrayList<>(p.versoesProjecto);
+                
+                Collections.reverse(vps);
+                
+                for (int i = 0; i < vps.size(); i++)
+                    if (vps.get(i).id == ver.id) {
+                        vps.remove(i);
+                        
+                        break;
+                    }
+                
+                return ok(editor.render(p,
+                                        ver.componentes,
+                                        missingTipos,
+                                        ver,
+                                        vps,
+                                        p.tags));
             }
         }
-
+        
         return forbidden();
     }
 }

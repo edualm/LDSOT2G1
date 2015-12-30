@@ -1,4 +1,5 @@
-@(title: String)(content: Html)
+@import utilities.AuthManager
+@(title: String, loggedIn: Boolean, page: String)(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +14,9 @@
         <link href="@routes.Assets.versioned("bootstrap/css/bootstrap.min.css")" rel="stylesheet">
         <link href="@routes.Assets.versioned("bootstrap/css/navbar-fixed-top.css")" rel="stylesheet">
         <link href="@routes.Assets.versioned("stylesheets/loading.css")" rel="stylesheet">
+
+        <link href="@routes.Assets.versioned("jasny-bootstrap/css/jasny-bootstrap.min.css")" rel="stylesheet">
+        <link href="@routes.Assets.versioned("jasny-bootstrap/css/jasny-bootstrap.css")" rel="stylesheet">
 
             <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
             <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,31 +41,87 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
+                        @if(page.equals("index")) {
+                            <li class="active"><a href="/">Home</a></li>
+                        } else {
+                            <li><a href="/">Home</a></li>
+                        }
+
+                        @if(page.equals("projects")) {
+                            <li class="active"><a href="/projectos">Projetos</a></li>
+                        } else {
+                            <li><a href="/projectos">Projetos</a></li>
+                        }
+
+                        <form class="navbar-form navbar-left" role="search" action="/search" method="GET">
+                            <div class="form-group">
+                                <input type="text" name="query" class="form-control" placeholder="Search">
+                            </div>
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                        </form>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../navbar/">Default</a></li>
-                        <li><a href="../navbar-static-top/">Static top</a></li>
-                        <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+                        @if(loggedIn) {
+                            <li><a href="#" data-toggle="modal" data-dismiss="modal"  data-target="#creatProjectModal">Criar Projeto</a></li>
+                            <li><a href="#">Terminar Sessão</a></li>
+                        } else {
+                            <li><a href="@(AuthManager.AuthServer_URI)?callback=@(AuthManager.Server_URI)@request.path()">Iniciar Sessão</a></li>
+                        }
                     </ul>
                 </div>
                     <!--/.nav-collapse -->
             </div>
         </nav>
+
+        <div class="modal fade" id="creatProjectModal" tabindex="-1" role="dialog" aria-labelledby="creatProjectModal" aria-hidden="true">
+            <div class="modal-dialog">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Criar Projecto</h4>
+                        </div>
+                        <form role="form" action="/projecto" method="POST" enctype="multipart/form-data">
+                            <div class="modal-body">
+
+                                     <div class="input-group">
+                                        <div class="input-group-addon"><span class="glyphicon glyphicon-text-size"></span></div>
+                                        <input type="text" class="form-control" id="title" name="title" placeholder="Nome" value="">
+                                    </div>
+
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
+                                        <textarea style="resize:none" type="text" class="form-control" id="description" name="description" placeholder="Descrição" value="" rows="5"></textarea>
+                                    </div>
+
+                                        <!--div class="input-group">
+                                            <label for="image" class="control-label">Imagem</label>
+                                            <input type="file" id="image" name="image">
+                                        </div-->
+
+                                    <div class="input-group">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="fileinput-preview thumbnail" data-trigger="fileinput"></div>
+                                            <div>
+                                                <span class="btn btn-default btn-file">
+                                                    <span class="fileinput-new">Seleccionar imagem</span>
+                                                    <span class="fileinput-exists">Alterar</span>
+                                                    <input type="file" id="file" name="file">
+                                                </span>
+                                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Apagar</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Criar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        </div>
+                        </form>
+                    </div>
+            </div>
+        </div>
 
         <div class="container">
         @content
@@ -70,5 +130,8 @@
         <script src="@routes.Assets.versioned("javascripts/jquery-2.1.4.js")"></script>
             <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="@routes.Assets.versioned("bootstrap/js/bootstrap.min.js")"></script>
+
+        <script src="@routes.Assets.versioned("jasny-bootstrap/js/jasny-bootstrap.min.js")"></script>
+        <script src="@routes.Assets.versioned("jasny-bootstrap/js/jasny-bootstrap")"></script>
     </body>
 </html>
