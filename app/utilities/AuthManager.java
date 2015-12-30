@@ -14,7 +14,14 @@ import java.util.List;
 
 public class AuthManager {
     public static String AuthServer_URI = "https://audiencia-zero-auth.herokuapp.com/login";
-    public static String Server_URI = "https://audiencia-zero.herokuapp.com/";
+    //  public static String Server_URI = "https://audiencia-zero.herokuapp.com/";
+
+    static public String getServerURL(Http.Request request) {
+        return "https://" + getServerURI(request) + "/";
+    }
+    static public String getServerURI(Http.Request request) {
+        return request.headers().get("Host")[0];
+    }
 
     public static boolean isLoggedIn(Http.Cookies allCookies) {
         Http.Cookie authCookie = allCookies.get("jwt");

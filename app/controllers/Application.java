@@ -13,18 +13,18 @@ import views.html.*;
 import java.util.List;
 
 public class Application extends Controller {
-
+    
     public static Model.Finder<Long, Sessions> sessions = new Model.Finder(String.class, Sessions.class);
-
-
+    
+    
     public Result index() {
         return ok(index.render("Your new application is ready.", AuthManager.authCheck(session(), new DynamicForm().bindFromRequest())));
     }
-
+    
     public Result logout() {
         try {
             String sess = session("jwt");
-
+            
             if(sess != null){
                 if(AuthManager.currentUsername(sess) != null){
                     List<Sessions> query = sessions.query().where().and(Expr.eq("token",sess),(Expr.eq("username", AuthManager.currentUsername(sess)))).findList();
@@ -35,13 +35,13 @@ public class Application extends Controller {
                     }
                 }
             }
-
+            
             session().clear();
+            
             return ok(index.render("Logged out", AuthManager.authCheck(session(), new DynamicForm().bindFromRequest())));
-        }catch (Exception e){
-                session().clear();
+        } catch (Exception e){
+            session().clear();
             return ok(index.render("Logged out", AuthManager.authCheck(session(), new DynamicForm().bindFromRequest())));
         }
     }
-
 }
