@@ -212,7 +212,7 @@ public class Project extends Controller {
         } else
             return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
     }
-    
+
     
     public Result getProjectoById(Long id){
         // TODO: 26/12/15 Fix permissions!
