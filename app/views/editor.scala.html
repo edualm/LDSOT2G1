@@ -122,16 +122,24 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="form-group">
-                <label for="exampleInputFile">Attachments</label>
-                <input type="file" id="exampleInputFile">
+            <form id ="myForm"  action="/ficheiro" method="POST" enctype="multipart/form-data">
+                <div class="form-group" id="fileForm">
+                    <label for="exampleInputFile">Attachments</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-primary btn-file">
+                                Seleccionar <input type="file" name="file">
+                            </span>
+                        </span>
+                        <input type="text" class="form-control" readonly>
+                    </div>
+                    <button type="submit" class="btn btn-success" id="uploadAllFiles">Enviar</button>
+                    <input type="hidden" name="projecto" value="@project.id">
 
-                <hr />
-
-
-
-                <p><a href="#">Image.png</a> (100 KB) &bull; <a href="#">Remove</a></p>
-            </div>
+                    <hr />
+                    <p><a href="#">Image.png</a> (100 KB) &bull; <a href="#">Remove</a></p>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -141,8 +149,38 @@
     <script src="@routes.Assets.versioned("javascripts/simplemde.min.js")"></script>
     <script src="@routes.Assets.versioned("javascripts/shared.js")"></script>
     <script src="@routes.Assets.versioned("javascripts/editor.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/jquery.form.js")"></script>
 
 <script>
+    $(document).ready(function() {
+            var options = {
+            //target:        '#output2',   // target element(s) to be updated with server response
+            beforeSubmit:  showRequest,  // pre-submit callback
+            success:       showResponse,  // post-submit callback
+
+            // other available options:
+            //url:       url         // override for form's 'action' attribute
+            //type:      type        // 'get' or 'post', override for form's 'method' attribute
+            //dataType:  null        // 'xml', 'script', or 'json' (expected server response type)
+            //clearForm: true        // clear all form fields after successful submit
+            resetForm: true        // reset the form after successful submit
+
+            // $.ajax options can be used here too, for example:
+            //timeout:   3000
+        };
+
+
+            // bind 'myForm' and provide a simple callback function
+            $('#myForm').submit(function() {
+                $(this).ajaxSubmit(options);
+
+            // !!! Important !!!
+            // always return false to prevent standard browser submit and page navigation
+            return false
+            });
+        });
+
+
     var editors = [];
 
     var tags = [];

@@ -53,6 +53,7 @@ public class FileProject extends Controller {
 
                     bytes = IOUtils.toByteArray(new FileInputStream(imgFile));
                     f = new Ficheiro(ficheiro.getFilename(),bytes,p);
+                    f.save();
                 }
                 else{
                     return internalServerError();
@@ -71,7 +72,7 @@ public class FileProject extends Controller {
         }
     }
 
-    public Result getFileById(Long id) {
+    public Result getFileByProject(Long id) {
         // TODO: 26/12/15 User auth check!
 
         ObjectNode response = Json.newObject();
