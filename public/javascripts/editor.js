@@ -169,9 +169,34 @@ $(document).on('click', '[name="tag-remove"]', function() {
 });
 
 
+$(document).on('click', '[name="file-remove"]', function() {
+    var spl = $(this).attr('id').split('-');
+    var fileID = spl[spl.length - 1];
+
+
+    var xhr = getXMLHTTP();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            console.log("Removing file ID: " + fileID);
+            $("#para-"+fileID).remove();
+            $("#fullPageLoading").hide();
+        }
+    }
+
+    xhr.open('get', '/ficheiro/remover/' + fileID, true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+
+    $("#fullPageLoading").show();
+
+    return false;
+});
+
 $(document).on('change', '.btn-file :file', function() {
     var input = $(this),
         numFiles = input.get(0).files ? input.get(0).files.length : 1,
         label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
     input.trigger('fileselect', [numFiles, label]);
 });
+

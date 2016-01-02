@@ -135,12 +135,14 @@
                     </div>
                     <button type="submit" class="btn btn-success" id="uploadAllFiles">Enviar</button>
                     <input type="hidden" name="projecto" value="@project.id">
-                    <hr />
-                    @for(f <- ficheiros) {
-                        <p><a href="#">@f.nome  &bull; <a href="#">Remove</a></p>
-                    }
                 </div>
             </form>
+            <hr />
+            <div id="ficheirosGroup">
+            @for(f <- ficheiros) {
+                <p id="para-@f.id"><a href="#">@f.nome</a>  &bull;<a href="#" id="tag-@f.id" name="file-remove">Remove</a></p>
+            }
+            </div>
         </div>
     </div>
 </div>
@@ -154,11 +156,16 @@
 <script>
 
     function showRequest(){
+
+
      $("#fullPageLoading").show();
     }
-    function showResponse(){
+    function showResponse(responseJSON, statusText , xhr, $form){
      $("#fullPageLoading").hide();
-    }
+        alert('status: ' + statusText + '\n\nresponseText: \n' + responseJSON.nome +
+        '\n\nThe output div should have already been updated with the responseText.');
+        $('#ficheirosGroup').append('<p><a href="#"> ' + responseJSON.nome +' </a>  &bull; <a href="#">Remove</a></p>')
+       }
     $(document).ready(function() {
             var options = {
             //target:        '#output2',   // target element(s) to be updated with server response
@@ -166,9 +173,9 @@
             success:       showResponse,  // post-submit callback
 
             // other available options:
-            //url:       url         // override for form's 'action' attribute
+            //url:       url          // override for form's 'action' attribute
             //type:      type        // 'get' or 'post', override for form's 'method' attribute
-            //dataType:  null        // 'xml', 'script', or 'json' (expected server response type)
+            dataType:  'json',        // 'xml', 'script', or 'json' (expected server response type)
             //clearForm: true        // clear all form fields after successful submit
             resetForm: true        // reset the form after successful submit
 
@@ -176,10 +183,11 @@
             //timeout:   3000
         };
 
-
             // bind 'myForm' and provide a simple callback function
             $('#myForm').submit(function() {
                 $(this).ajaxSubmit(options);
+
+
 
             // !!! Important !!!
             // always return false to prevent standard browser submit and page navigation

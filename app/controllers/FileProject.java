@@ -1,7 +1,9 @@
 package controllers;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.ExpressionList;
 import com.avaje.ebean.Model;
+import com.avaje.ebean.SqlUpdate;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import models.Ficheiro;
@@ -61,8 +63,8 @@ public class FileProject extends Controller {
                     return internalServerError();
                 }
 
-                response.put("result", "success");
-                return ok(response);
+
+                return ok(Json.toJson(f));
             }
             catch(Exception e)
             {
@@ -91,6 +93,44 @@ public class FileProject extends Controller {
         {
             response.put("result",e.getMessage());
             return badRequest(response);
+        }
+    }
+
+    public Result removeFile(Long id){
+        ObjectNode response = Json.newObject();
+
+        DynamicForm dynamicForm = new DynamicForm().bindFromRequest();
+
+        if (AuthManager.authCheck(session(), dynamicForm)) {
+
+            try {
+
+
+                Ficheiro p = ficheiros.where().eq("id" , id.intValue()).findUnique();
+
+                if(p == null)  return notFound(generic.render("Not Found!", "File not found.", true));
+
+                if(p.projecto_id.user_id.equals(AuthManager.currentUsername(session().get("jwt")))) {
+
+                    String dml = "delete from ficheiro where id = :id";
+                    SqlUpdate update = Ebean.createSqlUpdate(dml)
+                            .setParameter("id", id.intValue());
+                    int rows = update.execute();
+
+                    response.put("result", "File deleted");
+
+                    return ok(response);
+                }
+                return forbidden("You are not authorized");
+            }
+            catch(Exception e)
+            {
+                response.put("exception", e.getMessage());
+                return internalServerError(response);
+            }
+        } else
+        {
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
         }
     }
 
