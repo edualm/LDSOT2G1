@@ -230,14 +230,18 @@ public class Project extends Controller {
 
                 ArrayList<VersaoProjecto> vps = new ArrayList<>(p.versoesProjecto);
 
+VersaoProjecto vpTeste = new VersaoProjecto("desc2" , p, "username");
+        vpTeste.componentes.add(new Componente("Pneu furado...", new Tipo("Mecanica")));
+        vps.add(vpTeste);
+
                 Collections.reverse(vps);
 
-                for (int i = 0; i < vps.size(); i++)
+               /* for (int i = 0; i < vps.size(); i++)
                     if (vps.get(i).id == ver.id) {
                         vps.remove(i);
 
                         break;
-                    }
+                    }*/
 
         List<Tag> tags = p.tags;
         tags.add(new Tag("TAG1"));
