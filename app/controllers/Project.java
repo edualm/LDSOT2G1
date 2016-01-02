@@ -18,6 +18,7 @@ import play.mvc.Result;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import utilities.AuthManager;
@@ -213,25 +214,51 @@ public class Project extends Controller {
             return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
     }
 
-    
+
     public Result getProjectoById(Long id){
         // TODO: 26/12/15 Fix permissions!
-        
-        ObjectNode response = Json.newObject();
-        
-        if(id == 0)
-            return badRequest("Wrong Project ID");
-        
-        try {
-            Projecto query = projectos.byId(id);
-            return  ok(Json.toJson(query));
-        }
-        catch (Exception e)
-        {
-            response.put("result",e.getMessage());
-            return badRequest(response);
-        }
-        
+
+        //DynamicForm form = new DynamicForm().bindFromRequest();
+
+        //if (AuthManager.authCheck(session(), form)) {
+            Projecto p = projectos.byId(id);
+
+            if (p == null)
+                return notFound(generic.render("Not Found!", "Project not found.", true));
+
+                VersaoProjecto ver = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
+
+                ArrayList<VersaoProjecto> vps = new ArrayList<>(p.versoesProjecto);
+
+                Collections.reverse(vps);
+
+                for (int i = 0; i < vps.size(); i++)
+                    if (vps.get(i).id == ver.id) {
+                        vps.remove(i);
+
+                        break;
+                    }
+
+        List<Tag> tags = p.tags;
+        tags.add(new Tag("TAG1"));
+        tags.add(new Tag("TAG2"));
+        tags.add(new Tag("TAG1"));
+        tags.add(new Tag("TAG2"));
+        tags.add(new Tag("TAG1"));
+        tags.add(new Tag("TAG2"));
+        tags.add(new Tag("TAG1"));
+        tags.add(new Tag("TAG2"));
+        tags.add(new Tag("TAG1"));
+        tags.add(new Tag("TAG2"));
+
+        ver.componentes.add(new Componente("But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.", new Tipo("Geral")));
+        ver.componentes.add(new Componente(" Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure", new Tipo("Fisica")));
+
+            return ok(project.render(p, ver, ver.componentes, vps, tags));
+       // }
+
+       // return forbidden();
+
     }
     
     public Result getAllProjectos() {

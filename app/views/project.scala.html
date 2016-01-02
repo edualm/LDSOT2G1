@@ -1,0 +1,107 @@
+@(project: Projecto, currentVersion: VersaoProjecto, componentes: List[Componente], olderVersions: List[VersaoProjecto], tags: List[Tag])
+
+@main("Project", new Boolean(true), "project") {
+    <div class="container">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>@project.nome</h1>
+                </div>
+
+                <div class="col-md-1">
+                    <br />
+                    <div class="pull-right">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="versions-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Versões
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="versions-dropdown">
+                                <li><a href="#"><b>Atual</b>: @currentVersion.data.format("dd-MM-yyyy HH:mm")</a></li>
+
+                                @if(olderVersions.nonEmpty) {
+                                    <li role="separator" class="divider"></li>
+
+                                    @for(v <- olderVersions) {
+                                        <li><a href="/editor/@project.id/version/@v.id">@v.data.format("dd-MM-yyyy HH:mm")</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-1">
+                    <br />
+                    <div class="pull-right">
+                        <button id="save" type="button" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span> <span></span>
+                            Editar</button>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <br />
+                    <img src="@project.getImageBase64()" class="img-responsive" style="max-height : 100 px" style="max-width : 200 px">
+                    <br />
+                </div>
+
+                <div class="col-md-10">
+                    @project.descricao
+                </div>
+
+                <div class="col-md-10">
+                    <br />
+                    @for(t <- tags) {
+                        <span class="label label-default" id="span-@t.nome"><a href="#" style="text-decoration : none ; color : white ;">@t.nome</a></span> &nbsp;
+                    }
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Conteudo -->
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+            @for(c <- componentes) {
+                <li name="tab" role="presentation"><a id="@c.tipo_id.nome-tabActivator" href="#@c.tipo_id.nome-tab" aria-controls="home" role="tab" data-toggle="tab">@c.tipo_id.nome</a></li>
+            }
+        </ul>
+
+        <div class="tab-content">
+        @for(c <- componentes) {
+            <br/>
+            <div role="tabpanel" class="tab-pane" id="@c.tipo_id.nome-tab"><p>@c.conteudo</p></div>
+            <br/>
+        }
+        </div>
+
+
+
+        <div class="col-md-12">
+            <hr />
+            <label>Ficheiros anexados</label>
+            <p><a href="#">Image.png</a> (100 KB)</p>
+        </div>
+
+        <div class="col-md-12">
+        <div class="panel-body" style="text-align: center;">
+            <br />
+            <br />
+            <div class="view">
+                <div class="media thumbnail">
+                    <p>Criado por: @project.user_id</p>
+                    <p>Adicionado em: @currentVersion.data.format("dd-MM-yyyy HH:mm")</p>
+                    <p>Última alteração em: @currentVersion.data.format("dd-MM-yyyy HH:mm")</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        document.getElementById("save").onclick = function () {
+            location.href = "/editor/"+@project.id;
+        };
+    </script>
+}
