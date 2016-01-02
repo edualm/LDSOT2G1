@@ -1,5 +1,6 @@
 package controllers;
 
+import com.avaje.ebean.ExpressionList;
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -16,6 +17,7 @@ import views.html.generic;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.List;
 
 /**
  *
@@ -79,10 +81,10 @@ public class FileProject extends Controller {
 
 
         if(id == 0)
-            return badRequest("Wrong File ID");
+            return notFound(generic.render("Not Found!", "Project not found.", true));
 
         try {
-            Ficheiro query = ficheiros.byId(id);
+            List<Ficheiro> query = ficheiros.all();//ficheiros.where().eq("projecto_id",String.valueOf(id)).findList();
             return  ok(Json.toJson(query));
         }
         catch (Exception e)

@@ -1,4 +1,4 @@
-@(project: Projecto, componentes: List[Componente], missingTipos: List[Tipo], currentVersion: VersaoProjecto, olderVersions: List[VersaoProjecto], tags: List[Tag])
+@(project: Projecto, componentes: List[Componente], missingTipos: List[Tipo], currentVersion: VersaoProjecto, olderVersions: List[VersaoProjecto], tags: List[Tag], ficheiros: List[Ficheiro]);
 
 @main("Edit Project", new Boolean(true), "editor") {
 <link href="@routes.Assets.versioned("stylesheets/simplemde.min.css")" rel="stylesheet">
@@ -135,9 +135,10 @@
                     </div>
                     <button type="submit" class="btn btn-success" id="uploadAllFiles">Enviar</button>
                     <input type="hidden" name="projecto" value="@project.id">
-
                     <hr />
-                    <p><a href="#">Image.png</a> (100 KB) &bull; <a href="#">Remove</a></p>
+                    @for(f <- ficheiros) {
+                        <p><a href="#">@f.nome  &bull; <a href="#">Remove</a></p>
+                    }
                 </div>
             </form>
         </div>
@@ -149,9 +150,15 @@
     <script src="@routes.Assets.versioned("javascripts/simplemde.min.js")"></script>
     <script src="@routes.Assets.versioned("javascripts/shared.js")"></script>
     <script src="@routes.Assets.versioned("javascripts/editor.js")"></script>
-    <script src="@routes.Assets.versioned("javascripts/jquery.form.js")"></script>
 
 <script>
+
+    function showRequest(){
+     $("#fullPageLoading").show();
+    }
+    function showResponse(){
+     $("#fullPageLoading").hide();
+    }
     $(document).ready(function() {
             var options = {
             //target:        '#output2',   // target element(s) to be updated with server response
