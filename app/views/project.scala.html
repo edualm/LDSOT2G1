@@ -73,7 +73,7 @@
             <div class="tab-content">
             @for(c <- componentes) {
                 <br/>
-                <div role="tabpanel" class="tab-pane" id="@c.tipo_id.nome-tab"><p>@c.conteudo</p></div>
+                <div role="tabpanel" class="tab-pane" id="@c.tipo_id.nome-tab"><p><span name="markdown">@c.conteudo</span></p></div>
                 <br/>
             }
             </div>
@@ -101,13 +101,26 @@
         </div>
     </div>
 
+    <script type="text/javascript" src="//simonwaldherr.github.io/micromarkdown.js/dist/micromarkdown.min.js"></script>
 
     <script>
+
+            var forEach = Array.prototype.forEach;
+
+        var md = document.getElementsByName("markdown");
+
+            forEach.call(md, function(m) {
+                console.log("before");
+                console.log(m.innerHTML);
+                console.log("after ih");
+                m.innerHTML = micromarkdown.parse(m.innerHTML);
+            });
+
         document.getElementById("edit").onclick = function () {
             location.href = "/editor/"+@project.id;
         };
 
-        function showVersions(versao) {
+        /*  function showVersions(versao) {
 
             var index = Number(versao);
             var componentes = @olderVersions(0)[index];
@@ -140,6 +153,6 @@
         var norberto = "<p>Hola amigos</p>";
 
             $('#conteudo').html(conteudo);
-        }
+        }   */
     </script>
 }
