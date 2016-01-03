@@ -140,7 +140,7 @@
             <hr />
             <div id="ficheirosGroup">
             @for(f <- ficheiros) {
-                <p id="para-@f.id"><a href="#">@f.nome</a>  &bull;<a href="#" id="tag-@f.id" name="file-remove">Remove</a></p>
+                <p id="para-@f.id"><a href="/ficheiro/@f.id">@f.nome</a>  &bull;<a href="#" id="tag-@f.id" name="file-remove">Remove</a></p>
             }
             </div>
         </div>
@@ -164,7 +164,7 @@
      $("#fullPageLoading").hide();
         alert('status: ' + statusText + '\n\nresponseText: \n' + responseJSON.nome +
         '\n\nThe output div should have already been updated with the responseText.');
-        $('#ficheirosGroup').append('<p><a href="#"> ' + responseJSON.nome +' </a>  &bull; <a href="#">Remove</a></p>')
+        $('#ficheirosGroup').append('<p><a href="responseJSON.id"> ' + responseJSON.nome +' </a>  &bull; <a href="#">Remove</a></p>')
        }
     $(document).ready(function() {
             var options = {

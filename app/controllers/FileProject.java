@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import models.Ficheiro;
 import models.Projecto;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import play.data.DynamicForm;
 import play.libs.Json;
@@ -76,7 +77,7 @@ public class FileProject extends Controller {
         }
     }
 
-    public Result getFileByProject(Long id) {
+    public Result getFileByID(Long id) {
         // TODO: 26/12/15 User auth check!
 
         ObjectNode response = Json.newObject();
@@ -86,8 +87,14 @@ public class FileProject extends Controller {
             return notFound(generic.render("Not Found!", "Project not found.", true));
 
         try {
-            List<Ficheiro> query = ficheiros.all();//ficheiros.where().eq("projecto_id",String.valueOf(id)).findList();
-            return  ok(Json.toJson(query));
+            Ficheiro p = ficheiros.where().eq("id",Long.valueOf(id)).findUnique();
+
+            if (p == null) return notFound(generic.render("Not Found!", "File not found.", true));
+
+            File f = new java.io.File("files/"+p.nome);
+            FileUtils.writeByteArrayToFile(f,p.ficheiro);
+
+            return  ok(f);
         }
         catch (Exception e)
         {
