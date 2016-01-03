@@ -75,7 +75,7 @@ public class Project extends Controller {
             
             return ok(response);
         } else {
-            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
         }
     }
     
@@ -108,7 +108,7 @@ public class Project extends Controller {
                 return unauthorized(response);
             }
         } else
-            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
     }
     
     public Result editarConteudoProjecto() {
@@ -177,7 +177,7 @@ public class Project extends Controller {
             
             return unauthorized(response);
         } else
-            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
     }
     
     public Result adicionarComponenteProjecto(){
@@ -210,7 +210,7 @@ public class Project extends Controller {
                 return unauthorized(response);
             }
         } else
-            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
     }
 
     
@@ -289,7 +289,7 @@ public class Project extends Controller {
 
             return ok();
         } else
-            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
     }
     
     public  Result removerProjecto(Long id) {
@@ -316,6 +316,6 @@ public class Project extends Controller {
                 return unauthorized(response);
             }
         } else
-            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
     }
 }
