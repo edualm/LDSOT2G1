@@ -44,6 +44,10 @@ public class Projecto extends Model {
     @JsonManagedReference
     public List<VersaoProjecto> versoesProjecto;
 
+    @OneToMany(mappedBy = "projecto_id")
+    @JsonManagedReference
+    public List<Ficheiro> ficheiros;
+
     @ManyToMany()
     @JoinTable(name = "projecto_tag", joinColumns = @JoinColumn(name = "projecto"), inverseJoinColumns = @JoinColumn(name = "tag"))
     @JsonManagedReference

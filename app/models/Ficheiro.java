@@ -1,6 +1,8 @@
 package models;
 
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -22,10 +24,17 @@ public class Ficheiro extends Model {
 
     @Column
     @Lob
+    @JsonIgnore
     public byte[] ficheiro;
 
-    public Ficheiro(String nome, byte[] ficheiro){
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name="projecto_id", referencedColumnName = "id")
+    @JsonBackReference
+    public Projecto projecto_id;
+
+    public Ficheiro(String nome, byte[] ficheiro, Projecto projecto){
         this.nome = nome;
         this.ficheiro = ficheiro;
+        this.projecto_id = projecto;
     }
 }

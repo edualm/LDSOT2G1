@@ -89,7 +89,7 @@ public class Editor extends Controller {
                                         missingTipos,
                                         ver,
                                         vps,
-                                        p.tags));
+                                        p.tags,p.ficheiros));
             }
         }
         
