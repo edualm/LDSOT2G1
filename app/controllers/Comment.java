@@ -43,7 +43,7 @@ public class Comment extends Controller{
             response.put("result", "success");
             return ok(response);
         } else
-            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
     }
     
     public Result editComment() {
@@ -73,6 +73,6 @@ public class Comment extends Controller{
                 return unauthorized(response);
             }
         } else
-            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
     }
 }

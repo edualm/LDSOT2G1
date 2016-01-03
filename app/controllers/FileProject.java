@@ -73,7 +73,7 @@ public class FileProject extends Controller {
             }
         } else
         {
-            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
         }
     }
 
@@ -137,7 +137,7 @@ public class FileProject extends Controller {
             }
         } else
         {
-            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
+            return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
         }
     }
 
