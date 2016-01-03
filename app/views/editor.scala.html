@@ -162,9 +162,7 @@
     }
     function showResponse(responseJSON, statusText , xhr, $form){
      $("#fullPageLoading").hide();
-        alert('status: ' + statusText + '\n\nresponseText: \n' + responseJSON.nome +
-        '\n\nThe output div should have already been updated with the responseText.');
-        $('#ficheirosGroup').append('<p><a href="responseJSON.id"> ' + responseJSON.nome +' </a>  &bull; <a href="#">Remove</a></p>')
+     $('#ficheirosGroup').append('<p id="para-'+responseJSON.id+'"><a href="/ficheiro/'+responseJSON.id +'">'+responseJSON.nome+' </a>  &bull;<a href="#" id="tag-'+responseJSON.id + '" name="file-remove">Remove</a></p>')
        }
     $(document).ready(function() {
             var options = {
