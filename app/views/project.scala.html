@@ -103,6 +103,10 @@
 
     <script>
 
+        document.getElementById("edit").onclick = function () {
+            location.href = "/editor/"+@project.id;
+        };
+
         var forEach = Array.prototype.forEach;
 
         var md = document.getElementsByName("markdown");
