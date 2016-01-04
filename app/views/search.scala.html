@@ -25,7 +25,7 @@
                             <div role="tabpanel" class="tab-pane fade in active" id="Projetos-tab">
                                 <br/>
                                 @if(projectos.isEmpty) {
-                                    <p>Não existem projetos com nome ou descrição correspondentes a <b>@query</b>!</p>
+                                    <p>Não existem projetos com nome ou descrição correspondentes a "<b>@query</b>"!</p>
                                 } else {
                                     @for(p <- projectos) {
                                         <div class="box box-element ui-draview-source:data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCCggable" style="display : block ;">
@@ -38,7 +38,8 @@
                                                     <div class="media-body">
                                                         <h4 class="media-heading"><a href="/projecto/@p.id">@p.nome</a></h4>
                                                         <p> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <b>Descrição: </b> @p.descricao </p>
-                                                        <p> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <b>Criado por: </b> @p.user_id</p></div>
+                                                        <p> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <b>Criado por: </b> @p.user_id</p>
+                                                        <p> <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> <b>Tags: </b> VER ISTO </p></div>
                                                     <p></p>
                                                 </div>
                                             </div>
@@ -52,7 +53,7 @@
                             <div role="tabpanel" class="tab-pane fade" id="Tags-tab">
                                 <br/>
                                 @if(tags.isEmpty) {
-                                    <p>Não existem projetos com tag correspondente a <b>@query</b>!</p>
+                                    <p>Não existem projetos com tag correspondente a "<b>@query</b>"!</p>
                                 } else {
 
                                     @for(t <- tags) {
@@ -67,7 +68,8 @@
                                                         <div class="media-body">
                                                             <h4 class="media-heading"><a href="/projecto/@p.id">@p.nome</a></h4>
                                                             <p> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <b>Descrição: </b> @p.descricao </p>
-                                                            <p> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <b>Criado por: </b> @p.user_id</p></div>
+                                                            <p> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <b>Criado por: </b> @p.user_id</p>
+                                                            <p> <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> <b>Tags: </b> VER ISTO </p></div>
                                                         <p></p>
                                                     </div>
                                                 </div>
@@ -82,7 +84,7 @@
                                 <div role="tabpanel" class="tab-pane fade" id="Criador-tab">
                                     <br/>
                                     @if(projectosUser.isEmpty) {
-                                        <p>Utilizador <b>@query</b> não existe e/ou não tem projectos criados!</p>
+                                        <p>Utilizador "<b>@query</b>" não existe e/ou não tem projectos criados!</p>
                                     } else {
                                         @for(p <- projectosUser) {
                                             <div class="box box-element ui-draview-source:data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCCggable" style="display : block ;">
@@ -95,7 +97,8 @@
                                                         <div class="media-body">
                                                             <h4 class="media-heading"><a href="/projecto/@p.id">@p.nome</a></h4>
                                                             <p> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <b>Descrição: </b> @p.descricao </p>
-                                                            <p> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <b>Criado por: </b> @p.user_id</p></div>
+                                                            <p> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <b>Criado por: </b> @p.user_id</p>
+                                                            <p> <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> <b>Tags: </b> VER ISTO </p></div>
                                                         <p></p>
                                                     </div>
                                                 </div>
