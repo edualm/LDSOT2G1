@@ -1,6 +1,7 @@
 
 package controllers;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -18,6 +19,7 @@ import play.mvc.Result;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import utilities.AuthManager;
@@ -217,25 +219,47 @@ public class Project extends Controller {
             return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
     }
 
-    
+    public Result getProjectoVersionById(Long projectId, Long versionId) {
+        Projecto p = projectos.byId(projectId);
+
+        if (p == null)
+            return notFound(generic.render("Not Found!", "Project not found.", true));
+
+        VersaoProjecto ver = null;
+
+        List<VersaoProjecto> versions = p.versoesProjecto;
+
+        for (VersaoProjecto v : versions) {
+            if (Long.valueOf(versionId).equals(versionId)) {
+                ver = v;
+
+                break;
+            }
+        }
+
+        if (ver == null)
+            return notFound(generic.render("Not Found!", "Project version not found.", true));
+
+        ArrayList<VersaoProjecto> vps = new ArrayList<>(p.versoesProjecto);
+
+        Collections.reverse(vps);
+
+        return ok(project.render(p, true, ver, ver.componentes, vps, p.tags));
+    }
+
     public Result getProjectoById(Long id){
-        // TODO: 26/12/15 Fix permissions!
-        
-        ObjectNode response = Json.newObject();
-        
-        if(id == 0)
-            return badRequest("Wrong Project ID");
-        
-        try {
-            Projecto query = projectos.byId(id);
-            return  ok(Json.toJson(query));
-        }
-        catch (Exception e)
-        {
-            response.put("result",e.getMessage());
-            return badRequest(response);
-        }
-        
+        Projecto p = projectos.byId(id);
+
+        if (p == null)
+            return notFound(generic.render("Not Found!", "Project not found.", true));
+
+        VersaoProjecto ver = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
+
+        ArrayList<VersaoProjecto> vps = new ArrayList<>(p.versoesProjecto);
+
+        Collections.reverse(vps);
+
+        return ok(project.render(p, true, ver, ver.componentes, vps, p.tags));
     }
     
     public Result getAllProjectos() {
