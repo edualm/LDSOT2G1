@@ -37,16 +37,10 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Project name</a>
+                    <a class="navbar-brand" href="/">Audiência Zero</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        @if(page.equals("index")) {
-                            <li class="active"><a href="/">Home</a></li>
-                        } else {
-                            <li><a href="/">Home</a></li>
-                        }
-
                         @if(page.equals("projects")) {
                             <li class="active"><a href="/projectos">Projetos</a></li>
                         } else {
@@ -63,7 +57,14 @@
                     <ul class="nav navbar-nav navbar-right">
                         @if(loggedIn) {
                             <li><a href="#" data-toggle="modal" data-dismiss="modal"  data-target="#creatProjectModal">Criar Projeto</a></li>
-                            <li><a href="#">Terminar Sessão</a></li>
+
+                            @if(page.equals("meusProjects")) {
+                                <li class="active"><a href="/meusProjects">Meus Projetos</a></li>
+                            } else {
+                                <li><a href="/meusProjects">Meus Projetos</a></li>
+                            }
+
+                            <li><a href="/logout">Terminar Sessão</a></li>
                         } else {
                             <li><a href="@(AuthManager.AuthServer_URI)?callback=@(AuthManager.getServerURL(request()))@request.path()">Iniciar Sessão</a></li>
                         }

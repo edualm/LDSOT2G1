@@ -2,6 +2,7 @@
 package controllers;
 
 import com.avaje.ebean.Ebean;
+import com.avaje.ebean.Expr;
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -264,8 +265,22 @@ public class Project extends Controller {
     
     public Result getAllProjectos() {
         DynamicForm form = new DynamicForm().bindFromRequest();
-        
+
         return ok(projects.render(projectos.orderBy("id").findList(), AuthManager.authCheck(session(), form)));
+    }
+
+    public Result getUserProjectos() {
+        DynamicForm form = new DynamicForm().bindFromRequest();
+
+        if (AuthManager.authCheck(session(), form)) {
+            String user = AuthManager.currentUsername(session("jwt"));
+
+            List<Projecto> res = Ebean.find(Projecto.class).where().eq("user_id", user).findList();
+
+            return ok(myprojects.render(user, res, AuthManager.authCheck(session(), form)));
+        }
+
+        return forbidden();
     }
 
     public Result editarTagsProjecto(/* Long projectId, Long tagId */) {
