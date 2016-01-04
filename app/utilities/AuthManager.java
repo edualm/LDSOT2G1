@@ -13,11 +13,10 @@ import java.util.List;
  */
 
 public class AuthManager {
-    public static String AuthServer_URI = "https://audiencia-zero-auth.herokuapp.com/login";
-    public static String Server_URI = "https://audiencia-zero.herokuapp.com/";
+    public static String AuthServer_URI = "http://audiencia-zero-auth.herokuapp.com/login";
 
     static public String getServerURL(Http.Request request) {
-        return "https://" + getServerURI(request) + "/";
+        return "http://" + getServerURI(request);
     }
     static public String getServerURI(Http.Request request) {
         return request.headers().get("Host")[0];

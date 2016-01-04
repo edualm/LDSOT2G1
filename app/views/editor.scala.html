@@ -1,4 +1,4 @@
-@(project: Projecto, componentes: List[Componente], missingTipos: List[Tipo], currentVersion: VersaoProjecto, olderVersions: List[VersaoProjecto], tags: List[Tag])
+@(project: Projecto, componentes: List[Componente], missingTipos: List[Tipo], currentVersion: VersaoProjecto, olderVersions: List[VersaoProjecto], tags: List[Tag], ficheiros: List[Ficheiro]);
 
 @main("Edit Project", new Boolean(true), "editor") {
 <link href="@routes.Assets.versioned("stylesheets/simplemde.min.css")" rel="stylesheet">
@@ -43,7 +43,7 @@
     <div class="form-group">
         <div class="input-group">
             <div class="input-group-addon"><span class="glyphicon glyphicon-text-size"></span></div>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="@project.nome">
+            <input type="text" class="form-control" id="title-proj" name="title" placeholder="Title" value="@project.nome">
         </div>
     </div>
 
@@ -55,7 +55,7 @@
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
-                    <input type="text" class="form-control" id="description" name="description" placeholder="Description" value="@project.descricao">
+                    <input type="text" class="form-control" id="description-proj" name="description" placeholder="Description" value="@project.descricao">
                 </div>
             </div>
             <div class="form-group">
@@ -135,11 +135,14 @@
                     </div>
                     <button type="submit" class="btn btn-success" id="uploadAllFiles">Enviar</button>
                     <input type="hidden" name="projecto" value="@project.id">
-
-                    <hr />
-                    <p><a href="#">Image.png</a> (100 KB) &bull; <a href="#">Remove</a></p>
                 </div>
             </form>
+            <hr />
+            <div id="ficheirosGroup">
+            @for(f <- ficheiros) {
+                <p id="para-@f.id"><a href="/ficheiro/@f.id">@f.nome</a>  &bull;<a href="#" id="tag-@f.id" name="file-remove">Remove</a></p>
+            }
+            </div>
         </div>
     </div>
 </div>
@@ -149,9 +152,16 @@
     <script src="@routes.Assets.versioned("javascripts/simplemde.min.js")"></script>
     <script src="@routes.Assets.versioned("javascripts/shared.js")"></script>
     <script src="@routes.Assets.versioned("javascripts/editor.js")"></script>
-    <script src="@routes.Assets.versioned("javascripts/jquery.form.js")"></script>
 
 <script>
+
+    function showRequest(){
+     $("#fullPageLoading").show();
+    }
+    function showResponse(responseJSON, statusText , xhr, $form){
+     $("#fullPageLoading").hide();
+     $('#ficheirosGroup').append('<p id="para-'+responseJSON.id+'"><a href="/ficheiro/'+responseJSON.id +'">'+responseJSON.nome+' </a>  &bull;<a href="#" id="tag-'+responseJSON.id + '" name="file-remove">Remove</a></p>')
+       }
     $(document).ready(function() {
             var options = {
             //target:        '#output2',   // target element(s) to be updated with server response
@@ -159,9 +169,9 @@
             success:       showResponse,  // post-submit callback
 
             // other available options:
-            //url:       url         // override for form's 'action' attribute
+            //url:       url          // override for form's 'action' attribute
             //type:      type        // 'get' or 'post', override for form's 'method' attribute
-            //dataType:  null        // 'xml', 'script', or 'json' (expected server response type)
+            dataType:  'json',        // 'xml', 'script', or 'json' (expected server response type)
             //clearForm: true        // clear all form fields after successful submit
             resetForm: true        // reset the form after successful submit
 
@@ -169,10 +179,11 @@
             //timeout:   3000
         };
 
-
             // bind 'myForm' and provide a simple callback function
             $('#myForm').submit(function() {
                 $(this).ajaxSubmit(options);
+
+
 
             // !!! Important !!!
             // always return false to prevent standard browser submit and page navigation

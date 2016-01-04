@@ -25,7 +25,8 @@ POST        /comentario/edit            controllers.Comment.editComment()
 
 POST        /ficheiro                   controllers.FileProject.addFile()
 GET         /ficheiros                  controllers.FileProject.getAllFiles()
-GET         /ficheiro/:id               controllers.FileProject.getFileByProject(id: Long)
+GET         /ficheiro/:id               controllers.FileProject.getFileByID(id: Long)
+GET         /ficheiro/remover/:id       controllers.FileProject.removeFile(id : Long)
 
 POST        /tag                        controllers.ProjectTag.addTag()
 GET         /tags                       controllers.ProjectTag.getAllTags()
