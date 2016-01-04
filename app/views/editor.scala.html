@@ -43,7 +43,7 @@
     <div class="form-group">
         <div class="input-group">
             <div class="input-group-addon"><span class="glyphicon glyphicon-text-size"></span></div>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="@project.nome">
+            <input type="text" class="form-control" id="title-proj" name="title" placeholder="Title" value="@project.nome">
         </div>
     </div>
 
@@ -55,7 +55,7 @@
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
-                    <input type="text" class="form-control" id="description" name="description" placeholder="Description" value="@project.descricao">
+                    <input type="text" class="form-control" id="description-proj" name="description" placeholder="Description" value="@project.descricao">
                 </div>
             </div>
             <div class="form-group">
@@ -156,8 +156,6 @@
 <script>
 
     function showRequest(){
-
-
      $("#fullPageLoading").show();
     }
     function showResponse(responseJSON, statusText , xhr, $form){

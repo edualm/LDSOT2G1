@@ -84,8 +84,8 @@ $("#save").click(function() {
 
     var nameParams = $.param({
         id: proj,
-        nome: $("#title").val(),
-        descricao: $("#description").val()
+        nome: $("#title-proj").val(),
+        descricao: $("#description-proj").val()
     });
 
     xhr.send(nameParams);
