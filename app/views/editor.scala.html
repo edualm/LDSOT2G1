@@ -7,14 +7,14 @@
     <div class="page-header">
         <div class="row">
             <div class="col-md-10">
-                <h1>Edit Project</h1>
+                <h1>Editar Projeto</h1>
             </div>
             <div class="col-md-1">
                 <br />
                 <div class="pull-right">
                     <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="versions-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Versions
+                            Versões
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="versions-dropdown">
@@ -34,7 +34,7 @@
             <div class="col-md-1">
                 <br />
                 <div class="pull-right">
-                    <button id="save" type="button" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+                    <button id="save" type="button" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
                 </div>
             </div>
         </div>
@@ -81,7 +81,7 @@
         @if(missingTipos.nonEmpty) {
             <li role="presentation" class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    New Component <span class="caret"></span>
+                    Adicionar Componente <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                     @for(mt <- missingTipos) {
@@ -115,16 +115,16 @@
 
             <div class="form-inline">
                 <div class="form-group">
-                    <input type="text" class="form-control input-sm" id="new-tag" name="tag" placeholder="Tag Name">
+                    <input type="text" class="form-control input-sm" id="new-tag" name="tag" placeholder="Nome da Tag">
                 </div>
                 &nbsp;
-                <button id="add-tag" type="submit" class="btn btn-default btn-sm">Add</button>
+                <button id="add-tag" type="submit" class="btn btn-default btn-sm">Adicionar</button>
             </div>
         </div>
         <div class="col-md-6">
             <form id ="myForm"  action="/ficheiro" method="POST" enctype="multipart/form-data">
                 <div class="form-group" id="fileForm">
-                    <label for="exampleInputFile">Attachments</label>
+                    <label for="exampleInputFile">Anexos</label>
                     <div class="input-group">
                         <span class="input-group-btn">
                             <span class="btn btn-primary btn-file">
