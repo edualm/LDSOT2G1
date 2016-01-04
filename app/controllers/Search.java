@@ -27,6 +27,8 @@ public class Search extends Controller {
 
         List<Tag> tag = Ebean.find(Tag.class).where().eq("nome", query).findList();
 
-        return ok(search.render(query, res, tag, AuthManager.authCheck(session(), form)));
+        List<Projecto> projectosUser = Ebean.find(Projecto.class).where().eq("user_id", query).findList();
+
+        return ok(search.render(query, res, tag, projectosUser, AuthManager.authCheck(session(), form)));
     }
 }
