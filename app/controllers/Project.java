@@ -1,6 +1,7 @@
 
 package controllers;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -214,55 +215,47 @@ public class Project extends Controller {
             return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.Server_URI);
     }
 
+    public Result getProjectoVersionById(Long projectId, Long versionId) {
+        Projecto p = projectos.byId(projectId);
+
+        if (p == null)
+            return notFound(generic.render("Not Found!", "Project not found.", true));
+
+        VersaoProjecto ver = null;
+
+        List<VersaoProjecto> versions = p.versoesProjecto;
+
+        for (VersaoProjecto v : versions) {
+            if (Long.valueOf(versionId).equals(versionId)) {
+                ver = v;
+
+                break;
+            }
+        }
+
+        if (ver == null)
+            return notFound(generic.render("Not Found!", "Project version not found.", true));
+
+        ArrayList<VersaoProjecto> vps = new ArrayList<>(p.versoesProjecto);
+
+        Collections.reverse(vps);
+
+        return ok(project.render(p, true, ver, ver.componentes, vps, p.tags));
+    }
 
     public Result getProjectoById(Long id){
-        // TODO: 26/12/15 Fix permissions!
+        Projecto p = projectos.byId(id);
 
-        //DynamicForm form = new DynamicForm().bindFromRequest();
+        if (p == null)
+            return notFound(generic.render("Not Found!", "Project not found.", true));
 
-        //if (AuthManager.authCheck(session(), form)) {
-            Projecto p = projectos.byId(id);
+        VersaoProjecto ver = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
 
-            if (p == null)
-                return notFound(generic.render("Not Found!", "Project not found.", true));
+        ArrayList<VersaoProjecto> vps = new ArrayList<>(p.versoesProjecto);
 
-                VersaoProjecto ver = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
+        Collections.reverse(vps);
 
-                ArrayList<VersaoProjecto> vps = new ArrayList<>(p.versoesProjecto);
-
-VersaoProjecto vpTeste = new VersaoProjecto("desc2" , p, "username");
-        vpTeste.componentes.add(new Componente("Pneu furado...", new Tipo("Mecanica")));
-        vps.add(vpTeste);
-
-                Collections.reverse(vps);
-
-               /* for (int i = 0; i < vps.size(); i++)
-                    if (vps.get(i).id == ver.id) {
-                        vps.remove(i);
-
-                        break;
-                    }*/
-
-        List<Tag> tags = p.tags;
-        tags.add(new Tag("TAG1"));
-        tags.add(new Tag("TAG2"));
-        tags.add(new Tag("TAG1"));
-        tags.add(new Tag("TAG2"));
-        tags.add(new Tag("TAG1"));
-        tags.add(new Tag("TAG2"));
-        tags.add(new Tag("TAG1"));
-        tags.add(new Tag("TAG2"));
-        tags.add(new Tag("TAG1"));
-        tags.add(new Tag("TAG2"));
-
-        ver.componentes.add(new Componente("But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.", new Tipo("Geral")));
-        ver.componentes.add(new Componente(" Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure", new Tipo("Fisica")));
-
-            return ok(project.render(p, ver, ver.componentes, vps, tags));
-       // }
-
-       // return forbidden();
-
+        return ok(project.render(p, true, ver, ver.componentes, vps, p.tags));
     }
     
     public Result getAllProjectos() {

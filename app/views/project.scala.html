@@ -1,6 +1,6 @@
-@(project: Projecto, currentVersion: VersaoProjecto, componentes: List[Componente], olderVersions: List[VersaoProjecto], tags: List[Tag])
+@(project: Projecto, loggedIn: Boolean, currentVersion: VersaoProjecto, componentes: List[Componente], olderVersions: List[VersaoProjecto], tags: List[Tag])
 
-@main("Project", new Boolean(true), "project") {
+@main("Project", loggedIn, "project") {
     <div class="container">
         <div class="page-header">
             <div class="row">
@@ -20,18 +20,17 @@
                             <ul class="dropdown-menu" aria-labelledby="versions-dropdown">
                             @for((v, index) <- olderVersions.zipWithIndex) {
                                 @if(index == 0) {
-                                    <li><a href="#" onclick="showVersions(@index)"><b>Atual</b>
+                                    <li><a href="/projecto/@project.id/@v.id"><b>Atual</b>
                                         : @v.data.format("dd-MM-yyyy HH:mm")</a></li>
                                     <li role="separator" class="divider"></li>
                                 } else {
-                                    <li><a href="#" onclick="showVersions(@index)">@v.data.format("dd-MM-yyyy HH:mm")</a></li>
+                                    <li><a href="/projecto/@project.id/@v.id">@v.data.format("dd-MM-yyyy HH:mm")</a></li>
                                 }
                             }
                             </ul>
                         </div>
                     </div>
                 </div>
-
 
                 <div class="col-md-1">
                     <br />
@@ -60,7 +59,6 @@
 
             </div>
         </div>
-
 
             <!-- Conteudo -->
         <div id="conteudo">
@@ -105,54 +103,13 @@
 
     <script>
 
-            var forEach = Array.prototype.forEach;
+        var forEach = Array.prototype.forEach;
 
         var md = document.getElementsByName("markdown");
 
-            forEach.call(md, function(m) {
-                console.log("before");
-                console.log(m.innerHTML);
-                console.log("after ih");
-                m.innerHTML = micromarkdown.parse(m.innerHTML);
-            });
+        forEach.call(md, function(m) {
+            m.innerHTML = micromarkdown.parse(m.innerHTML);
+        });
 
-        document.getElementById("edit").onclick = function () {
-            location.href = "/editor/"+@project.id;
-        };
-
-        /*  function showVersions(versao) {
-
-            var index = Number(versao);
-            var componentes = @olderVersions(0)[index];
-
-         var conteudo =
-         '<div id="conteudo">'+
-            '<ul class="nav nav-tabs nav-justified" role="tablist">';
-
-            @for(c <- componentes) {
-
-                conteudo.concat('<li name="tab" role="presentation"><a aria-controls="home" role="tab" data-toggle="tab">'+c.tipo_id.nome+'</a></li>');
-             }
-
-            conteudo.concat(
-                '</ul>'+
-            '<div class="tab-content">');
-
-
-                @for(c <- componentes) {+
-                 conteudo.concat(
-                 '<br/>'+
-                    '<div role="tabpanel" class="tab-pane" ><p>'+c.conteudo+'</p></div>'+
-                '<br/>');
-            }
-
-             conteudo.concat(
-             '</div>'+
-            '</div>');
-
-        var norberto = "<p>Hola amigos</p>";
-
-            $('#conteudo').html(conteudo);
-        }   */
     </script>
 }
