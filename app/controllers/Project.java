@@ -74,9 +74,11 @@ public class Project extends Controller {
             p.save();
             vs.save();
             
-            response.put("result", "success");
-            
-            return ok(response);
+            //response.put("result", "success");
+
+            ArrayList<VersaoProjecto> vps = new ArrayList<>();
+
+            return ok(project.render(p, true, vs, vs.componentes, vps, p.tags));
         } else {
             return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
         }
