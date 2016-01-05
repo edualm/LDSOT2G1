@@ -37,7 +37,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" id="headers"><b>Audiência Zero</b></a>
+                    <a class="navbar-brand" href="/">Audiência Zero</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -46,20 +46,32 @@
                         } else {
                             <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
                         }
-
                         @if(page.equals("projects")) {
                             <li class="active"><a href="/projectos">Projetos</a></li>
                         } else {
                             <li><a href="/projectos">Projetos</a></li>
                         }
 
+                        <form class="navbar-form navbar-left" role="search" action="/search" method="GET">
+                            <div class="form-group">
+                                <input type="text" name="query" class="form-control" placeholder="Pesquisa">
+                            </div>
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                        </form>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                     @if(loggedIn) {
                         <li><a href="#" data-toggle="modal" data-dismiss="modal"  data-target="#creatProjectModal">Criar Projeto</a></li>
-                        <li><a href="#">Terminar Sessão</a></li>
+
+                        @if(page.equals("meusProjects")) {
+                            <li class="active"><a href="/meusProjects">Meus Projetos</a></li>
+                        } else {
+                            <li><a href="/meusProjects">Meus Projetos</a></li>
+                        }
+
+                        <li><a href="/logout">Terminar Sessão</a></li>
                     } else {
-                        <li><a href="@(AuthManager.AuthServer_URI)?callback=@(AuthManager.Server_URI)@request.path()">Iniciar Sessão</a></li>
+                        <li><a href="@(AuthManager.AuthServer_URI)?callback=@(AuthManager.getServerURL(request()))@request.path()">Iniciar Sessão</a></li>
                     }
                     </ul>
                 </div>
@@ -70,50 +82,50 @@
         <div class="modal fade" id="creatProjectModal" tabindex="-1" role="dialog" aria-labelledby="creatProjectModal" aria-hidden="true">
             <div class="modal-dialog">
 
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Criar Projecto</h4>
-                        </div>
-                        <form role="form" action="/projecto" method="POST" enctype="multipart/form-data">
-                            <div class="modal-body">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Criar Projecto</h4>
+                    </div>
+                    <form role="form" action="/projecto" method="POST" enctype="multipart/form-data">
+                        <div class="modal-body">
 
-                                     <div class="input-group">
-                                        <div class="input-group-addon"><span class="glyphicon glyphicon-text-size"></span></div>
-                                        <input type="text" class="form-control" id="title" name="title" placeholder="Nome" value="">
-                                    </div>
+                            <div class="input-group">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-text-size"></span></div>
+                                <input type="text" class="form-control" id="title" name="title" placeholder="Nome" value="">
+                            </div>
 
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
-                                        <textarea style="resize:none" type="text" class="form-control" id="description" name="description" placeholder="Descrição" value="" rows="5"></textarea>
-                                    </div>
+                            <div class="input-group">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
+                                <textarea style="resize:none" type="text" class="form-control" id="description" name="description" placeholder="Descrição" value="" rows="5"></textarea>
+                            </div>
 
-                                        <!--div class="input-group">
+                                <!--div class="input-group">
                                             <label for="image" class="control-label">Imagem</label>
                                             <input type="file" id="image" name="image">
                                         </div-->
 
-                                    <div class="input-group">
-                                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                                            <div class="fileinput-preview thumbnail" data-trigger="fileinput"></div>
-                                            <div>
-                                                <span class="btn btn-default btn-file">
-                                                    <span class="fileinput-new">Seleccionar imagem</span>
-                                                    <span class="fileinput-exists">Alterar</span>
-                                                    <input type="file" id="file" name="file">
-                                                </span>
-                                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Apagar</a>
-                                            </div>
-                                        </div>
+                            <div class="input-group">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput"></div>
+                                    <div>
+                                        <span class="btn btn-default btn-file">
+                                            <span class="fileinput-new">Seleccionar imagem</span>
+                                            <span class="fileinput-exists">Alterar</span>
+                                            <input type="file" id="file" name="file">
+                                        </span>
+                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Apagar</a>
                                     </div>
+                                </div>
                             </div>
+                        </div>
 
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Criar</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                         </div>
-                        </form>
-                    </div>
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -127,7 +139,6 @@
 
         <script src="@routes.Assets.versioned("jasny-bootstrap/js/jasny-bootstrap.min.js")"></script>
         <script src="@routes.Assets.versioned("jasny-bootstrap/js/jasny-bootstrap")"></script>
-        <script src="@routes.Assets.versioned("javascripts/jquery.form.js")"></script>
         <script src="@routes.Assets.versioned("javascripts/jquery.form.min.js")"></script>
     </body>
 </html>
