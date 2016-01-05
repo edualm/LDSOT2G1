@@ -19,7 +19,7 @@ POST        /projecto/tag                 controllers.Project.editarTagsProjecto
 GET         /projectos                    controllers.Project.getAllProjectos()
 GET         /projecto/:idP/:idV           controllers.Project.getProjectoVersionById(idP: Long, idV: Long)
 GET         /projecto/:id                 controllers.Project.getProjectoById(id: Long)
-GET         /removerprojecto/:id          controllers.Project.removerProjecto(id: Long)
+POST        /projecto/remover/:id         controllers.Project.removerProjecto(id: Long)
 
 GET         /meusProjects                 controllers.Project.getUserProjectos()
 

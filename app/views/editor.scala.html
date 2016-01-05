@@ -170,6 +170,27 @@
      $("#fullPageLoading").hide();
      $('#ficheirosGroup').append('<p id="para-'+responseJSON.id+'"><a href="/ficheiro/'+responseJSON.id +'">'+responseJSON.nome+' </a>  &bull;<a href="#" id="tag-'+responseJSON.id + '" name="file-remove">Remove</a></p>')
        }
+
+       $("#delete").click(function() {
+            var xhr = getXMLHTTP();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+
+            //  Change me!
+
+            window.location.href = '/projectos';
+        }
+    }
+
+        xhr.open('POST', '/projecto/remover/@project.id', true);
+
+        xhr.send();
+
+        $("#fullPageLoading").show();
+       });
     $(document).ready(function() {
         $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
             var input = $(this).parents('.input-group').find(':text');
