@@ -95,9 +95,9 @@
                 <br />
                 <div class="view">
                     <div class="media thumbnail">
-                        <p>Criado por: @project.user_id</p>
-                        <p>Adicionado em: @currentVersion.data.format("dd-MM-yyyy HH:mm")</p>
-                        <p>Última alteração em: @currentVersion.data.format("dd-MM-yyyy HH:mm")</p>
+                        <p><b>Criado por</b>: @project.user_id</p>
+                        <p><b>Adicionado em</b>: @olderVersions.get(olderVersions.size() - 1).data.format("dd-MM-yyyy HH:mm")</p>
+                        <p><b>Última alteração em</b>: @currentVersion.data.format("dd-MM-yyyy HH:mm")</p>
                     </div>
                 </div>
             </div>
