@@ -1,6 +1,8 @@
 
 package controllers;
 
+import com.avaje.ebean.Ebean;
+import com.avaje.ebean.Expr;
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -18,6 +20,7 @@ import play.mvc.Result;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import utilities.AuthManager;
@@ -71,9 +74,11 @@ public class Project extends Controller {
             p.save();
             vs.save();
             
-            response.put("result", "success");
-            
-            return ok(response);
+            //response.put("result", "success");
+
+            ArrayList<VersaoProjecto> vps = new ArrayList<>();
+
+            return ok(project.render(p, true, vs, vs.componentes, vps, p.tags, p.ficheiros));
         } else {
             return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
         }
@@ -121,60 +126,64 @@ public class Project extends Controller {
             String nome = form.get("nome");
             String conteudo = form.get("conteudo");
             String user = AuthManager.currentUsername(session("jwt"));
-            
+            List<Tipo> tipos = Tipo.getTipos();
+
             Projecto p = projectos.byId(Long.valueOf(id));
-            
+
             if (p.user_id.equals(user)) {
                 VersaoProjecto oldVS = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
                 List<Componente> componentes = oldVS.componentes;
-                
-                String tipo = null;
-                
-                if (nome.equals("fis"))
-                    tipo = "Fisica";
-                else if (nome.equals("prog"))
-                    tipo = "Programacao";
-                else if (nome.equals("elec"))
-                    tipo = "Eletrotecnica";
-                
+
+                VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao, oldVS.projecto_id, oldVS.user_id.toString());
+
+                newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
+
                 boolean ran = false;
-                
-                for (Componente c : componentes) {
-                    if (c.tipo_id.nome.equals(tipo)) {
-                        ran = true;
-                        VersaoProjecto newVS = new VersaoProjecto(oldVS.descricao, oldVS.projecto_id, oldVS.user_id.toString());
-                        
-                        newVS.componentes = new ArrayList<Componente>(oldVS.componentes);
-                        newVS.componentes.remove(c);
-                        
-                        Componente cNew = new Componente("",c.tipo_id);
-                        
-                        cNew.save();
-                        
-                        newVS.componentes.add(cNew);
-                        
-                        for (Componente newC : newVS.componentes) {
-                            if (newC.tipo_id.nome.equals(tipo)) {
-                                newC.conteudo = conteudo;
-                                newC.update();
-                                newVS.save();
-                                
-                                return ok(response);
+
+                for (Tipo t : tipos) {
+                    String componentContent = form.get(t.nome);
+
+                    if (componentContent != null) {
+                        for (Componente c : componentes) {
+                            System.out.println("Componente: " + c.tipo_id.nome);
+                            System.out.println("Componente API: " + t.nome);
+
+                            if (c.tipo_id.nome.equals(t.nome)) {
+                                ran = true;
+                                System.out.println("Found the component name.");
+
+                                System.out.println("Removing old component...");
+                                newVS.componentes.remove(c);
+
+                                Componente cNew = new Componente(componentContent, c.tipo_id);
+                                cNew.save();
+
+                                System.out.println("Adding new Component to Versao projeto");
+                                newVS.componentes.add(cNew);
+
+                                cNew.update();
                             }
                         }
+
                     }
                 }
-                
+
                 if (!ran) {
                     response.put("result", "error");
                     response.put("excecao", "Componente nao existente");
+
                     return badRequest(response);
+                } else {
+                    newVS.save();
+
+                    response.put("result", "success");
+                    return ok(response);
                 }
             }
-            
+
             response.put("result", "error");
             response.put("excecao", "Not authorized");
-            
+
             return unauthorized(response);
         } else
             return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
@@ -213,31 +222,67 @@ public class Project extends Controller {
             return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
     }
 
-    
+    public Result getProjectoVersionById(Long projectId, Long versionId) {
+        Projecto p = projectos.byId(projectId);
+
+        if (p == null)
+            return notFound(generic.render("Not Found!", "Project not found.", true));
+
+        VersaoProjecto ver = null;
+
+        List<VersaoProjecto> versions = p.versoesProjecto;
+
+        for (VersaoProjecto v : versions) {
+            if (versionId.intValue() == v.id.intValue()) {
+                ver = v;
+
+                break;
+            }
+        }
+
+        if (ver == null)
+            return notFound(generic.render("Not Found!", "Project version not found.", true));
+
+        ArrayList<VersaoProjecto> vps = new ArrayList<>(p.versoesProjecto);
+
+        Collections.reverse(vps);
+
+        return ok(project.render(p, true, ver, ver.componentes, vps, p.tags, p.ficheiros));
+    }
+
     public Result getProjectoById(Long id){
-        // TODO: 26/12/15 Fix permissions!
-        
-        ObjectNode response = Json.newObject();
-        
-        if(id == 0)
-            return badRequest("Wrong Project ID");
-        
-        try {
-            Projecto query = projectos.byId(id);
-            return  ok(Json.toJson(query));
-        }
-        catch (Exception e)
-        {
-            response.put("result",e.getMessage());
-            return badRequest(response);
-        }
-        
+        Projecto p = projectos.byId(id);
+
+        if (p == null)
+            return notFound(generic.render("Not Found!", "Project not found.", true));
+
+        VersaoProjecto ver = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
+
+        ArrayList<VersaoProjecto> vps = new ArrayList<>(p.versoesProjecto);
+
+        Collections.reverse(vps);
+
+        return ok(project.render(p, true, ver, ver.componentes, vps, p.tags, p.ficheiros));
     }
     
     public Result getAllProjectos() {
         DynamicForm form = new DynamicForm().bindFromRequest();
-        
+
         return ok(projects.render(projectos.orderBy("id").findList(), AuthManager.authCheck(session(), form)));
+    }
+
+    public Result getUserProjectos() {
+        DynamicForm form = new DynamicForm().bindFromRequest();
+
+        if (AuthManager.authCheck(session(), form)) {
+            String user = AuthManager.currentUsername(session("jwt"));
+
+            List<Projecto> res = Ebean.find(Projecto.class).where().eq("user_id", user).findList();
+
+            return ok(myprojects.render(user, res, AuthManager.authCheck(session(), form)));
+        }
+
+        return forbidden();
     }
 
     public Result editarTagsProjecto(/* Long projectId, Long tagId */) {

@@ -4,34 +4,38 @@
 
 # Home page
 
-GET         /                           controllers.Application.index()
-GET         /logout                     controllers.Application.logout()
-GET         /search                     controllers.Search.searchResults()
+GET         /                             controllers.Application.index()
+GET         /logout                       controllers.Application.logout()
+GET         /search                       controllers.Search.searchResults()
+GET         /search/:query                controllers.Search.searchResultsQuery(query: String)
 
 #API
-POST        /projecto                   controllers.Project.criarProjecto()
-POST        /projecto/nome              controllers.Project.editarNomeProjecto()
-POST        /projecto/editar            controllers.Project.editarConteudoProjecto()
-POST        /projecto/componente        controllers.Project.adicionarComponenteProjecto()
-POST        /projecto/tag               controllers.Project.editarTagsProjecto()
+POST        /projecto                     controllers.Project.criarProjecto()
+POST        /projecto/nome                controllers.Project.editarNomeProjecto()
+POST        /projecto/editar              controllers.Project.editarConteudoProjecto()
+POST        /projecto/componente          controllers.Project.adicionarComponenteProjecto()
+POST        /projecto/tag                 controllers.Project.editarTagsProjecto()
 
-GET         /projectos                  controllers.Project.getAllProjectos()
-GET         /projecto/:id               controllers.Project.getProjectoById(id: Long)
-GET         /removerprojecto/:id        controllers.Project.removerProjecto(id: Long)
+GET         /projectos                    controllers.Project.getAllProjectos()
+GET         /projecto/:idP/:idV           controllers.Project.getProjectoVersionById(idP: Long, idV: Long)
+GET         /projecto/:id                 controllers.Project.getProjectoById(id: Long)
+GET         /removerprojecto/:id          controllers.Project.removerProjecto(id: Long)
 
-POST        /comentario                 controllers.Comment.addComentario()
-POST        /comentario/edit            controllers.Comment.editComment()
+GET         /meusProjects                 controllers.Project.getUserProjectos()
 
-POST        /ficheiro                   controllers.FileProject.addFile()
-GET         /ficheiros                  controllers.FileProject.getAllFiles()
-GET         /ficheiro/:id               controllers.FileProject.getFileByID(id: Long)
-GET         /ficheiro/remover/:id       controllers.FileProject.removeFile(id : Long)
+POST        /comentario                   controllers.Comment.addComentario()
+POST        /comentario/edit              controllers.Comment.editComment()
 
-POST        /tag                        controllers.ProjectTag.addTag()
-GET         /tags                       controllers.ProjectTag.getAllTags()
-GET         /tags/:id                   controllers.ProjectTag.getTagsForProject(id: Long)
+POST        /ficheiro                     controllers.FileProject.addFile()
+GET         /ficheiros                    controllers.FileProject.getAllFiles()
+GET         /ficheiro/:id                 controllers.FileProject.getFileByID(id: Long)
+GET         /ficheiro/remover/:id         controllers.FileProject.removeFile(id : Long)
 
-GET         /editor/:id                 controllers.Editor.editProject(id: Long)
-GET         /editor/:id/version/:v      controllers.Editor.editProjectWithVersion(id: Long, v: Long)
+POST        /tag                          controllers.ProjectTag.addTag()
+GET         /tags                         controllers.ProjectTag.getAllTags()
+GET         /tags/:id                     controllers.ProjectTag.getTagsForProject(id: Long)
 
-GET         /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET         /editor/:id                   controllers.Editor.editProject(id: Long)
+GET         /editor/:id/version/:v        controllers.Editor.editProjectWithVersion(id: Long, v: Long)
+
+GET         /assets/*file                 controllers.Assets.versioned(path="/public", file: Asset)
