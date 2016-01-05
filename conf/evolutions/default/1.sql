@@ -76,11 +76,12 @@ CREATE TABLE versaoprojecto_componente
  versaoprojecto_id INTEGER NOT NULL,
  componente_id INTEGER NOT NULL
 );
+
 ALTER TABLE comentario ADD FOREIGN KEY (projecto_id) REFERENCES projecto (id);
 CREATE UNIQUE INDEX comentario_id_key ON comentario (id);
 ALTER TABLE componente ADD FOREIGN KEY (tipo_id) REFERENCES tipo (id);
 CREATE UNIQUE INDEX componente_id_key ON componente (id);
-ALTER TABLE ficheiro ADD FOREIGN KEY ("#21") REFERENCES projecto (id);
+ALTER TABLE ficheiro ADD FOREIGN KEY (projecto_id) REFERENCES projecto (id);
 ALTER TABLE ficheiro_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id);
 ALTER TABLE ficheiro_tag ADD FOREIGN KEY (ficheiro_id) REFERENCES ficheiro (id);
 ALTER TABLE ligacao ADD FOREIGN KEY (versaoprojecto_id) REFERENCES versaoprojecto (id);
