@@ -27,6 +27,7 @@ public class Application extends Controller {
     public Result logout() {
 
         List<Projecto> p = Project.projectos.all();
+
         try {
             String sess = session("jwt");
 

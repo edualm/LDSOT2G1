@@ -52,39 +52,34 @@
             <!-- Other projects -->
         <div class="jumbotron container col-md-12">
             <div class="container">
-                <div class="row text-center">
-                    <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6">
                         <span class="fa-stack fa-4x">
                             <i class="fa fa-circle fa-stack-2x text-primary"></i>
                             <i class="fa fa-book fa-stack-1x fa-inverse"></i>
                         </span>
                         <h4 class="service-heading" id="headers">Recentes</h4>
-
+                        <ul>
                         @for(p <- projectos){
-                            <ul><a href="projecto/@p.id">@p.nome</a></ul>
+                            <li><a href="projecto/@p.id">@p.nome</a></li>
                         }
+                        </ul>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <span class="fa-stack fa-4x">
                             <i class="fa fa-circle fa-stack-2x text-primary"></i>
                             <i class="fa fa-graduation-cap fa-stack-1x fa-inverse"></i>
                         </span>
                         <h4 class="service-heading" id="headers">Categorias</h4>
                         <p>
+                            <ul>
                         @for(p <- projectos) {
                             @for(tg <- p.tags) {
-                                <a href="search?query=@tg.nome"><ul>#@tg.nome</ul></a>
+                                <a href="search?query=@tg.nome"><li>#@tg.nome</li></a>
                             }
                         }
+                            </ul>
                         </p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa fa-building fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="service-heading" id="headers">Mais vistos</h4>
-                        <p></p>
                     </div>
                 </div>
             </div>
