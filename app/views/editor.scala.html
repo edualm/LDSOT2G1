@@ -171,7 +171,7 @@
      $('#ficheirosGroup').append('<p id="para-'+responseJSON.id+'"><a href="/ficheiro/'+responseJSON.id +'">'+responseJSON.nome+' </a>  &bull;<a href="#" id="tag-'+responseJSON.id + '" name="file-remove">Remove</a></p>')
        }
 
-       $("#delete").click(function() {
+    $("#delete").click(function() {
             var xhr = getXMLHTTP();
 
     xhr.onreadystatechange = function() {
