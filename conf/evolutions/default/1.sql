@@ -78,23 +78,31 @@ CREATE TABLE versaoprojecto_componente
 );
 
 ALTER TABLE comentario ADD FOREIGN KEY (projecto_id) REFERENCES projecto (id);
+
 CREATE UNIQUE INDEX comentario_id_key ON comentario (id);
+
 ALTER TABLE componente ADD FOREIGN KEY (tipo_id) REFERENCES tipo (id);
+
 CREATE UNIQUE INDEX componente_id_key ON componente (id);
+
 ALTER TABLE ficheiro ADD FOREIGN KEY (projecto_id) REFERENCES projecto (id);
 ALTER TABLE ficheiro_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id);
 ALTER TABLE ficheiro_tag ADD FOREIGN KEY (ficheiro_id) REFERENCES ficheiro (id);
 ALTER TABLE ligacao ADD FOREIGN KEY (versaoprojecto_id) REFERENCES versaoprojecto (id);
+
 CREATE UNIQUE INDEX projecto_id_key ON projecto (id);
+
 ALTER TABLE projecto_tag ADD FOREIGN KEY (projecto) REFERENCES projecto (id);
 ALTER TABLE projecto_tag ADD FOREIGN KEY (tag) REFERENCES tag (id);
+
 CREATE UNIQUE INDEX projecto_tag_pkey ON projecto_tag (projecto, tag);
 CREATE UNIQUE INDEX projecto_tag_unique ON projecto_tag (projecto, tag);
 CREATE UNIQUE INDEX tag_id_key ON tag (id);
 CREATE UNIQUE INDEX tag_nome_key ON tag (nome);
+
 ALTER TABLE versaoprojecto ADD FOREIGN KEY (projecto_id) REFERENCES projecto (id);
 ALTER TABLE versaoprojecto_componente ADD FOREIGN KEY (versaoprojecto_id) REFERENCES versaoprojecto (id);
-ALTER TABLE versaoprojecto_componente ADD FOREIGN KEY (componente_id) REFERENCES componente (id)CREATE FUNCTION delete_old_rows() RETURNS TRIGGER;
+ALTER TABLE versaoprojecto_componente ADD FOREIGN KEY (componente_id) REFERENCES componente (id)
 
 # --- !Downs
 
