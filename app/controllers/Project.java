@@ -78,7 +78,7 @@ public class Project extends Controller {
 
             ArrayList<VersaoProjecto> vps = new ArrayList<>();
 
-            return ok(project.render(p, true, vs, vs.componentes, vps, p.tags));
+            return ok(project.render(p, true, vs, vs.componentes, vps, p.tags, p.ficheiros));
         } else {
             return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
         }
@@ -247,7 +247,7 @@ public class Project extends Controller {
 
         Collections.reverse(vps);
 
-        return ok(project.render(p, true, ver, ver.componentes, vps, p.tags));
+        return ok(project.render(p, true, ver, ver.componentes, vps, p.tags, p.ficheiros));
     }
 
     public Result getProjectoById(Long id){
@@ -262,7 +262,7 @@ public class Project extends Controller {
 
         Collections.reverse(vps);
 
-        return ok(project.render(p, true, ver, ver.componentes, vps, p.tags));
+        return ok(project.render(p, true, ver, ver.componentes, vps, p.tags, p.ficheiros));
     }
     
     public Result getAllProjectos() {

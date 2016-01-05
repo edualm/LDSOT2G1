@@ -1,4 +1,4 @@
-@(project: Projecto, loggedIn: Boolean, currentVersion: VersaoProjecto, componentes: List[Componente], olderVersions: List[VersaoProjecto], tags: List[Tag])
+@(project: Projecto, loggedIn: Boolean, currentVersion: VersaoProjecto, componentes: List[Componente], olderVersions: List[VersaoProjecto], tags: List[Tag], ficheiros: List[Ficheiro])
 
 @main("Project", loggedIn, "project") {
     <div class="container">
@@ -81,7 +81,14 @@
         <div class="col-md-12">
             <hr />
             <label>Ficheiros anexados</label>
-            <p><a href="#">Image.png</a> (100 KB)</p>
+            @if(ficheiros.isEmpty) {
+                <p>Não existem ficheiros anexados!</p>
+            } else {
+                @for(f <- ficheiros) {
+                    <p id="para-@f.id"><a href="/ficheiro/@f.id">@f.nome</a></p>
+                }
+            }
+
         </div>
 
         <div class="col-md-12">
