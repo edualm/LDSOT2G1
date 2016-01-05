@@ -70,9 +70,7 @@
 
             <div class="tab-content">
             @for(c <- componentes) {
-                <br/>
-                <div role="tabpanel" class="tab-pane" id="@c.tipo_id.nome-tab"><p><span name="markdown">@c.conteudo</span></p></div>
-                <br/>
+                <div role="tabpanel" class="tab-pane" id="@c.tipo_id.nome-tab"><br /><span name="markdown">@c.conteudo</span></div>
             }
             </div>
         </div>

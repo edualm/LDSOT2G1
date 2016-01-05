@@ -233,7 +233,7 @@ public class Project extends Controller {
         List<VersaoProjecto> versions = p.versoesProjecto;
 
         for (VersaoProjecto v : versions) {
-            if (Long.valueOf(versionId).equals(versionId)) {
+            if (versionId.intValue() == v.id.intValue()) {
                 ver = v;
 
                 break;
