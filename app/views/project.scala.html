@@ -1,4 +1,4 @@
-@(project: Projecto, loggedIn: Boolean, currentVersion: VersaoProjecto, componentes: List[Componente], olderVersions: List[VersaoProjecto], tags: List[Tag], ficheiros: List[Ficheiro])
+@(project: Projecto, loggedIn: Boolean, currentVersion: VersaoProjecto, componentes: List[Componente], olderVersions: List[VersaoProjecto], tags: List[Tag], ficheiros: List[Ficheiro], comentarios: List[Comentario])
 
 @main("Project", loggedIn, "project") {
     <div class="container">
@@ -35,8 +35,8 @@
                 <div class="col-md-1">
                     <br />
                     <div class="pull-right">
-                        <button id="edit" type="button" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span> <span></span>
-                            Editar</button>
+                        @if(loggedIn){<button id="edit" type="button" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span> <span></span>
+                            Editar</button>}
                     </div>
                 </div>
 
@@ -75,42 +75,123 @@
             </div>
         </div>
 
-
-        <div class="col-md-12">
-            <hr />
-            <label>Ficheiros anexados</label>
-            @if(ficheiros.isEmpty) {
-                <p>Não existem ficheiros anexados!</p>
-            } else {
-                @for(f <- ficheiros) {
-                    <p id="para-@f.id"><a href="/ficheiro/@f.id">@f.nome</a></p>
+        <div class="row">
+            <div class="col-md-6 pull-right" >
+                <label>Ficheiros anexados</label>
+                @if(ficheiros.isEmpty) {
+                    <p>Não existem ficheiros anexados!</p>
+                } else {
+                    @for(f <- ficheiros) {
+                        <p id="para-@f.id"><a href="/ficheiro/@f.id">@f.nome</a></p>
+                    }
                 }
+
+            </div>
+            <div id="comentariosDiv">
+            @for(c <- comentarios) {
+
+                <div class="col-sm-1">
+                    <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                    </div><!-- /thumbnail -->
+                </div><!-- /col-sm-1 -->
+                <div class="col-sm-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>@c.user_id</strong> <span class="text-muted">em @c.data </span>
+                        </div>
+                        <div class="panel-body">
+                            @c.mensagem
+                        </div><!-- /panel-body -->
+                    </div><!-- /panel panel-default -->
+                </div><!-- /col-sm-5 -->
             }
+            </div>
+            @if(loggedIn){
+            <form id="myForm" action="/comentario" method="POST" enctype="application/x-www-form-urlencoded">
+                <div class="col-sm-1">
+                    <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                    </div><!-- /thumbnail -->
+                </div><!-- /col-sm-1 -->
+                <div class="col-sm-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+                        </div>
+                        <div class="panel-body">
+                            <input type="text" placeholder="Comentário" id="comentarioForm" name="mensagem">
+                            <button type="submit" id="submitButton" class="btn btn-success pull-right">Enviar</button>
+                            <input type="hidden" name="projecto" value="@project.id">
+                        </div><!-- /panel-body -->
+                    </div><!-- /panel panel-default -->
 
-        </div>
-
-        <div class="col-md-12">
-            <div class="panel-body" style="text-align : center ;">
-                <br />
-                <br />
-                <div class="view">
-                    <div class="media thumbnail">
-                        <p><b>Criado por</b>: @project.user_id</p>
-                        <p><b>Adicionado em</b>: @olderVersions.get(olderVersions.size() - 1).data.format("dd-MM-yyyy HH:mm")</p>
-                        <p><b>Última alteração em</b>: @currentVersion.data.format("dd-MM-yyyy HH:mm")</p>
+                </div><!-- /col-sm-5 -->
+            </form>
+            }
+            <div class="col-md-12">
+                <div class="panel-body" style="text-align : center ;">
+                    <br />
+                    <br />
+                    <div class="view">
+                        <div class="media thumbnail">
+                            <p><b>Criado por</b>: @project.user_id</p>
+                            <p><b>Adicionado em</b>: @olderVersions.get(olderVersions.size() - 1).data.format("dd-MM-yyyy HH:mm")</p>
+                            <p><b>Última alteração em</b>: @currentVersion.data.format("dd-MM-yyyy HH:mm")</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
     <script type="text/javascript" src="//simonwaldherr.github.io/micromarkdown.js/dist/micromarkdown.min.js"></script>
 
     <script>
 
-        document.getElementById("edit").onclick = function () {
-            location.href = "/editor/"+@project.id;
-        };
+            function showRequest(){
+                $("#fullPageLoading").show();
+            }
+            function showResponse(responseJSON, statusText , xhr, $form){
+                $("#fullPageLoading").hide();
+                $('#comentariosDiv').append('<div class="col-sm-1"><div class="thumbnail"><img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></div></div> <div class="col-sm-5"> <div class="panel panel-default"> <div class="panel-heading"> <strong>'+responseJSON.user_id+'</strong> <span class="text-muted">em ' + responseJSON.data+'</span></div> <div class="panel-body">'+responseJSON.mensagem+'</div></div></div>').fadeIn();
+            }
+
+            $(document).ready(function() {
+
+
+                var options = {
+                    //target:        '#output2',   // target element(s) to be updated with server response
+                    beforeSubmit:  showRequest,  // pre-submit callback
+                    success:       showResponse,  // post-submit callback
+
+                    // other available options:
+                    //url:       url          // override for form's 'action' attribute
+                    //type:      type        // 'get' or 'post', override for form's 'method' attribute
+                    dataType:  'json',        // 'xml', 'script', or 'json' (expected server response type)
+                    //clearForm: true        // clear all form fields after successful submit
+                    resetForm: true        // reset the form after successful submit
+
+                    // $.ajax options can be used here too, for example:
+                    //timeout:   3000
+                };
+
+                // bind 'myForm' and provide a simple callback function
+                $('#myForm').submit(function() {
+                    $(this).ajaxSubmit(options);
+
+
+
+                    // !!! Important !!!
+                    // always return false to prevent standard browser submit and page navigation
+                    return false
+                });
+            });
+
+
+
+       document.getElementById("edit").onclick = function () {
+           location.href = "/editor/"+@project.id;
+       };
 
         var forEach = Array.prototype.forEach;
 

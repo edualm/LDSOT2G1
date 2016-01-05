@@ -40,8 +40,8 @@ public class Comment extends Controller{
             Comentario c = new Comentario(msg, user_id, p);
             c.save();
             
-            response.put("result", "success");
-            return ok(response);
+            //response.put("result", "success");
+            return ok(Json.toJson(c));
         } else
             return redirect(AuthManager.AuthServer_URI + "?callback=" + AuthManager.getServerURL(request()));
     }
