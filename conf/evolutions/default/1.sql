@@ -81,7 +81,7 @@ SELECT setval('"public"."VersaoProjecto_id_seq"', 23, true);
 
 CREATE TABLE comentario
 (
- id BIGINT DEFAULT nextval('"Comentario_id_seq"'::regclass) NOT NULL,
+ id BIGINT DEFAULT nextval('"Comentario_id_seq"'::regclass) UNIQUE NOT NULL,
  data TIMESTAMP NOT NULL,
  mensagem VARCHAR(255) NOT NULL,
  user_id VARCHAR(255) NOT NULL,
@@ -89,13 +89,13 @@ CREATE TABLE comentario
 );
 CREATE TABLE componente
 (
- id INTEGER DEFAULT nextval('"Componente_id_seq"'::regclass) NOT NULL,
+ id INTEGER DEFAULT nextval('"Componente_id_seq"'::regclass) UNIQUE NOT NULL,
  conteudo TEXT NOT NULL,
  tipo_id INTEGER NOT NULL
 );
 CREATE TABLE ficheiro
 (
- id INTEGER DEFAULT nextval('"Ficheiro_id_seq"'::regclass) NOT NULL,
+ id INTEGER DEFAULT nextval('"Ficheiro_id_seq"'::regclass) UNIQUE NOT NULL,
  nome VARCHAR(255) NOT NULL,
  ficheiro BYTEA NOT NULL,
  projecto_id INTEGER
@@ -107,7 +107,7 @@ CREATE TABLE ficheiro_tag
 );
 CREATE TABLE ligacao
 (
- id INTEGER DEFAULT nextval('ligacao_id_seq'::regclass) NOT NULL,
+ id INTEGER DEFAULT nextval('ligacao_id_seq'::regclass) UNIQUE NOT NULL,
  titulo VARCHAR(128) NOT NULL,
  link VARCHAR(128) NOT NULL,
  descricao VARCHAR(256),
@@ -115,7 +115,7 @@ CREATE TABLE ligacao
 );
 CREATE TABLE projecto
 (
- id SMALLINT DEFAULT nextval('"Projecto_id_seq"'::regclass) NOT NULL,
+ id SMALLINT DEFAULT nextval('"Projecto_id_seq"'::regclass) UNIQUE NOT NULL,
  nome VARCHAR(255) NOT NULL,
  descricao VARCHAR(255),
  user_id VARCHAR(255) NOT NULL,
@@ -134,7 +134,7 @@ CREATE TABLE sessions
 );
 CREATE TABLE tag
 (
- id INTEGER DEFAULT nextval('"Tag_id_seq"'::regclass) NOT NULL,
+ id INTEGER DEFAULT nextval('"Tag_id_seq"'::regclass) UNIQUE NOT NULL,
  nome VARCHAR(255) NOT NULL
 );
 CREATE TABLE tipo
@@ -144,7 +144,7 @@ CREATE TABLE tipo
 );
 CREATE TABLE versaoprojecto
 (
- id INTEGER DEFAULT nextval('"VersaoProjecto_id_seq"'::regclass) NOT NULL,
+ id INTEGER DEFAULT nextval('"VersaoProjecto_id_seq"'::regclass) UNIQUE NOT NULL,
  descricao TEXT NOT NULL,
  user_id VARCHAR(255) NOT NULL,
  projecto_id INTEGER NOT NULL,
