@@ -6,7 +6,7 @@
 <div class="container">
     <div class="page-header">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <h1>Editar Projeto</h1>
             </div>
             <div class="col-md-1">
@@ -37,6 +37,12 @@
                     <button id="save" type="button" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
                 </div>
             </div>
+            <div class="col-md-1">
+                <br />
+                <div class="pull-right">
+                    <button id="delete" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Apagar</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -51,7 +57,7 @@
 
     <div class="row">
         <div class="col-md-2">
-           <img src="@project.getImageBase64()" class="img-responsive" style="max-width : 140 px" style="max-height : 140 px">
+           <img src="@project.getImageBase64()" class="img-responsive" style="max-width: 140px; max-height : 140px;">
         </div>
         <div class="col-md-10">
             <div class="form-group">
@@ -165,7 +171,19 @@
      $('#ficheirosGroup').append('<p id="para-'+responseJSON.id+'"><a href="/ficheiro/'+responseJSON.id +'">'+responseJSON.nome+' </a>  &bull;<a href="#" id="tag-'+responseJSON.id + '" name="file-remove">Remove</a></p>')
        }
     $(document).ready(function() {
-            var options = {
+        $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+            var input = $(this).parents('.input-group').find(':text');
+            var log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+            if( input.length ) {
+                input.val(log);
+            } else {
+                if( log )
+                    alert(log);
+            }
+        });
+
+        var options = {
             //target:        '#output2',   // target element(s) to be updated with server response
             beforeSubmit:  showRequest,  // pre-submit callback
             success:       showResponse,  // post-submit callback
