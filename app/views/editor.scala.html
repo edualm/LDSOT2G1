@@ -1,140 +1,140 @@
 @(project: Projecto, componentes: List[Componente], missingTipos: List[Tipo], currentVersion: VersaoProjecto, olderVersions: List[VersaoProjecto], tags: List[Tag])
 
 @main("Edit Project", new Boolean(true), "editor") {
-<link href="@routes.Assets.versioned("stylesheets/simplemde.min.css")" rel="stylesheet">
+    <link href="@routes.Assets.versioned("stylesheets/simplemde.min.css")" rel="stylesheet">
 
-<div class="container">
-    <div class="page-header">
-        <div class="row">
-            <div class="col-md-10">
-                <h1>Edit Project</h1>
-            </div>
-            <div class="col-md-1">
-                <br />
-                <div class="pull-right">
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="versions-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Versions
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="versions-dropdown">
-                            <li><a href="#"><b>Editing</b>: @currentVersion.data.format("dd-MM-yyyy HH:mm")</a></li>
+    <div class="container">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>Edit Project</h1>
+                </div>
+                <div class="col-md-1">
+                    <br />
+                    <div class="pull-right">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="versions-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Versions
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="versions-dropdown">
+                                <li><a href="#"><b>Editing</b>: @currentVersion.data.format("dd-MM-yyyy HH:mm")</a></li>
 
-                            @if(olderVersions.nonEmpty) {
-                                <li role="separator" class="divider"></li>
+                                @if(olderVersions.nonEmpty) {
+                                    <li role="separator" class="divider"></li>
 
-                                @for(v <- olderVersions) {
-                                    <li><a href="/editor/@project.id/version/@v.id">@v.data.format("dd-MM-yyyy HH:mm")</a></li>
+                                    @for(v <- olderVersions) {
+                                        <li><a href="/editor/@project.id/version/@v.id">@v.data.format("dd-MM-yyyy HH:mm")</a></li>
+                                    }
                                 }
-                            }
-                        </ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <br />
+                    <div class="pull-right">
+                        <button id="save" type="button" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-1">
-                <br />
-                <div class="pull-right">
-                    <button id="save" type="button" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-text-size"></span></div>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="@project.nome">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-2"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTE2OGY5OTU4NSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1MTY4Zjk5NTg1Ij48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQzLjU0MTY2NjAzMDg4Mzc5IiB5PSI3NC42NSI+MTQweDE0MDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="Test Image" class="img-circle"></div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Description" value="@project.descricao">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                        <input type="text" class="form-control" id="team" name="team" placeholder="Team" value="Change me to user!" disabled="disabled">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="input-group">
-            <div class="input-group-addon"><span class="glyphicon glyphicon-text-size"></span></div>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="@project.nome">
-        </div>
-    </div>
+        <br />
 
-    <br />
-
-    <div class="row">
-        <div class="col-md-2"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTE2OGY5OTU4NSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1MTY4Zjk5NTg1Ij48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQzLjU0MTY2NjAzMDg4Mzc5IiB5PSI3NC42NSI+MTQweDE0MDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="Test Image" class="img-circle"></div>
-        <div class="col-md-10">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
-                    <input type="text" class="form-control" id="description" name="description" placeholder="Description" value="@project.descricao">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-                    <input type="text" class="form-control" id="team" name="team" placeholder="Team" value="Change me to user!" disabled="disabled">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <br />
-
-    <!-- Create Components -->
+            <!-- Create Components -->
 
 
 
-    <ul class="nav nav-tabs nav-justified" role="tablist">
-        @for(c <- componentes) {
-            <li name="tab" role="presentation"><a id="@c.tipo_id.nome-tabActivator" href="#@c.tipo_id.nome-tab" aria-controls="home" role="tab" data-toggle="tab">@c.tipo_id.nome</a></li>
-        }
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+            @for(c <- componentes) {
+                <li name="tab" role="presentation"><a id="@c.tipo_id.nome-tabActivator" href="#@c.tipo_id.nome-tab" aria-controls="home" role="tab" data-toggle="tab">@c.tipo_id.nome</a></li>
+            }
 
-        @if(missingTipos.nonEmpty) {
-            <li role="presentation" class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    New Component <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
+            @if(missingTipos.nonEmpty) {
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        New Component <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
                     @for(mt <- missingTipos) {
                         <li><a href="#" id="component-type-@mt.nome" name="componentCreationItem">@mt.nome</a></li>
                     }
-                </ul>
-            </li>
-        }
-    </ul>
+                    </ul>
+                </li>
+            }
+        </ul>
 
-    <br />
+        <br />
 
-        <!-- Tab panes -->
-    <div class="tab-content">
+            <!-- Tab panes -->
+        <div class="tab-content">
         @for(c <- componentes) {
             <div role="tabpanel" class="tab-pane" id="@c.tipo_id.nome-tab"><textarea id="@c.tipo_id.nome">@c.conteudo</textarea></div>
         }
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group" id="tags-group">
-                <label>Tags</label>
-                <br />
-                @for(t <- tags) {
-                    <span class="label label-default" id="span-@t.nome">@t.nome&nbsp;&nbsp;<a href="#" id="tag-@t.nome" name="tag-remove"><span aria-hidden="true">&times;</span></a></span>&nbsp;
-                }
-            </div>
-
-            <hr />
-
-            <div class="form-inline">
-                <div class="form-group">
-                    <input type="text" class="form-control input-sm" id="new-tag" name="tag" placeholder="Tag Name">
-                </div>
-                &nbsp;
-                <button id="add-tag" type="submit" class="btn btn-default btn-sm">Add</button>
-            </div>
         </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="exampleInputFile">Attachments</label>
-                <input type="file" id="exampleInputFile">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" id="tags-group">
+                    <label>Tags</label>
+                    <br />
+                    @for(t <- tags) {
+                        <span class="label label-default" id="span-@t.nome">@t.nome&nbsp;&nbsp;<a href="#" id="tag-@t.nome" name="tag-remove"><span aria-hidden="true">&times;</span></a></span>&nbsp;
+                    }
+                </div>
 
                 <hr />
 
+                <div class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-sm" id="new-tag" name="tag" placeholder="Tag Name">
+                    </div>
+                        &nbsp;
+                    <button id="add-tag" type="submit" class="btn btn-default btn-sm">Add</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputFile">Attachments</label>
+                    <input type="file" id="exampleInputFile">
+
+                    <hr />
 
 
-                <p><a href="#">Image.png</a> (100 KB) &bull; <a href="#">Remove</a></p>
+
+                    <p><a href="#">Image.png</a> (100 KB) &bull; <a href="#">Remove</a></p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <!-- Need to find a better way than injecting jQuery twice. -->
     <script src="@routes.Assets.versioned("javascripts/jquery-2.1.4.js")"></script>
@@ -142,37 +142,29 @@
     <script src="@routes.Assets.versioned("javascripts/shared.js")"></script>
     <script src="@routes.Assets.versioned("javascripts/editor.js")"></script>
 
-<script>
+    <script>
     var editors = [];
-
     var tags = [];
-
     @for(t <- tags) {
         tags.push("@t.nome");
     }
-
-    @for(c <- componentes) {
+        @for(c <- componentes) {
         $("#@c.tipo_id.nome-tabActivator").click(function() {
             var done = false;
-
             for (var ed in editors) {
                 if (editors[ed].element.id == "@c.tipo_id.nome") {
                     done = true;
                 }
             }
-
             if (!done) {
                 setTimeout(function() {
                     var ed = new SimpleMDE({ element: document.getElementById("@c.tipo_id.nome") });
-
                     ed.toolbarElements["side-by-side"].remove();
                     ed.toolbarElements["fullscreen"].remove();
-
                     editors.push(ed);
-
                 }, 1);
             }
         });
     }
-</script>
+    </script>
 }
