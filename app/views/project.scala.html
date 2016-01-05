@@ -11,6 +11,7 @@
                 <div class="col-md-1">
                     <br />
                     <div class="pull-right">
+                    @if(olderVersions.size() > 0) {
 
                         <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" id="versions-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -18,7 +19,7 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="versions-dropdown">
-                            @for((v, index) <- olderVersions.zipWithIndex) {
+                            @for( (v, index) <- olderVersions.zipWithIndex) {
                                 @if(index == 0) {
                                     <li><a href="/projecto/@project.id/@v.id"><b>Atual</b>
                                         : @v.data.format("dd-MM-yyyy HH:mm")</a></li>
@@ -29,6 +30,7 @@
                             }
                             </ul>
                         </div>
+                    }
                     </div>
                 </div>
 
@@ -96,8 +98,14 @@
                 <div class="view">
                     <div class="media thumbnail">
                         <p><b>Criado por</b>: @project.user_id</p>
-                        <p><b>Adicionado em</b>: @olderVersions.get(olderVersions.size() - 1).data.format("dd-MM-yyyy HH:mm")</p>
-                        <p><b>Última alteração em</b>: @currentVersion.data.format("dd-MM-yyyy HH:mm")</p>
+
+                        @if(olderVersions.size() > 0) {
+                            <p><b>Adicionado em</b>: @olderVersions.get(olderVersions.size() - 1).data.format("dd-MM-yyyy HH:mm")</p>
+                            <p><b>Última alteração em</b>: @currentVersion.data.format("dd-MM-yyyy HH:mm")</p>
+                        } else {
+                            <p><b>Adicionado em</b>: @currentVersion.data.format("dd-MM-yyyy HH:mm")</p>
+                        }
+
                     </div>
                 </div>
             </div>
