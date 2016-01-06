@@ -144,7 +144,7 @@ CREATE TABLE tipo
 );
 CREATE TABLE versaoprojecto
 (
- id INTEGER DEFAULT nextval('"VersaoProjecto_id_seq"'::regclass) NOT NULL,
+ id INTEGER DEFAULT nextval('"VersaoProjecto_id_seq"'::regclass) UNIQUE NOT NULL,
  descricao TEXT NOT NULL,
  user_id VARCHAR(255) NOT NULL,
  projecto_id INTEGER NOT NULL,
