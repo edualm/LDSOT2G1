@@ -77,8 +77,59 @@
             </div>
         </div>
 
+        <hr />
+
         <div class="row">
-            <div class="col-md-6 pull-right" >
+            <div class="col-md-6">
+                <span id="comentariosDiv">
+                    <div class="row">
+                    @for(c <- comentarios) {
+                        <div class="col-md-2">
+                            <div class="thumbnail">
+                                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                            </div><!-- /thumbnail -->
+                        </div><!-- /col-sm-1 -->
+                        <div class="col-md-10">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <strong>@c.user_id</strong> <span class="text-muted">em @c.data </span>
+                                </div>
+                                <div class="panel-body">
+                                @c.mensagem
+                                </div><!-- /panel-body -->
+                            </div><!-- /panel panel-default -->
+                        </div><!-- /col-sm-5 -->
+                    }
+                    </div>
+                </span>
+                <div class="row">
+                @if(loggedIn){
+                    <form id="myForm" action="/comentario" method="POST" enctype="application/x-www-form-urlencoded">
+                        <div class="col-sm-2">
+                            <div class="thumbnail">
+                                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                            </div><!-- /thumbnail -->
+                        </div><!-- /col-sm-1 -->
+                        <div class="col-sm-10">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <strong>Novo Comentário</strong> <span class="text-muted">agora</span>
+                                </div>
+                                <div class="panel-body">
+                                    <textarea placeholder="Comentário" id="comentarioForm" name="mensagem" style="width: 100%;" rows="3"></textarea>
+                                    <br /><br />
+                                    <button type="submit" id="submitButton" class="btn btn-success pull-right">Enviar</button>
+                                    <input type="hidden" name="projecto" value="@project.id">
+                                </div><!-- /panel-body -->
+                            </div><!-- /panel panel-default -->
+
+                        </div><!-- /col-sm-5 -->
+                    </form>
+                }
+                </div>
+            </div>
+
+            <div class="col-md-6">
                 <label>Ficheiros anexados</label>
                 @if(ficheiros.isEmpty) {
                     <p>Não existem ficheiros anexados!</p>
@@ -87,51 +138,9 @@
                         <p id="para-@f.id"><a href="/ficheiro/@f.id">@f.nome</a></p>
                     }
                 }
-
-
             </div>
-            <div id="comentariosDiv">
-            @for(c <- comentarios) {
-
-                <div class="col-sm-1">
-                    <div class="thumbnail">
-                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                    </div><!-- /thumbnail -->
-                </div><!-- /col-sm-1 -->
-                <div class="col-sm-5">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <strong>@c.user_id</strong> <span class="text-muted">em @c.data </span>
-                        </div>
-                        <div class="panel-body">
-                            @c.mensagem
-                        </div><!-- /panel-body -->
-                    </div><!-- /panel panel-default -->
-                </div><!-- /col-sm-5 -->
-            }
-            </div>
-            @if(loggedIn){
-            <form id="myForm" action="/comentario" method="POST" enctype="application/x-www-form-urlencoded">
-                <div class="col-sm-1">
-                    <div class="thumbnail">
-                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                    </div><!-- /thumbnail -->
-                </div><!-- /col-sm-1 -->
-                <div class="col-sm-5">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
-                        </div>
-                        <div class="panel-body">
-                            <input type="text" placeholder="Comentário" id="comentarioForm" name="mensagem">
-                            <button type="submit" id="submitButton" class="btn btn-success pull-right">Enviar</button>
-                            <input type="hidden" name="projecto" value="@project.id">
-                        </div><!-- /panel-body -->
-                    </div><!-- /panel panel-default -->
-
-                </div><!-- /col-sm-5 -->
-            </form>
-            }
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div class="panel-body" style="text-align : center ;">
                     <br />
@@ -160,9 +169,10 @@
             function showRequest(){
                 $("#fullPageLoading").show();
             }
+
             function showResponse(responseJSON, statusText , xhr, $form){
                 $("#fullPageLoading").hide();
-                $('#comentariosDiv').append('<div class="col-sm-1"><div class="thumbnail"><img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></div></div> <div class="col-sm-5"> <div class="panel panel-default"> <div class="panel-heading"> <strong>'+responseJSON.user_id+'</strong> <span class="text-muted">em ' + responseJSON.data+'</span></div> <div class="panel-body">'+responseJSON.mensagem+'</div></div></div>').fadeIn();
+                $('#comentariosDiv').append('<div class="row"><div class="col-md-2"><div class="thumbnail"><img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></div></div> <div class="col-md-10"> <div class="panel panel-default"> <div class="panel-heading"> <strong>'+responseJSON.user_id+'</strong> <span class="text-muted">agora mesmo</span></div> <div class="panel-body">'+responseJSON.mensagem+'</div></div></div></div>').fadeIn();
             }
 
             $(document).ready(function() {
