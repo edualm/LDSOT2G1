@@ -7,7 +7,6 @@
 GET         /                             controllers.Application.index()
 GET         /logout                       controllers.Application.logout()
 GET         /search                       controllers.Search.searchResults()
-GET         /search/:query                controllers.Search.searchResultsQuery(query: String)
 
 #API
 POST        /projecto                     controllers.Project.criarProjecto()
@@ -21,7 +20,7 @@ GET         /projecto/:idP/:idV           controllers.Project.getProjectoVersion
 GET         /projecto/:id                 controllers.Project.getProjectoById(id: Long)
 POST        /projecto/remover/:id         controllers.Project.removerProjecto(id: Long)
 
-GET         /meusProjects                 controllers.Project.getUserProjectos()
+GET         /meusProjetos                 controllers.Project.getUserProjectos()
 
 POST        /comentario                   controllers.Comment.addComentario()
 POST        /comentario/edit              controllers.Comment.editComment()
