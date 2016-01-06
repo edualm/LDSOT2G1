@@ -39,7 +39,7 @@ public class Editor extends Controller {
             String user = AuthManager.currentUsername(session("jwt"));
 
             if (p == null)
-                return notFound(generic.render("Not Found!", "Project not found.", true));
+                return notFound(generic.render("Não Encontrado!", "Projeto não encontrado.", true));
             
             VersaoProjecto ver = p.versoesProjecto.get(p.versoesProjecto.size() - 1);
             
@@ -52,8 +52,6 @@ public class Editor extends Controller {
                     }
             
             if (p.user_id.equals(user)) {
-                System.out.println("editProject(): Auth success!");
-                
                 ArrayList<Tipo> missingTipos = new ArrayList<>();
                 
                 List<Componente> currentComponents = ver.componentes;
@@ -93,6 +91,6 @@ public class Editor extends Controller {
             }
         }
         
-        return forbidden();
+        return forbidden(generic.render("Sem Permissões!", "Não possui permissões para editar a página pretendida.", true));
     }
 }

@@ -9,7 +9,7 @@
                 <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                @for((p, index) <- projectos) {
+                @for((p, index) <- projectos.zipWithIndex) {
                     @if(index != 0) {
                         <li data-target="#myCarousel" data-slide-to="@index"></li>
                     }
