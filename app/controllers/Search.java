@@ -31,19 +31,4 @@ public class Search extends Controller {
 
         return ok(search.render(query, res, tag, projectosUser, AuthManager.authCheck(session(), form)));
     }
-
-    public Result searchResultsQuery(String query) {
-        DynamicForm form = new DynamicForm().bindFromRequest();
-
-        if (query == null)
-            return internalServerError();
-
-        List<Projecto> res = Ebean.find(Projecto.class).where().or(Expr.icontains("nome", query), Expr.icontains("descricao", query)).findList();
-
-        List<Tag> tag = Ebean.find(Tag.class).where().eq("nome", query).findList();
-
-        List<Projecto> projectosUser = Ebean.find(Projecto.class).where().eq("user_id", query).findList();
-
-        return ok(search.render(query, res, tag, projectosUser, AuthManager.authCheck(session(), form)));
-    }
 }
