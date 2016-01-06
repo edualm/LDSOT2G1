@@ -9,13 +9,16 @@
                 <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
+                @for((p, index) <- projectos) {
+                    @if(index != 0) {
+                        <li data-target="#myCarousel" data-slide-to="@index"></li>
+                    }
+                }
             </ol>
             <div class="carousel-inner" role="listbox">
 
                 <div class="item active">
-                    <h1 id="headers" style="text-align: center; padding: 150px 200px 250px 200px; background-color: white;">Bem-vindo à <b>Audiência Zero</b>, uma plataforma de projecto colectiva que tem como objectivo oferecer ao utilizador uma forma mais simples de documentar.<h1>
+                    <h1 id="headers" style="text-align: center; padding: 150px 200px 250px 200px; background-color: white;">Bem-vindo à <b>Audiência Zero</b>, uma plataforma de projecto colectiva que tem como objectivo oferecer ao utilizador uma forma mais simples de documentar.</h1>
                         <br><br><br><br>
 
                         <div class="container">
