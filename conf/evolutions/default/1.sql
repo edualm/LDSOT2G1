@@ -95,7 +95,7 @@ CREATE TABLE componente
 );
 CREATE TABLE ficheiro
 (
- id INTEGER DEFAULT nextval('"Ficheiro_id_seq"'::regclass)  NOT NULL,
+ id INTEGER DEFAULT nextval('"Ficheiro_id_seq"'::regclass) UNIQUE NOT NULL,
  nome VARCHAR(255) NOT NULL,
  ficheiro BYTEA NOT NULL,
  projecto_id INTEGER
