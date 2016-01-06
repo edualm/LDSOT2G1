@@ -177,7 +177,6 @@ ALTER TABLE projecto_tag ADD FOREIGN KEY (tag) REFERENCES tag (id);
 
 CREATE UNIQUE INDEX projecto_tag_pkey ON projecto_tag (projecto, tag);
 CREATE UNIQUE INDEX projecto_tag_unique ON projecto_tag (projecto, tag);
-CREATE UNIQUE INDEX tag_id_key ON tag (id);
 CREATE UNIQUE INDEX tag_nome_key ON tag (nome);
 
 ALTER TABLE versaoprojecto ADD FOREIGN KEY (projecto_id) REFERENCES projecto (id);
