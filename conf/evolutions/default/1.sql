@@ -134,7 +134,7 @@ CREATE TABLE sessions
 );
 CREATE TABLE tag
 (
- id INTEGER DEFAULT nextval('"Tag_id_seq"'::regclass) NOT NULL,
+ id INTEGER DEFAULT nextval('"Tag_id_seq"'::regclass) UNIQUE NOT NULL,
  nome VARCHAR(255) NOT NULL
 );
 CREATE TABLE tipo
