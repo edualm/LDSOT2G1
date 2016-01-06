@@ -210,7 +210,7 @@
 
         try {
             document.getElementById("edit").onclick = function () {
-                location.href = "/editor/"+@project.id;
+                location.href = "/editor/" + @project.id;
             };
         } catch (e) {
 
@@ -227,6 +227,11 @@
 
             m.innerHTML = html;
         });
+
+            setTimeout(function() {
+                $('.nav-tabs a:first').tab('show');
+            }, 1000);
+
 
     </script>
 }
