@@ -10,9 +10,7 @@
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 @for((p, index) <- projectos.zipWithIndex) {
-                    @if(index != 0) {
-                        <li data-target="#myCarousel" data-slide-to="@index"></li>
-                    }
+                    <li data-target="#myCarousel" data-slide-to="@(index + 1)"></li>
                 }
             </ol>
             <div class="carousel-inner" role="listbox">
