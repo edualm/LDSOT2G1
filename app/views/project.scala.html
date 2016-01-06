@@ -207,10 +207,13 @@
             });
 
 
+        try {
+            document.getElementById("edit").onclick = function () {
+                location.href = "/editor/"+@project.id;
+            };
+        } catch (e) {
 
-       document.getElementById("edit").onclick = function () {
-           location.href = "/editor/"+@project.id;
-       };
+        }
 
         var forEach = Array.prototype.forEach;
 
