@@ -89,7 +89,7 @@ CREATE TABLE comentario
 );
 CREATE TABLE componente
 (
- id INTEGER DEFAULT nextval('"Componente_id_seq"'::regclass)  NOT NULL,
+ id INTEGER DEFAULT nextval('"Componente_id_seq"'::regclass) NOT NULL,
  conteudo TEXT NOT NULL,
  tipo_id INTEGER NOT NULL
 );
