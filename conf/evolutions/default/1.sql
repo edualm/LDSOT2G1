@@ -171,7 +171,6 @@ ALTER TABLE ficheiro_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id);
 ALTER TABLE ficheiro_tag ADD FOREIGN KEY (ficheiro_id) REFERENCES ficheiro (id);
 ALTER TABLE ligacao ADD FOREIGN KEY (versaoprojecto_id) REFERENCES versaoprojecto (id);
 
-CREATE UNIQUE INDEX projecto_id_key ON projecto (id);
 
 ALTER TABLE projecto_tag ADD FOREIGN KEY (projecto) REFERENCES projecto (id);
 ALTER TABLE projecto_tag ADD FOREIGN KEY (tag) REFERENCES tag (id);
