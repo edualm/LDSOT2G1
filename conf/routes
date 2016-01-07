@@ -8,7 +8,6 @@ GET         /                             controllers.Application.index()
 GET         /logout                       controllers.Application.logout()
 GET         /search                       controllers.Search.searchResults()
 
-#API
 POST        /projecto                     controllers.Project.criarProjecto()
 POST        /projecto/nome                controllers.Project.editarNomeProjecto()
 POST        /projecto/editar              controllers.Project.editarConteudoProjecto()
