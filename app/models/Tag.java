@@ -24,7 +24,7 @@ public class Tag extends Model{
 
     @ManyToMany()
     @JoinTable(name = "projecto_tag", joinColumns = @JoinColumn(name = "tag"), inverseJoinColumns = @JoinColumn(name = "projecto"))
-    @JsonManagedReference
+    @JsonBackReference
     public List<Projecto> projectos;
 
     public  Tag(String nome) {
