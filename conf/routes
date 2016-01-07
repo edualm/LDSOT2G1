@@ -8,7 +8,6 @@ GET         /                             controllers.Application.index()
 GET         /logout                       controllers.Application.logout()
 GET         /search                       controllers.Search.searchResults()
 
-#API
 POST        /projecto                     controllers.Project.criarProjecto()
 POST        /projecto/nome                controllers.Project.editarNomeProjecto()
 POST        /projecto/editar              controllers.Project.editarConteudoProjecto()
@@ -36,5 +35,29 @@ GET         /tags/:id                     controllers.ProjectTag.getTagsForProje
 
 GET         /editor/:id                   controllers.Editor.editProject(id: Long)
 GET         /editor/:id/version/:v        controllers.Editor.editProjectWithVersion(id: Long, v: Long)
+
+#API
+POST        /api/projecto                     controllers.api.Project.criarProjecto()
+POST        /api/projecto/nome                controllers.api.Project.editarNomeProjecto()
+POST        /api/projecto/editar              controllers.api.Project.editarConteudoProjecto()
+POST        /api/projecto/componente          controllers.api.Project.adicionarComponenteProjecto()
+POST        /api/projecto/tag                 controllers.api.Project.editarTagsProjecto()
+
+GET         /api/projectos                    controllers.api.Project.getAllProjectos()
+GET         /api/projecto/:id                 controllers.api.Project.getProjectoById(id: Long)
+POST        /api/projecto/remover/:id         controllers.api.Project.removerProjecto(id: Long)
+
+POST        /api/comentario                   controllers.api.Comment.addComentario()
+POST        /api/comentario/edit              controllers.api.Comment.editComment()
+
+POST        /api/ficheiro                     controllers.api.FileProject.addFile()
+GET         /api/ficheiros                    controllers.api.FileProject.getAllFiles()
+GET         /api/ficheiro/:id                 controllers.api.FileProject.getFileByID(id: Long)
+GET         /api/ficheiro/remover/:id         controllers.api.FileProject.removeFile(id : Long)
+
+POST        /api/tag                          controllers.api.ProjectTag.addTag()
+GET         /api/tags                         controllers.api.ProjectTag.getAllTags()
+GET         /api/tags/:id                     controllers.api.ProjectTag.getTagsForProject(id: Long)
+
 
 GET         /assets/*file                 controllers.Assets.versioned(path="/public", file: Asset)
