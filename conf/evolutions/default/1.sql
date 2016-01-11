@@ -8,9 +8,9 @@ CREATE SEQUENCE "public"."Comentario_id_seq"
 INCREMENT 1
 MINVALUE 1
 MAXVALUE 9223372036854775807
-START 8
+START 1
 CACHE 1;
-SELECT setval('"public"."Comentario_id_seq"', 8, true);
+SELECT setval('"public"."Comentario_id_seq"', 1, true);
 
 -- ----------------------------
 -- Sequence structure for Componente_id_seq
@@ -19,9 +19,9 @@ CREATE SEQUENCE "public"."Componente_id_seq"
 INCREMENT 1
 MINVALUE 0
 MAXVALUE 9223372036854775807
-START 56
+START 1
 CACHE 1;
-SELECT setval('"public"."Componente_id_seq"', 56, true);
+SELECT setval('"public"."Componente_id_seq"', 1, true);
 
 -- ----------------------------
 -- Sequence structure for Ficheiro_id_seq
@@ -30,9 +30,9 @@ CREATE SEQUENCE "public"."Ficheiro_id_seq"
 INCREMENT 1
 MINVALUE 0
 MAXVALUE 9223372036854775807
-START 5
+START 1
 CACHE 1;
-SELECT setval('"public"."Ficheiro_id_seq"', 5, true);
+SELECT setval('"public"."Ficheiro_id_seq"', 1, true);
 
 -- ----------------------------
 -- Sequence structure for ligacao_id_seq
@@ -51,9 +51,9 @@ CREATE SEQUENCE "public"."Projecto_id_seq"
 INCREMENT 1
 MINVALUE 0
 MAXVALUE 9223372036854775807
-START 12
+START 1
 CACHE 1;
-SELECT setval('"public"."Projecto_id_seq"', 12, true);
+SELECT setval('"public"."Projecto_id_seq"', 1, true);
 
 -- ----------------------------
 -- Sequence structure for Tag_id_seq
@@ -62,7 +62,7 @@ CREATE SEQUENCE "public"."Tag_id_seq"
 INCREMENT 1
 MINVALUE 0
 MAXVALUE 9223372036854775807
-START 0
+START 1
 CACHE 1;
 
 -- ----------------------------
@@ -73,9 +73,9 @@ CREATE SEQUENCE "public"."VersaoProjecto_id_seq"
 INCREMENT 1
 MINVALUE 0
 MAXVALUE 9223372036854775807
-START 23
+START 1
 CACHE 1;
-SELECT setval('"public"."VersaoProjecto_id_seq"', 23, true);
+SELECT setval('"public"."VersaoProjecto_id_seq"', 1, true);
 
 
 
